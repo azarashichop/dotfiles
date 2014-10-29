@@ -87,6 +87,7 @@ NeoBundle 'scrooloose/nerdtree'
 	let g:NERDTreeShowHidden=1
 	let g:NERDTreeDirArrows=1
 	autocmd vimenter * if !argc() | NERDTree | endif
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "###Syntastic
 NeoBundle 'scrooloose/syntastic'
