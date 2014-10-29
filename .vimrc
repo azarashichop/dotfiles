@@ -58,7 +58,7 @@ filetype plugin on
 NeoBundle 'tpope/vim-fugitive'
 
 "###ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 "###Colors Watch
 NeoBundle 'cocopon/colorswatch.vim'
