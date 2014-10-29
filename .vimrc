@@ -25,7 +25,7 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set backspace=indent,eol,start
-"set mouse=a
+set mouse=a
 set hidden
 set autoread
 set t_Co=256
