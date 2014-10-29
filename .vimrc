@@ -54,6 +54,9 @@ NeoBundleCheck
 
 filetype plugin on
 
+"###Fugitive
+NeoBundle 'tpope/vim-fugitive'
+
 "###ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -92,13 +95,18 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
 	\ 'colorscheme': 'landscape',
+	\ 'mode_map': {'c': 'NORMAL'},
+	\ 'active': {
+	\		'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
+	\		'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+	\	},
 	\ 'component': {
 	\   'lineinfo': ' %3l:%-2v'
-	\ },
+	\	},
 	\ 'component_function': {
 	\   'readonly': 'MyReadonly',
 	\   'fugitive': 'MyFugitive'
-	\ },
+	\	},
 	\ 'separator': { 'left': '', 'right': '' },
 	\ 'subseparator': { 'left': '', 'right': '' },
 	\ }
@@ -109,7 +117,7 @@ endfunction
 function! MyFugitive()
 	if exists("*fugitive#head")
 		let _ = fugitive#head()
-		return strlen(_) ? ''._ : '
+		return strlen(_) ? ''._ : ''
 	endif
 	return ''
 endfunction
