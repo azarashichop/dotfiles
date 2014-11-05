@@ -54,6 +54,9 @@ NeoBundleCheck
 
 filetype plugin on
 
+"###UniteVim
+NeoBundle 'Shougo/unite.vim'
+
 "###Fugitive
 NeoBundle 'tpope/vim-fugitive'
 
