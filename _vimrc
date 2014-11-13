@@ -27,7 +27,6 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set backspace=indent,eol,start
-"set mouse=a
 set hidden
 set autoread
 set t_Co=256
@@ -36,8 +35,6 @@ set noundofile
 
 syntax on
 syntax enable
-filetype on
-filetype indent on
 
 scriptencoding utf-8
 set encoding=utf-8
