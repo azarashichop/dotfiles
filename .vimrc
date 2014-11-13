@@ -1,4 +1,6 @@
-"###General Settings###
+"##############################################################################
+"General Settings
+"##############################################################################
 set nocompatible
 set noswapfile
 set nobackup
@@ -29,6 +31,7 @@ set backspace=indent,eol,start
 set hidden
 set autoread
 set t_Co=256
+set diffopt=vertical
 
 syntax on
 syntax enable
@@ -38,7 +41,9 @@ filetype indent on
 scriptencoding utf-8
 set encoding=utf-8
 
-"###NeoBundle Common###
+"##############################################################################
+"NeoBundle and Plugin Settings:Start
+"##############################################################################
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -50,11 +55,11 @@ call neobundle#end()
 "###Let NeoBundle manage NeoBundle###
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-"###add plugins###
+filetype plugin indent on
 
-NeoBundleCheck
-
-filetype plugin on
+"#######################################
+"Add plugins section
+"#######################################
 
 "###UniteVim
 NeoBundle 'Shougo/unite.vim'
@@ -127,3 +132,12 @@ function! MyFugitive()
 	endif
 	return ''
 endfunction
+
+"#######################################
+"New plugins check
+"#######################################
+NeoBundleCheck
+
+"##############################################################################
+"NeoBundle and Plugin Settings:End
+"##############################################################################
