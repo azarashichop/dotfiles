@@ -58,16 +58,16 @@ filetype plugin indent on
 "Add plugins section
 "#######################################
 
-"###UniteVim
+"###UniteVim###
 NeoBundle 'Shougo/unite.vim'
 
-"###Fugitive
+"###Fugitive###
 NeoBundle 'tpope/vim-fugitive'
 
-"###ctrlp
+"###ctrlp###
 NeoBundle 'ctrlpvim/ctrlp.vim'
 
-"###Colors Watch
+"###Colors Watch###
 NeoBundle 'cocopon/colorswatch.vim'
 
 "###Color Schemes###
@@ -96,7 +96,7 @@ NeoBundle 'scrooloose/nerdtree'
 	autocmd vimenter * if !argc() | NERDTree | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"###Syntastic
+"###Syntastic###
 NeoBundle 'scrooloose/syntastic'
 
 "###lightline###
