@@ -2,3 +2,4 @@ gui
 set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
 set transparency=225
 color landscape
+set printfont=Ricty:h12:cSHIFTJIS
