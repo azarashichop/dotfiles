@@ -15,15 +15,13 @@ set linespace=0
 set wildmenu
 set showcmd
 set noshowmode
-set list
-set listchars=tab:>-
 set cursorline
 set incsearch
 set smartcase
 set ignorecase
 set wrapscan
 set background=dark
-set tabstop=4
+set tabstop=2
 set shiftwidth=2
 set autoindent
 set smartindent
@@ -89,6 +87,16 @@ NeoBundle 'wolf-dog/lightline-nighted.vim'
 colorscheme landscape
 	let g:solarized_termtrans=1
 	highlight Normal ctermbg=none
+
+"###Indent-guides###
+NeoBundle 'nathanaelkane/vim-indent-guides'
+ let g:indent_guides_enable_on_vim_startup=1
+ let g:indent_guides_start_level=1
+ let g:indent_guides_auto_colors=0
+ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+ let g:indent_guides_color_change_percent = 30
+ let g:indent_guides_guide_size=2
 
 "###NerdTree###
 NeoBundle 'scrooloose/nerdtree'
