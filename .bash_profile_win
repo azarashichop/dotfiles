@@ -1,0 +1,15 @@
+# .bash_profile
+# This profile is configured for Mintty.
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+#Set alias for Gvim
+alias vi=C:/bin/vim74/gvim.exe
+alias vim=C:/bin/vim74/gvim.exe
+
+# User specific environment and startup programs
+
+LANG=en_US/CP932
+export LANG
