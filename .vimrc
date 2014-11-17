@@ -1,6 +1,7 @@
 "##############################################################################
 "General Settings
 "##############################################################################
+filetype off
 set nocompatible
 set noswapfile
 set nobackup
@@ -51,8 +52,6 @@ call neobundle#end()
 
 "###Let NeoBundle manage NeoBundle###
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-filetype plugin indent on
 
 "#######################################
 "Add plugins section
@@ -138,3 +137,5 @@ NeoBundleCheck
 "##############################################################################
 "NeoBundle and Plugin Settings:End
 "##############################################################################
+
+filetype plugin indent on
