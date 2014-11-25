@@ -10,6 +10,5 @@ alias vi=C:/bin/vim74/gvim.exe
 alias vim=C:/bin/vim74/gvim.exe
 
 # User specific environment and startup programs
-
 LANG=en_US/CP932
 export LANG
