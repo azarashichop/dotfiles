@@ -1,34 +1,35 @@
 "###############################################################################
-"Personal settings for gui-vim
+"gui-vim用設定
 "###############################################################################
 
-"Font setting for gVim
+"フォント設定
 set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
 
-"Enable transpalency
+"透過を有効にする
 gui
 set transparency=245
 
-"Enable anti-alias
+"アンチエイリアスを有効にする
 set antialias
 
-"Disable Beep
+"エラートーンを無効化する
 set visualbell t_vb=
 
-"Hide toolbar
+"ツールバー
 set guioptions-=T
 
-"Font setting for printer
+"プリンタ用のフォント設定
 set printfont=Ricty:h12:cSHIFTJIS
 
-"gui-vim color scheme
+"gui-vim用のカラースキーム設定
 color molokai
 
-"change cursor color by IME-mode
+"IMEの有効／無効でカーソル色を変える
+"半角：グレー、全角：ダークレッド
 if has('multi_byte_ime')
 	highlight Cursor guifg=NONE guibg=Gray
 	highlight CursorIM guifg=NONE guibg=Darkred
 endif
 
-"Maximize window when booting gVim
+"起動時に全画面にする
 autocmd GUIEnter * simalt ~x
