@@ -1,5 +1,34 @@
-gui
+"###############################################################################
+"Personal settings for gui-vim
+"###############################################################################
+
+"Font setting for gVim
 set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
-set transparency=225
-color landscape
+
+"Enable transpalency
+gui
+set transparency=245
+
+"Enable anti-alias
+set antialias
+
+"Disable Beep
+set visualbell t_vb=
+
+"Hide toolbar
+set guioptions-=T
+
+"Font setting for printer
 set printfont=Ricty:h12:cSHIFTJIS
+
+"gui-vim color scheme
+color molokai
+
+"change cursor color by IME-mode
+if has('multi_byte_ime')
+	highlight Cursor guifg=NONE guibg=Gray
+	highlight CursorIM guifg=NONE guibg=Darkred
+endif
+
+"Maximize window when booting gVim
+autocmd GUIEnter * simalt ~x
