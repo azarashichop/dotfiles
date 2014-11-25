@@ -96,11 +96,8 @@ set diffopt=vertical
 "エスケープ2回でハイライト表示解除
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
-"スペース＋「.」で_vimrcを開く（新しいタブで開く）
-nnoremap <Space>. :tabnew $HOME/dotfiles/_vimrc
-
-"スペース＋「,」で_gvimrcを開く（新しいタブで開く）
-nnoremap <Space>, :tabnew $HOME/dotfiles/_gvimrc
+"スペース＋「.」で.vimrcを開く（新しいタブで開く）
+nnoremap <Space>. :tabnew $HOME/dotfiles/.vimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Space>u :Unite 
