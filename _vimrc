@@ -39,6 +39,11 @@ scriptencoding utf-8
 set encoding=utf-8
 
 "##############################################################################
+"Key Mapping
+"##############################################################################
+nmap <Esc><Esc> :nohl<CR>
+
+"##############################################################################
 "NeoBundle and Plugin Settings:Start
 "##############################################################################
 
@@ -90,13 +95,14 @@ colorscheme landscape
 
 "###Indent-guides###
 NeoBundle 'nathanaelkane/vim-indent-guides'
- let g:indent_guides_enable_on_vim_startup=1
- let g:indent_guides_start_level=1
- let g:indent_guides_auto_colors=0
- autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
- autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
- let g:indent_guides_color_change_percent = 30
- let g:indent_guides_guide_size=2
+	let g:indent_guides_enable_on_vim_startup=1
+	let g:indent_guides_start_level=1
+	let g:indent_guides_space_guides=1
+	let g:indent_guides_guide_size=1
+	let g:indent_guides_auto_colors=0
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+	let g:indent_guides_color_change_percent = 30
 
 "###NerdTree###
 NeoBundle 'scrooloose/nerdtree'
@@ -131,6 +137,7 @@ let g:lightline = {
 function! MyReadonly()
 	return &readonly ? "\ue0a2 " : ''
 endfunction
+
 function! MyFugitive()
 	if exists("*fugitive#head")
 		let _ = fugitive#head()
