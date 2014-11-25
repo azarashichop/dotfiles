@@ -139,9 +139,6 @@ function! MyFugitive()
 	return ''
 endfunction
 
-"###Modern Tool Bar for gvim###
-NeoBundle 'istepura/vim-toolbar-icons-silk'
-
 "#######################################
 "New plugins check
 "#######################################
