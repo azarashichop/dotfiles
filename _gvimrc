@@ -31,5 +31,9 @@ if has('multi_byte_ime')
 	highlight CursorIM guifg=NONE guibg=Darkred
 endif
 
+"改行、タブ文字の色設定
+highlight NonText guifg=DarkCyan
+highlight SpecialKey guifg=LightMagenta gui=None
+
 "起動時に全画面にする
 autocmd GUIEnter * simalt ~x
