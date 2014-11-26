@@ -92,7 +92,7 @@ set autoread
 set diffopt=vertical
 
 "ペーストモードトグル
-set pastetoggle=<C-s>
+set pastetoggle=<C-k>
 
 "##############################################################################
 "キーマップ設定
