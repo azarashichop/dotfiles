@@ -18,7 +18,14 @@ set encoding=utf-8
 	set nobackup
 
 "###表示関連設定###
-	"行折り返しの無効化
+"ターミナルカラーを256色にする
+set t_Co=256
+
+"特殊文字の可視化
+	set list
+	set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
+
+"行折り返しの無効化
 	set nowrap
 
 	"行番号の表示
@@ -45,15 +52,8 @@ set encoding=utf-8
 	"カレント行のハイライト表示
 	set cursorline
 
-	"特殊文字の可視化（Tabの可視化）
-	set list
-	set listchars=tab:>-
-
 	"コマンド入力時、Tabキー補完を有効にする
 	set wildmenu
-
-"ターミナルカラーを256色にする
-set t_Co=256
 
 "背景色をダークにする
 set background=dark
@@ -106,7 +106,7 @@ nnoremap <Space>u :Unite
 nnoremap <Space>n :NERDTree
 
 "##############################################################################
-"NeoBundle￥プラグイン関連開始
+"NeoBundle／プラグイン設定：開始
 "##############################################################################
 
 if has('vim_starting')
@@ -161,6 +161,7 @@ NeoBundle 'cocopon/lightline-hybrid.vim'
 NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
 
+"カラースキームの指定
 colorscheme landscape
 	let g:solarized_termtrans=1
 	let g:solarized_termcolors=256
@@ -180,13 +181,12 @@ colorscheme landscape
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
 	let g:NERDTreeShowHidden=1
-	let g:NERDTreeDirArrows=0
-"	autocmd vimenter * if !argc() | NERDTree | endif
+	let g:NERDTreeDirArrows=1
+"gg	autocmd vimenter * if !argc() | NERDTree | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
-
 
 "###lightline###
 NeoBundle 'itchyny/lightline.vim'
@@ -233,9 +233,11 @@ NeoBundleCheck
 "##############################################################################
 
 "##############################################################################
-"終端処理（ファイルタイプ、シンタックス、インデントの有効化）
+"終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
 "##############################################################################
 
 filetype plugin indent on
 syntax on
 syntax enable
+highlight NonText ctermfg=DarkCyan
+highlight SpecialKey ctermfg=DarkMagenta
