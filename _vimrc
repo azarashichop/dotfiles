@@ -80,6 +80,8 @@ set background=dark
 	set autoindent
 	set smartindent
 
+"###その他の設定
+
 "バックスペースの動作をWindowsと同じにする
 set backspace=indent,eol,start
 
@@ -91,6 +93,9 @@ set autoread
 
 "diff実行時に縦分割で結果を表示する
 set diffopt=vertical
+
+"ペーストモードトグル
+set pastetoggle=<C-s>
 
 "##############################################################################
 "キーマップ設定
