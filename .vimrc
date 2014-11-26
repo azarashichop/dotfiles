@@ -196,7 +196,7 @@ NeoBundle 'scrooloose/syntastic'
 "###lightline###
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-	\	'colorscheme': 'landscape',
+	\	'colorscheme': 'solarized_dark',
 	\	'mode_map': {'c': 'NORMAL'},
 	\	'active': {
 	\		'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
@@ -224,9 +224,6 @@ function! MyFugitive()
 	endif
 	return ''
 endfunction
-
-"vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
-NeoBundle 'istepura/vim-toolbar-icons-silk'
 
 "#######################################
 "新規プラグインのチェック
