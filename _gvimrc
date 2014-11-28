@@ -36,8 +36,8 @@ endif
 
 "改行、タブ文字、行番号の色設定
 highlight NonText guifg=DarkCyan
-highlight SpecialKey guifg=LightMagenta
-highlight LineNr guifg=gold
+highlight SpecialKey guifg=OliveDrab
+highlight LineNr guibg=NONE guifg=Gold
 highlight CursorlineNr guifg=DodgerBlue
 
 "起動時に全画面にする
