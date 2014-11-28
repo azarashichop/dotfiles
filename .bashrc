@@ -15,9 +15,9 @@ LS_COLORS='no=00;38;5;244:rs=0:di=00;38;5;33:ln=00;38;5;37:mh=00:pi=48;5;230;38;
 export LS_COLORS
 
 if [ -f ~/.dircolors ]; then
-	    if type dircolors > /dev/null 2>&1; then
-		        eval $(dircolors ~/.dircolors)
-		    elif type gdircolors > /dev/null 2>&1; then
-		        eval $(gdircolors ~/.dircolors)
-	fi
+		if type dircolors > /dev/null 2>&1; then
+			eval $(dircolors ~/.dircolors)
+				elif type gdircolors > /dev/null 2>&1; then
+					eval $(gdircolors ~/.dircolors)
+		fi
 fi

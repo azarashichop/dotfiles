@@ -167,10 +167,13 @@ NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
 
 "カラースキームの指定
-colorscheme landscape
+colorscheme molokai
 	let g:solarized_termtrans=1
 	let g:solarized_termcolors=256
 	highlight Normal ctermbg=none
+
+"unite-gvimrgb(カラーリスト表示）
+NeoBundle 'LeafCage/unite-gvimrgb'
 
 "vim-indent-guides（インデントの可視化）
 "NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -239,3 +242,5 @@ syntax on
 syntax enable
 highlight NonText ctermfg=DarkCyan
 highlight SpecialKey ctermfg=DarkMagenta
+highlight LineNr ctermbg=none ctermfg=brown
+highlight CursorlineNr ctermfg=DarkCyan
