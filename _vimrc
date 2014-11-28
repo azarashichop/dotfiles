@@ -177,6 +177,9 @@ colorscheme landscape
 	let g:solarized_termcolors=256
 	highlight Normal ctermbg=none
 
+"unite-gvimrgb(カラーリスト表示）
+NeoBundle 'LeafCage/unite-gvimrgb'
+
 "vim-indent-guides（インデントの可視化）
 "NeoBundle 'nathanaelkane/vim-indent-guides'
 "	let g:indent_guides_enable_on_vim_startup=1
