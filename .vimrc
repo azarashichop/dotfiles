@@ -240,7 +240,7 @@ NeoBundleCheck
 filetype plugin indent on
 syntax on
 syntax enable
-highlight NonText ctermfg=DarkCyan
+highlight NonText ctermfg=LightCyan
 highlight SpecialKey ctermfg=DarkMagenta
 highlight LineNr ctermbg=none ctermfg=brown
 highlight CursorlineNr ctermfg=DarkCyan
