@@ -196,6 +196,9 @@ NeoBundle 'scrooloose/nerdtree'
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
 
+"Gundo（アンドゥ・リドゥ履歴のツリー表示）
+NeoBundle 'sjl/gundo.vim'
+
 "###lightline###
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
