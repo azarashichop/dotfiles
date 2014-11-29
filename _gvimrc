@@ -22,7 +22,7 @@ set guioptions-=T
 set guioptions-=e
 
 "プリンタ用のフォント設定
-set printfont=Ricty:h12:cSHIFTJIS
+set printfont=Ricty_Writing:h12:cSHIFTJIS
 
 "gui-vim用のカラースキーム設定
 color molokai
