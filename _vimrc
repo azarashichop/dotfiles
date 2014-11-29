@@ -198,6 +198,9 @@ NeoBundle 'scrooloose/nerdtree'
 "	autocmd vimenter * if !argc() | NERDTree | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+"Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
+NeoBundle 'sjl/gundo.vim'
+
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
 
