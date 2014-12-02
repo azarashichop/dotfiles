@@ -30,8 +30,8 @@ color molokai
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド
 if has('multi_byte_ime')
-	highlight Cursor guifg=NONE guibg=Gray
-	highlight CursorIM guifg=NONE guibg=Darkred
+  highlight Cursor guifg=NONE guibg=Gray
+  highlight CursorIM guifg=NONE guibg=Darkred
 endif
 
 "改行、タブ文字、行番号の色設定
