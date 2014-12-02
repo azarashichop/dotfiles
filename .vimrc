@@ -11,71 +11,82 @@ set encoding=utf-8
 "##############################################################################
 
 "###作業ファイル生成の無効化
-	"SWAPファイル無効化
-	set noswapfile
+  "SWAPファイル無効化
+  set noswapfile
 
-	"バックアップファイル無効化
-	set nobackup
+  "バックアップファイル無効化
+  set nobackup
 
 "###表示関連設定###
 "ターミナルカラーを256色にする
 set t_Co=256
 
 "特殊文字の可視化
-	set list
-	set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
+  set list
+  set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
 
 "行折り返しの無効化
-	set nowrap
+  set nowrap
 
-	"行番号の表示
-	set number
+  "行番号の表示
+  set number
 
-	"コマンドライン行数を2行にする
-	set cmdheight=2
+  "コマンドライン行数を2行にする
+  set cmdheight=2
 
-	"コマンドラインを常に表示させる
-	set laststatus=2
+  "コマンドラインを常に表示させる
+  set laststatus=2
 
-	"タイトルの表示
-	set title
+  "タイトルの表示
+  set title
 
-	"行間を空けない（スペーシング無し）
-	set linespace=0
+  "行間を空けない（スペーシング無し）
+  set linespace=0
 
-	"入力中のコマンドを表示する
-	set showcmd
+  "入力中のコマンドを表示する
+  set showcmd
 
-	"モード表示をOff（Lightlineで表示させるため）
-	set noshowmode
+  "モード表示をOff（Lightlineで表示させるため）
+  set noshowmode
 
-	"カレント行のハイライト表示
-	set cursorline
+  "カレント行のハイライト表示
+  set cursorline
 
-	"コマンド入力時、Tabキー補完を有効にする
-	set wildmenu
+  "コマンド入力時、Tabキー補完を有効にする
+  set wildmenu
 
 "背景色をダークにする
 set background=dark
 
 "###検索オプション###
-	"インクリメンタルサーチを使う
-	set incsearch
+  "インクリメンタルサーチを使う
+  set incsearch
 
-	"小文字だけで検索した場合に大文字小文字を区別しない
-	set ignorecase
+  "小文字だけで検索した場合に大文字小文字を区別しない
+  set ignorecase
 
-	"大文字が含まれる場合には大文字小文字を区別する
-	set smartcase
+  "大文字が含まれる場合には大文字小文字を区別する
+  set smartcase
 
-	"循環検索の有効化
-	set wrapscan
+  "循環検索の有効化
+  set wrapscan
 
 "###タブ・インデント関連設定###
-	set tabstop=2
-	set shiftwidth=2
-	set autoindent
-	set smartindent
+  "タブ入力時、スペースに展開する
+  set expandtab
+
+  "タブをスペース2文字分に展開する
+  set tabstop=2
+
+  "タブを入力した際に、スペース2文字分に展開する
+  set softtabstop=2
+
+  "自動インデント時に挿入されるタブ幅
+  set shiftwidth=2
+
+  "オートインデント、スマートインデントを有効にする
+  set autoindent
+  set smartindent
 
 "###その他の設定
 
@@ -115,7 +126,7 @@ nnoremap <Space>n :NERDTree
 "##############################################################################
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -137,7 +148,7 @@ NeoBundle 'Shougo/neomru.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
-	let g:neocomplete#enable_at_startup=1
+  let g:neocomplete#enable_at_startup=1
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
@@ -168,30 +179,30 @@ NeoBundle 'wolf-dog/lightline-nighted.vim'
 
 "カラースキームの指定
 colorscheme molokai
-	let g:solarized_termtrans=1
-	let g:solarized_termcolors=256
-	highlight Normal ctermbg=none
+  let g:solarized_termtrans=1
+  let g:solarized_termcolors=256
+  highlight Normal ctermbg=none
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
 
 "vim-indent-guides（インデントの可視化）
 "NeoBundle 'nathanaelkane/vim-indent-guides'
-"	let g:indent_guides_enable_on_vim_startup=1
-"	let g:indent_guides_start_level=1
-"	let g:indent_guides_space_guides=1
-"	let g:indent_guides_guide_size=1
-"	let g:indent_guides_auto_colors=0
-"	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
-"	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
-"	let g:indent_guides_color_change_percent = 30
+" let g:indent_guides_enable_on_vim_startup=1
+" let g:indent_guides_start_level=1
+" let g:indent_guides_space_guides=1
+" let g:indent_guides_guide_size=1
+" let g:indent_guides_auto_colors=0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+" let g:indent_guides_color_change_percent = 30
 
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
-	let g:NERDTreeShowHidden=1
-	let g:NERDTreeDirArrows=1
-"gg	autocmd vimenter * if !argc() | NERDTree | endif
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  let g:NERDTreeShowHidden=1
+  let g:NERDTreeDirArrows=1
+"gg autocmd vimenter * if !argc() | NERDTree | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
@@ -202,33 +213,33 @@ NeoBundle 'sjl/gundo.vim'
 "###lightline###
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-	\	'colorscheme': 'solarized_dark',
-	\	'mode_map': {'c': 'NORMAL'},
-	\	'active': {
-	\		'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
-	\		'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
-	\	},
-	\	'component': {
-	\		'lineinfo': ' %3l:%-2v'
-	\	},
-	\	'component_function': {
-	\		'readonly': 'MyReadonly',
-	\		'fugitive': 'MyFugitive'
-	\	},
-	\	'separator': { 'left': '', 'right': '' },
-	\	'subseparator': { 'left': '', 'right': '' },
-	\	}
+  \ 'colorscheme': 'solarized_dark',
+  \ 'mode_map': {'c': 'NORMAL'},
+  \ 'active': {
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
+  \   'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': ' %3l:%-2v'
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'MyReadonly',
+  \   'fugitive': 'MyFugitive'
+  \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' },
+  \ }
 
 function! MyReadonly()
-	return &readonly ? '' : ''
+  return &readonly ? '' : ''
 endfunction
 
 function! MyFugitive()
-	if exists("*fugitive#head")
-		let _ = fugitive#head()
-		return strlen(_) ? ''._ : ''
-	endif
-	return ''
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? ''._ : ''
+  endif
+  return ''
 endfunction
 
 "#######################################
