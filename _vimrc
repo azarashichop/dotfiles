@@ -50,7 +50,7 @@ set encoding=utf-8
 
   "特殊文字の可視化（Tabの可視化）
   set list
-  set listchars=tab:>-,extends:>,precedes:<
+  set listchars=tab:>-,trail:-,extends:>,precedes:<
 
   "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
@@ -172,7 +172,7 @@ NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
 "vim-trailing-whitespace（行末スペースの可視化）
-NeoBundle 'bronson/vim-trailing-whitespace'
+"NeoBundle 'bronson/vim-trailing-whitespace'
 
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
