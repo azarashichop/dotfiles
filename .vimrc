@@ -23,7 +23,7 @@ set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
+  set listchars=tab:▸\ ,eol:¬,trail:-,extends:»,precedes:«
 
 "行折り返しの無効化
   set nowrap
@@ -166,7 +166,7 @@ NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
 "vim-trailing-whitespace（行末スペースの可視化）
-NeoBundle 'bronson/vim-trailing-whitespace'
+"NeoBundle 'bronson/vim-trailing-whitespace'
 
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
@@ -229,10 +229,12 @@ augroup vim-anzu
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
 
+NeoBundle 'itchyny/calendar.vim'
+
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
+  \ 'colorscheme': 'solarized',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -275,6 +277,6 @@ filetype plugin indent on
 syntax on
 syntax enable
 highlight NonText ctermfg=LightCyan
-highlight SpecialKey ctermfg=DarkMagenta
+highlight SpecialKey ctermfg=Red
 highlight LineNr ctermbg=black ctermfg=brown
 highlight CursorlineNr ctermfg=DarkCyan
