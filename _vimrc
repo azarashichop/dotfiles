@@ -50,7 +50,7 @@ set encoding=utf-8
 
   "特殊文字の可視化（Tabの可視化）
   set list
-  set listchars=tab:>-
+  set listchars=tab:>-,extends:>,precedes:<
 
   "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
@@ -127,6 +127,12 @@ nnoremap <Space>u :Unite
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Space>n :NERDTree
 
+"vim-anzu関連
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+
 "##############################################################################
 "NeoBundle初期設定、コール
 "##############################################################################
@@ -151,6 +157,9 @@ NeoBundle 'Shougo/unite.vim'
 
 "NeoMRU（Unite VimにMRU機能追加）
 NeoBundle 'Shougo/neomru.vim'
+
+"Unite Outline(アウトライナー）
+NeoBundle "Shougo/unite-outline"
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
@@ -192,15 +201,7 @@ colorscheme landscape
 NeoBundle 'LeafCage/unite-gvimrgb'
 
 "vim-indent-guides（インデントの可視化）
-"NeoBundle 'nathanaelkane/vim-indent-guides'
-" let g:indent_guides_enable_on_vim_startup=1
-" let g:indent_guides_start_level=1
-" let g:indent_guides_space_guides=1
-" let g:indent_guides_guide_size=1
-" let g:indent_guides_auto_colors=0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
-" let g:indent_guides_color_change_percent = 30
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
@@ -215,13 +216,23 @@ NeoBundle 'sjl/gundo.vim'
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
 
+"vim-anzu（検索位置の表示）
+NeoBundle 'osyo-manga/vim-anzu'
+"anzu設定
+" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+" 検索ヒット数の表示を消去する
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
+
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
   \ 'colorscheme': 'solarized_dark',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
   \   'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
@@ -229,7 +240,8 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive'
+  \   'fugitive': 'MyFugitive',
+  \   'anzu': 'anzu#search_status'
   \ },
   \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
   \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
