@@ -23,7 +23,7 @@ set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
+  set listchars=tab:▸\ ,eol:¬,trail:-,extends:»,precedes:«
 
 "行折り返しの無効化
   set nowrap
@@ -121,8 +121,14 @@ nnoremap <Space>u :Unite
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Space>n :NERDTree
 
+"vim-anzu関連
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+
 "##############################################################################
-"NeoBundle／プラグイン設定：開始
+"NeoBundle初期設定、コール
 "##############################################################################
 
 if has('vim_starting')
@@ -146,6 +152,9 @@ NeoBundle 'Shougo/unite.vim'
 "NeoMRU（Unite VimにMRU機能追加）
 NeoBundle 'Shougo/neomru.vim'
 
+"Unite Outline(アウトライナー）
+NeoBundle "Shougo/unite-outline"
+
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
@@ -157,7 +166,7 @@ NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
 "vim-trailing-whitespace（行末スペースの可視化）
-NeoBundle 'bronson/vim-trailing-whitespace'
+"NeoBundle 'bronson/vim-trailing-whitespace'
 
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
@@ -187,36 +196,48 @@ colorscheme molokai
 NeoBundle 'LeafCage/unite-gvimrgb'
 
 "vim-indent-guides（インデントの可視化）
-"NeoBundle 'nathanaelkane/vim-indent-guides'
-" let g:indent_guides_enable_on_vim_startup=1
-" let g:indent_guides_start_level=1
-" let g:indent_guides_space_guides=1
-" let g:indent_guides_guide_size=1
-" let g:indent_guides_auto_colors=0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
-" let g:indent_guides_color_change_percent = 30
+NeoBundle 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup=0
+  let g:indent_guides_start_level=1
+  let g:indent_guides_space_guides=1
+  let g:indent_guides_guide_size=1
+  let g:indent_guides_auto_colors=0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
+  let g:indent_guides_color_change_percent = 30
 
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
   let g:NERDTreeShowHidden=1
   let g:NERDTreeDirArrows=1
-"gg autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
+NeoBundle 'sjl/gundo.vim'
 
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
 
-"Gundo（アンドゥ・リドゥ履歴のツリー表示）
-NeoBundle 'sjl/gundo.vim'
+"vim-anzu（検索位置の表示）
+NeoBundle 'osyo-manga/vim-anzu'
+"anzu設定
+" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+" 検索ヒット数の表示を消去する
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
 
-"###lightline###
+NeoBundle 'itchyny/calendar.vim'
+
+"Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
+  \ 'colorscheme': 'solarized',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified'] ],
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
   \   'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
@@ -224,7 +245,8 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive'
+  \   'fugitive': 'MyFugitive',
+  \   'anzu': 'anzu#search_status'
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -255,6 +277,6 @@ filetype plugin indent on
 syntax on
 syntax enable
 highlight NonText ctermfg=LightCyan
-highlight SpecialKey ctermfg=DarkMagenta
-highlight LineNr ctermbg=none ctermfg=brown
+highlight SpecialKey ctermfg=Red
+highlight LineNr ctermbg=black ctermfg=brown
 highlight CursorlineNr ctermfg=DarkCyan

@@ -3,7 +3,7 @@
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+  . ~/.bashrc
 fi
 #Set alias for Gvim
 alias vi=C:/bin/vim74/gvim.exe
