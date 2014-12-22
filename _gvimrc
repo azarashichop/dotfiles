@@ -9,8 +9,8 @@ set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
 gui
 set transparency=245
 
-"アンチエイリアスを有効にする
-set antialias
+"クリップボードとヤンクバッファを共用する。
+set clipboard=unnamed
 
 "エラートーンを無効化する
 set visualbell t_vb=
