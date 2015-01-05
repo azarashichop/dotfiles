@@ -238,7 +238,7 @@ let g:lightline = {
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
   \   'lineinfo': "\ue0a1  %3l:%-2v"
@@ -246,7 +246,8 @@ let g:lightline = {
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
   \   'fugitive': 'MyFugitive',
-  \   'anzu': 'anzu#search_status'
+  \   'anzu': 'anzu#search_status',
+  \   'date': 'MyDate'
   \ },
   \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
   \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
@@ -262,6 +263,10 @@ function! MyFugitive()
     return strlen(_) ? "\ue0a0 "._ : ''
   endif
   return ''
+endfunction
+
+function! MyDate()
+  return strftime("%x %H:%M ")
 endfunction
 
 "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
