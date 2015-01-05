@@ -241,7 +241,7 @@ let g:lightline = {
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
   \   'lineinfo': ' %3l:%-2v'
@@ -265,6 +265,10 @@ function! MyFugitive()
     return strlen(_) ? ''._ : ''
   endif
   return ''
+endfunction
+
+function! MyDate()
+  return strftime("%x %H:%M ")
 endfunction
 
 "#######################################
