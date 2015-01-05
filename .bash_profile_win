@@ -8,6 +8,7 @@ fi
 #Set alias for Gvim
 alias vi=C:/bin/vim74/gvim.exe
 alias vim=C:/bin/vim74/gvim.exe
+alias ls="ls --show-control-chars --color=auto"
 
 # User specific environment and startup programs
 LANG=en_US/CP932
