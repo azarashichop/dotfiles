@@ -238,7 +238,7 @@ let g:lightline = {
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
   \   'lineinfo': "\ue0a1  %3l:%-2v"
