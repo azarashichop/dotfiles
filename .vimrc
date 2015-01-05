@@ -249,7 +249,8 @@ let g:lightline = {
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
   \   'fugitive': 'MyFugitive',
-  \   'anzu': 'anzu#search_status'
+  \   'anzu': 'anzu#search_status',
+  \   'date': 'MyDate'
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
