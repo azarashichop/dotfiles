@@ -8,9 +8,9 @@ set mouse=""
 "フォント設定
 set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
 
-"透過を有効にする
+"透過設定
 gui
-set transparency=245
+set transparency=255
 
 "クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed

@@ -5,6 +5,7 @@ filetype off
 set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
+set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 
 "##############################################################################
 "一般設定
@@ -266,7 +267,7 @@ function! MyFugitive()
 endfunction
 
 function! MyDate()
-  return strftime("%x %H:%M ")
+  return strftime("%m/%d %H:%M ")
 endfunction
 
 "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
@@ -284,3 +285,4 @@ NeoBundleCheck
 filetype plugin indent on
 syntax on
 syntax enable
+autocmd FileType text setlocal textwidth=0
