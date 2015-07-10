@@ -4,7 +4,7 @@
 filetype off
 set nocompatible
 scriptencoding utf-8
-set encoding=utf-8
+set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 
 "##############################################################################
 "一般設定
