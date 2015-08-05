@@ -8,6 +8,142 @@ set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 
 "##############################################################################
+"NeoBundle、プラグイン設定
+"##############################################################################
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+"NeoBundleオープン
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+"NeoBundleをNeoBundle自身に管理させる
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"Unite Vim（統合UI）
+NeoBundle 'Shougo/unite.vim'
+
+"NeoMRU（Unite VimにMRU機能追加）
+NeoBundle 'Shougo/neomru.vim'
+
+"Unite Outline(アウトライナー）
+NeoBundle "Shougo/unite-outline"
+
+"NeoComplete（文字入力補完）
+NeoBundle 'Shougo/neocomplete.vim'
+  let g:neocomplete#enable_at_startup=1
+
+"Fugitive（Git連携）
+NeoBundle 'tpope/vim-fugitive'
+
+"ctrlp
+"NeoBundle 'ctrlpvim/ctrlp.vim'
+
+"vim-trailing-whitespace（行末スペースの可視化）
+"NeoBundle 'bronson/vim-trailing-whitespace'
+
+"Colors Watch（カラースキーム情報の抽出）
+NeoBundle 'cocopon/colorswatch.vim'
+
+"カラースキームいろいろ
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+NeoBundle 'cocopon/lightline-hybrid.vim'
+NeoBundle 'wolf-dog/nighted.vim'
+NeoBundle 'wolf-dog/lightline-nighted.vim'
+
+
+"unite-gvimrgb(カラーリスト表示）
+NeoBundle 'LeafCage/unite-gvimrgb'
+
+"vim-indent-guides（インデントの可視化）
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+"NERDTree（ディレクトリ内のツリー表示）
+NeoBundle 'scrooloose/nerdtree'
+  let g:NERDTreeShowHidden=1
+  let g:NERDTreeDirArrows=0
+" autocmd vimenter * if !argc() | NERDTree | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
+NeoBundle 'sjl/gundo.vim'
+
+"Syntastic（シンタックスチェッカ）
+NeoBundle 'scrooloose/syntastic'
+
+"vim-anzu（検索位置の表示）
+NeoBundle 'osyo-manga/vim-anzu'
+"anzu設定
+" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+" 検索ヒット数の表示を消去する
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
+
+"カレンダー
+NeoBundle 'itchyny/calendar.vim'
+"  let g:calendar_google_calendar = 1
+"  let g:calendar_google_task = 1
+
+"Lightline（ステータスライン装飾プラグイン）
+NeoBundle 'itchyny/lightline.vim'
+let g:lightline = {
+  \ 'colorscheme': 'solarized_dark',
+  \ 'mode_map': {'c': 'NORMAL'},
+  \ 'active': {
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
+  \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': "\ue0a1  %3l:%-2v"
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'MyReadonly',
+  \   'fugitive': 'MyFugitive',
+  \   'anzu': 'anzu#search_status',
+  \   'date': 'MyDate'
+  \ },
+  \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
+  \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
+  \ }
+
+function! MyReadonly()
+  return &readonly ? "\ue0a2 " : ''
+endfunction
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\ue0a0 "._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyDate()
+  return strftime("%m/%d %H:%M ")
+endfunction
+
+"vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
+NeoBundle 'istepura/vim-toolbar-icons-silk'
+
+"新規プラグインのチェック
+NeoBundleCheck
+
+"NeoBudleクローズ
+call neobundle#end()
+
+"##############################################################################
 "一般設定
 "##############################################################################
 
@@ -109,6 +245,12 @@ set diffopt=vertical
 "ペーストモードトグル
 set pastetoggle=<C-s>
 
+"カラースキームの設定
+colorscheme landscape
+  let g:solarized_termtrans=1
+  let g:solarized_termcolors=256
+  highlight Normal ctermbg=none
+
 "##############################################################################
 "キーマップ設定
 "##############################################################################
@@ -133,150 +275,6 @@ nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
-
-"##############################################################################
-"NeoBundle初期設定、コール
-"##############################################################################
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-
-"NeoBundleをNeoBundle自身に管理させる
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-"#######################################
-"プラグイン追加、プラグイン設定
-"#######################################
-
-"Unite Vim（統合UI）
-NeoBundle 'Shougo/unite.vim'
-
-"NeoMRU（Unite VimにMRU機能追加）
-NeoBundle 'Shougo/neomru.vim'
-
-"Unite Outline(アウトライナー）
-NeoBundle "Shougo/unite-outline"
-
-"NeoComplete（文字入力補完）
-NeoBundle 'Shougo/neocomplete.vim'
-  let g:neocomplete#enable_at_startup=1
-
-"Fugitive（Git連携）
-NeoBundle 'tpope/vim-fugitive'
-
-"ctrlp
-"NeoBundle 'ctrlpvim/ctrlp.vim'
-
-"vim-trailing-whitespace（行末スペースの可視化）
-"NeoBundle 'bronson/vim-trailing-whitespace'
-
-"Colors Watch（カラースキーム情報の抽出）
-NeoBundle 'cocopon/colorswatch.vim'
-
-"カラースキームいろいろ
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'vim-scripts/Wombat'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'vim-scripts/rdark'
-NeoBundle 'cocopon/lightline-hybrid.vim'
-NeoBundle 'wolf-dog/nighted.vim'
-NeoBundle 'wolf-dog/lightline-nighted.vim'
-
-colorscheme landscape
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=256
-  highlight Normal ctermbg=none
-
-"unite-gvimrgb(カラーリスト表示）
-NeoBundle 'LeafCage/unite-gvimrgb'
-
-"vim-indent-guides（インデントの可視化）
-NeoBundle 'nathanaelkane/vim-indent-guides'
-
-"NERDTree（ディレクトリ内のツリー表示）
-NeoBundle 'scrooloose/nerdtree'
-  let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrows=0
-" autocmd vimenter * if !argc() | NERDTree | endif
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-"Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
-NeoBundle 'sjl/gundo.vim'
-
-"Syntastic（シンタックスチェッカ）
-NeoBundle 'scrooloose/syntastic'
-
-"vim-anzu（検索位置の表示）
-NeoBundle 'osyo-manga/vim-anzu'
-"anzu設定
-" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
-" 検索ヒット数の表示を消去する
-augroup vim-anzu
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-augroup END
-
-"カレンダー
-NeoBundle 'itchyny/calendar.vim'
-"  let g:calendar_google_calendar = 1
-"  let g:calendar_google_task = 1
-
-"Lightline（ステータスライン装飾プラグイン）
-NeoBundle 'itchyny/lightline.vim'
-let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
-  \ 'mode_map': {'c': 'NORMAL'},
-  \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
-  \ },
-  \ 'component': {
-  \   'lineinfo': "\ue0a1  %3l:%-2v"
-  \ },
-  \ 'component_function': {
-  \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive',
-  \   'anzu': 'anzu#search_status',
-  \   'date': 'MyDate'
-  \ },
-  \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
-  \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
-  \ }
-
-function! MyReadonly()
-  return &readonly ? "\ue0a2 " : ''
-endfunction
-
-function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? "\ue0a0 "._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyDate()
-  return strftime("%m/%d %H:%M ")
-endfunction
-
-"vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
-NeoBundle 'istepura/vim-toolbar-icons-silk'
-
-"#######################################
-"新規プラグインのチェック
-"#######################################
-NeoBundleCheck
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化）
