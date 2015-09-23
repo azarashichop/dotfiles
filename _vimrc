@@ -93,8 +93,8 @@ augroup END
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
-"  let g:calendar_google_calendar = 1
-"  let g:calendar_google_task = 1
+  let g:calendar_google_calendar = 1
+  let g:calendar_google_task = 1
 
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
