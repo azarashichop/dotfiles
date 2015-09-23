@@ -12,7 +12,6 @@ export PATH
 export LANG
 export TERM
 export LS_COLORS
-export HOGE=12345
 
 if [ -f ~/.dircolors ]; then
     if type dircolors > /dev/null 2>&1; then
