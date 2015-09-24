@@ -21,18 +21,20 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 "NeoBundleをNeoBundle自身に管理させる
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-"Unite Vim（統合UI）
+"Unite Vim（統合UI）関連
 NeoBundle 'Shougo/unite.vim'
-
-"NeoMRU（Unite VimにMRU機能追加）
 NeoBundle 'Shougo/neomru.vim'
-
-"Unite Outline(アウトライナー）
 NeoBundle "Shougo/unite-outline"
+NeoBundle "Shougo/vimfiler"
+NeoBundle "Shougo/vimproc"
+NeoBundle "Shougo/vimshell"
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
+
+"vim-quickrun
+NeoBundle "thinca/vim-quickrun"
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
