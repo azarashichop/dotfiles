@@ -26,7 +26,11 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundle "Shougo/vimfiler"
+
+"非同期処理の実現
 NeoBundle "Shougo/vimproc"
+
+"VIM内でシェル実行
 NeoBundle "Shougo/vimshell"
 
 "NeoComplete（文字入力補完）
