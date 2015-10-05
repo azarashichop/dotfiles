@@ -144,7 +144,7 @@ function! MyFugitive()
 endfunction
 
 function! MyDate()
-  return strftime("%x %H:%M ")
+  return strftime("%m/%d %H:%M ")
 endfunction
 
 "新規プラグインのチェック
@@ -170,7 +170,7 @@ set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:>- ,eol:¬,trail:-,extends:»,precedes:«
+  set listchars=tab:>_,eol:¬,trail:-,extends:»,precedes:«
 
 "行折り返しの無効化
   set nowrap
