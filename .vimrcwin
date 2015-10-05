@@ -170,7 +170,7 @@ set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:▸\ ,eol:¬,trail:-,extends:»,precedes:«
+  set listchars=tab:>- ,eol:¬,trail:-,extends:»,precedes:«
 
 "行折り返しの無効化
   set nowrap
