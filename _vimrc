@@ -43,6 +43,9 @@ NeoBundle "thinca/vim-quickrun"
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
 
+"MarkDown用プラグイン
+NeoBundle 'tpope/vim-markdown'
+
 "ctrlp
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
@@ -99,8 +102,8 @@ augroup END
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
-  let g:calendar_google_calendar = 1
-  let g:calendar_google_task = 1
+  let g:calendar_google_calendar = 0
+  let g:calendar_google_task = 0
 
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
@@ -281,6 +284,9 @@ nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
+
+"Leader設定
+let mapleader = "\<Space>"
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化）
