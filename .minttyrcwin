@@ -3,7 +3,7 @@ Font=Ricty Regular for Powerline
 FontHeight=14
 Locale=ja_JP
 Charset=SJIS
-Transparency=medium
+Transparency=off
 
 ForegroundColour=131, 148, 150
 BackgroundColour=  0,  43,  54

@@ -86,7 +86,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
   let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrows=1
+  let g:NERDTreeDirArrows=0
 " autocmd vimenter * if !argc() | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -144,7 +144,7 @@ function! MyFugitive()
 endfunction
 
 function! MyDate()
-  return strftime("%x %H:%M ")
+  return strftime("%m/%d %H:%M ")
 endfunction
 
 "新規プラグインのチェック
@@ -170,7 +170,7 @@ set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:▸\ ,eol:¬,trail:-,extends:»,precedes:«
+  set listchars=tab:>_,eol:¬,trail:-,extends:»,precedes:«
 
 "行折り返しの無効化
   set nowrap
