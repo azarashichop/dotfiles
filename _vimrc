@@ -69,6 +69,7 @@ NeoBundle 'vim-scripts/rdark'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
+NeoBundle 'vim-scripts/pyte'
 
 
 "unite-gvimrgb(カラーリスト表示）
@@ -108,7 +109,7 @@ NeoBundle 'itchyny/calendar.vim'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
+  \ 'colorscheme': 'solarized_light',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],

@@ -6,7 +6,7 @@
 set mouse=""
 
 "フォント設定
-set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
+set guifont=Ricty_for_Powerline:h16:cSHIFTJIS
 
 "透過設定
 gui
