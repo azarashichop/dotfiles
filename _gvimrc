@@ -20,6 +20,7 @@ set visualbell t_vb=
 
 "ツールバーを非表示にする
 set guioptions-=T
+set guioptions-=m
 
 "タブ表示をvimと同じにする
 set guioptions-=e
@@ -28,7 +29,7 @@ set guioptions-=e
 set printfont=Ricty_Writing:h12:cSHIFTJIS
 
 "gui-vim用のカラースキーム設定
-color molokai
+color jellybeans
 
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド

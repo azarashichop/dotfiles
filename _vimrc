@@ -24,21 +24,21 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "Unite Vim（統合UI）関連
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle "Shougo/unite-outline"
-NeoBundle "Shougo/vimfiler"
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimfiler'
 
 "非同期処理の実現
-NeoBundle "Shougo/vimproc"
+NeoBundle 'Shougo/vimproc'
 
 "VIM内でシェル実行
-NeoBundle "Shougo/vimshell"
+NeoBundle 'Shougo/vimshell'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
 "vim-quickrun
-NeoBundle "thinca/vim-quickrun"
+NeoBundle 'thinca/vim-quickrun'
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
@@ -110,7 +110,7 @@ NeoBundle 'itchyny/calendar.vim'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
+  \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -270,10 +270,10 @@ colorscheme landscape
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "スペース＋「.」で_vimrcを開く（新しいタブで開く）
-nnoremap <Space>. :tabnew $HOME/dotfiles/_vimrc
+nnoremap <Space>. :split $HOME/dotfiles/_vimrc
 
 "スペース＋「,」で_gvimrcを開く（新しいタブで開く）
-nnoremap <Space>, :tabnew $HOME/dotfiles/_gvimrc
+nnoremap <Space>, :split $HOME/dotfiles/_gvimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Space>u :Unite 
