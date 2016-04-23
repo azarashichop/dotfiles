@@ -26,12 +26,16 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'ujihisa/unite-colorscheme'
 
 "非同期処理の実現
 NeoBundle 'Shougo/vimproc'
 
 "VIM内でシェル実行
 NeoBundle 'Shougo/vimshell'
+
+"バイナリビューワ
+NeoBundle 'Shougo/vinarise.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
@@ -71,7 +75,6 @@ NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
 NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
-
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -260,7 +263,7 @@ set pastetoggle=<C-s>
 colorscheme landscape
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  highlight Normal ctermbg=none
+  "highlight Normal ctermbg=none
 
 "##############################################################################
 "キーマップ設定
