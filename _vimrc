@@ -61,6 +61,7 @@ NeoBundle 'cocopon/colorswatch.vim'
 
 "カラースキームいろいろ
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -120,7 +121,7 @@ let g:lightline = {
   \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
-  \   'lineinfo': "\ue0a1  %3l:%-2v"
+  \   'lineinfo': "\ue0a1 %3l:%-2v"
   \ },
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
@@ -128,18 +129,18 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'MyDate'
   \ },
-  \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
-  \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
   \ }
 
 function! MyReadonly()
-  return &readonly ? "\ue0a2 " : ''
+  return &readonly ? "\ue0a2" : ''
 endfunction
 
 function! MyFugitive()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? "\ue0a0 "._ : ''
+    return strlen(_) ? "\ue0a0"._ : ''
   endif
   return ''
 endfunction
