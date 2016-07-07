@@ -76,6 +76,7 @@ NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
 NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'aereal/vim-colors-japanesque'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
