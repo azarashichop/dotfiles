@@ -59,6 +59,9 @@ NeoBundle 'tpope/vim-markdown'
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
 
+"タブごとにカラースキーム情報を保持する。
+NeoBundle 'ujihisa/tabpagecolorscheme'
+
 "カラースキームいろいろ
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
@@ -77,6 +80,7 @@ NeoBundle 'wolf-dog/lightline-nighted.vim'
 NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'atelierbram/vim-colors_duotones'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
