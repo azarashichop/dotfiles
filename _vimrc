@@ -271,6 +271,10 @@ colorscheme landscape
   let g:solarized_termcolors=256
   "highlight Normal ctermbg=none
 
+"Migemoの設定
+set migemo
+set migemodict=$VIM/dict/migemo-dict
+
 "##############################################################################
 "キーマップ設定
 "##############################################################################
@@ -307,3 +311,4 @@ filetype plugin indent on
 syntax on
 syntax enable
 autocmd FileType text setlocal textwidth=0
+set runtimepath+=$VIM/runtime/plugin
