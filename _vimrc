@@ -6,6 +6,7 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
+set ambiwidth=double
 
 "##############################################################################
 "NeoBundle、プラグイン設定
@@ -178,6 +179,13 @@ call neobundle#end()
   set noundofile
 
 "###表示関連設定###
+  "ターミナルカラーを256色にする
+  set t_Co=256
+
+  "特殊文字の可視化（Tabの可視化）
+  set list
+  set listchars=tab:>-,trail:-,extends:>,precedes:<
+
   "行折り返しの無効化
   set nowrap
 
@@ -205,15 +213,8 @@ call neobundle#end()
   "カレント行のハイライト表示
   set cursorline
 
-  "特殊文字の可視化（Tabの可視化）
-  set list
-  set listchars=tab:>-,trail:-,extends:>,precedes:<
-
   "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
-
-"ターミナルカラーを256色にする
-set t_Co=256
 
 "背景色をダークにする
 set background=dark
@@ -262,7 +263,7 @@ set autoread
 "diff実行時に縦分割で結果を表示する
 set diffopt=vertical
 
-"ペーストモードトグル
+"ペーストモードトグルの有効化
 set pastetoggle=<C-s>
 
 "カラースキームの設定
@@ -311,4 +312,3 @@ filetype plugin indent on
 syntax on
 syntax enable
 autocmd FileType text setlocal textwidth=0
-set runtimepath+=$VIM/runtime/plugin

@@ -27,12 +27,16 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle "Shougo/unite-outline"
 NeoBundle "Shougo/vimfiler"
+NeoBundle 'ujihisa/unite-colorscheme'
 
 "非同期処理の実現
 NeoBundle "Shougo/vimproc"
 
 "VIM内でシェル実行
 NeoBundle "Shougo/vimshell"
+
+"バイナリビューワ
+NeoBundle 'Shougo/vinarise.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
@@ -44,6 +48,9 @@ NeoBundle "thinca/vim-quickrun"
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
 
+"MarkDown用プラグイン
+NeoBundle 'tpope/vim-markdown'
+
 "ctrlp
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
@@ -53,8 +60,12 @@ NeoBundle 'tpope/vim-fugitive'
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
 
+"タブごとにカラースキーム情報を保持する。
+NeoBundle 'ujihisa/tabpagecolorscheme'
+
 "カラースキームいろいろ
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -67,7 +78,10 @@ NeoBundle 'vim-scripts/rdark'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
-
+NeoBundle 'vim-scripts/pyte'
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'atelierbram/vim-colors_duotones'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -282,6 +296,9 @@ nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
+
+"Leader設定
+let mapleader = "\<Space>"
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
