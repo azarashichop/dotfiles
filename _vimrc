@@ -6,6 +6,7 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
+set ambiwidth=double
 
 "##############################################################################
 "NeoBundle、プラグイン設定
@@ -24,21 +25,25 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "Unite Vim（統合UI）関連
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle "Shougo/unite-outline"
-NeoBundle "Shougo/vimfiler"
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'ujihisa/unite-colorscheme'
 
 "非同期処理の実現
-NeoBundle "Shougo/vimproc"
+NeoBundle 'Shougo/vimproc'
 
 "VIM内でシェル実行
-NeoBundle "Shougo/vimshell"
+NeoBundle 'Shougo/vimshell'
+
+"バイナリビューワ
+NeoBundle 'Shougo/vinarise.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
 "vim-quickrun
-NeoBundle "thinca/vim-quickrun"
+NeoBundle 'thinca/vim-quickrun'
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
@@ -55,8 +60,12 @@ NeoBundle 'tpope/vim-markdown'
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
 
+"タブごとにカラースキーム情報を保持する。
+NeoBundle 'ujihisa/tabpagecolorscheme'
+
 "カラースキームいろいろ
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -69,7 +78,10 @@ NeoBundle 'vim-scripts/rdark'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
-
+NeoBundle 'vim-scripts/pyte'
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'atelierbram/vim-colors_duotones'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -108,14 +120,14 @@ NeoBundle 'itchyny/calendar.vim'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized_dark',
+  \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
   \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
-  \   'lineinfo': "\ue0a1  %3l:%-2v"
+  \   'lineinfo': "\ue0a1 %3l:%-2v"
   \ },
   \ 'component_function': {
   \   'readonly': 'MyReadonly',
@@ -123,18 +135,18 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'MyDate'
   \ },
-  \ 'separator': { 'left': "\ue0b0 ", 'right': "\ue0b2 " },
-  \ 'subseparator': { 'left': "\ue0b1 ", 'right': "\ue0b3 " },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
   \ }
 
 function! MyReadonly()
-  return &readonly ? "\ue0a2 " : ''
+  return &readonly ? "\ue0a2" : ''
 endfunction
 
 function! MyFugitive()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? "\ue0a0 "._ : ''
+    return strlen(_) ? "\ue0a0"._ : ''
   endif
   return ''
 endfunction
@@ -167,6 +179,13 @@ call neobundle#end()
   set noundofile
 
 "###表示関連設定###
+  "ターミナルカラーを256色にする
+  set t_Co=256
+
+  "特殊文字の可視化（Tabの可視化）
+  set list
+  set listchars=tab:>-,trail:-,extends:>,precedes:<
+
   "行折り返しの無効化
   set nowrap
 
@@ -194,15 +213,8 @@ call neobundle#end()
   "カレント行のハイライト表示
   set cursorline
 
-  "特殊文字の可視化（Tabの可視化）
-  set list
-  set listchars=tab:>-,trail:-,extends:>,precedes:<
-
   "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
-
-"ターミナルカラーを256色にする
-set t_Co=256
 
 "背景色をダークにする
 set background=dark
@@ -251,14 +263,18 @@ set autoread
 "diff実行時に縦分割で結果を表示する
 set diffopt=vertical
 
-"ペーストモードトグル
+"ペーストモードトグルの有効化
 set pastetoggle=<C-s>
 
 "カラースキームの設定
 colorscheme landscape
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  highlight Normal ctermbg=none
+  "highlight Normal ctermbg=none
+
+"Migemoの設定
+set migemo
+set migemodict=$VIM/dict/migemo-dict
 
 "##############################################################################
 "キーマップ設定
@@ -268,10 +284,10 @@ colorscheme landscape
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "スペース＋「.」で_vimrcを開く（新しいタブで開く）
-nnoremap <Space>. :tabnew $HOME/dotfiles/_vimrc
+nnoremap <Space>. :split $HOME/dotfiles/_vimrc
 
 "スペース＋「,」で_gvimrcを開く（新しいタブで開く）
-nnoremap <Space>, :tabnew $HOME/dotfiles/_gvimrc
+nnoremap <Space>, :split $HOME/dotfiles/_gvimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Space>u :Unite 

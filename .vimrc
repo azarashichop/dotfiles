@@ -25,24 +25,30 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "Unite Vim（統合UI）関連
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle "Shougo/unite-outline"
-NeoBundle "Shougo/vimfiler"
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimfiler'
 
 "非同期処理の実現
-NeoBundle "Shougo/vimproc"
+NeoBundle 'Shougo/vimproc'
 
 "VIM内でシェル実行
-NeoBundle "Shougo/vimshell"
+NeoBundle 'Shougo/vimshell'
+
+"バイナリビューワ
+NeoBundle 'Shougo/vinarise.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
 "vim-quickrun
-NeoBundle "thinca/vim-quickrun"
+NeoBundle 'thinca/vim-quickrun'
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
+
+"MarkDown用プラグイン
+NeoBundle 'tpope/vim-markdown'
 
 "ctrlp
 "NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -67,7 +73,8 @@ NeoBundle 'vim-scripts/rdark'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 NeoBundle 'wolf-dog/nighted.vim'
 NeoBundle 'wolf-dog/lightline-nighted.vim'
-
+NeoBundle 'vim-scripts/pyte'
+NeoBundle 'vim-scripts/newspaper.vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -112,7 +119,7 @@ NeoBundle 'itchyny/calendar.vim'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
+  \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -163,6 +170,9 @@ call neobundle#end()
 
   "バックアップファイル無効化
   set nobackup
+
+  "アンドゥファイルの無効化
+  set noundofile
 
 "###表示関連設定###
 "ターミナルカラーを256色にする
@@ -256,7 +266,7 @@ set pastetoggle=<C-k>
 set clipboard=unnamed
 
 "カラースキームの指定
-colorscheme molokai
+colorscheme hybrid
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
   highlight Normal ctermbg=none
@@ -292,5 +302,5 @@ syntax on
 syntax enable
 highlight NonText ctermfg=LightCyan
 highlight SpecialKey ctermfg=Red
-highlight LineNr ctermbg=black ctermfg=brown
+"highlight LineNr ctermbg=black ctermfg=brown
 highlight CursorlineNr ctermfg=DarkCyan

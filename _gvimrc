@@ -2,11 +2,14 @@
 "gui-vim用設定
 "###############################################################################
 
+"Light-Line用設定
+set ambiwidth=double
+
 "マウスを無効にする
 set mouse=""
 
 "フォント設定
-set guifont=Ricty_for_Powerline:h14:cSHIFTJIS
+set guifont=Ricty_for_Powerline:h16:cSHIFTJIS
 
 "透過設定
 gui
@@ -20,6 +23,7 @@ set visualbell t_vb=
 
 "ツールバーを非表示にする
 set guioptions-=T
+set guioptions-=m
 
 "タブ表示をvimと同じにする
 set guioptions-=e
@@ -28,7 +32,7 @@ set guioptions-=e
 set printfont=Ricty_Writing:h12:cSHIFTJIS
 
 "gui-vim用のカラースキーム設定
-color molokai
+color jellybeans
 
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド
@@ -50,7 +54,7 @@ endif
 "改行、タブ文字、行番号の色設定
 highlight NonText guifg=DarkCyan
 highlight SpecialKey guifg=OliveDrab
-highlight LineNr guibg=NONE guifg=Gold
+"highlight LineNr guibg=NONE guifg=Gold
 highlight CursorlineNr guifg=DodgerBlue
 
 "起動時に全画面にする
