@@ -286,7 +286,7 @@ colorscheme molokai
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 "スペース＋「.」で.vimrcを開く（新しいタブで開く）
-nnoremap <Space>. :tabnew $HOME/dotfiles/.vimrc
+nnoremap <Space>. :tabnew $HOME/dotfiles/.vimrclin
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Space>u :Unite 
