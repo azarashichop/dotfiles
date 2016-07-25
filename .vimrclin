@@ -310,6 +310,7 @@ let mapleader = "\<Space>"
 filetype plugin indent on
 syntax on
 syntax enable
+set hlsearch
 highlight NonText ctermfg=LightCyan
 highlight SpecialKey ctermfg=Red
 highlight LineNr ctermbg=black ctermfg=brown

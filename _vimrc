@@ -311,4 +311,5 @@ let mapleader = "\<Space>"
 filetype plugin indent on
 syntax on
 syntax enable
+set hlsearch
 autocmd FileType text setlocal textwidth=0
