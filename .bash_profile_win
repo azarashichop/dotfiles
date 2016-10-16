@@ -6,8 +6,8 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 # Set aliases
-alias vi=C:/bin/vim74/gvim.exe
-alias vim=C:/bin/vim74/gvim.exe
+alias vi=C:/bin/vim80/gvim.exe
+alias vim=C:/bin/vim80/gvim.exe
 alias ls="ls --show-control-chars --color=auto"
 
 # User specific environment and startup programs

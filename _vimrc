@@ -82,6 +82,7 @@ NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'atelierbram/vim-colors_duotones'
+NeoBundle 'jnurmine/Zenburn'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -101,6 +102,8 @@ NeoBundle 'sjl/gundo.vim'
 
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=1
 
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'
@@ -116,6 +119,9 @@ augroup END
 NeoBundle 'itchyny/calendar.vim'
   let g:calendar_google_calendar = 0
   let g:calendar_google_task = 0
+
+"tagビューワ
+NeoBundle 'majutsushi/tagbar'
 
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
@@ -213,7 +219,7 @@ call neobundle#end()
   "カレント行のハイライト表示
   set cursorline
 
-  "コマンド入力時、Tabキー補完を有効にする
+  "コマンド入力時、Tab補間モードの設定にする
   set wildmenu
 
 "背景色をダークにする
