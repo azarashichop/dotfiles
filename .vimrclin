@@ -82,6 +82,7 @@ NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'atelierbram/vim-colors_duotones'
+NeoBundle 'jnurmine/Zenburn'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -125,6 +126,9 @@ augroup END
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
+
+"tagビューワ
+NeoBundle 'majutsushi/tagbar'
 
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
