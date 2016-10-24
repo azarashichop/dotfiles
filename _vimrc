@@ -83,6 +83,8 @@ NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'atelierbram/vim-colors_duotones'
 NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'nielsmadan/harlequin'
+NeoBundle 'sjl/badwolf'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
