@@ -269,7 +269,6 @@ set clipboard=unnamed
 colorscheme hybrid
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  highlight Normal ctermbg=none
 
 "##############################################################################
 "キーマップ設定

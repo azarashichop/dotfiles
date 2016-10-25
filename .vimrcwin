@@ -25,15 +25,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "Unite Vim（統合UI）関連
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle "Shougo/unite-outline"
-NeoBundle "Shougo/vimfiler"
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'ujihisa/unite-colorscheme'
 
 "非同期処理の実現
-NeoBundle "Shougo/vimproc"
+NeoBundle 'Shougo/vimproc'
 
 "VIM内でシェル実行
-NeoBundle "Shougo/vimshell"
+NeoBundle 'Shougo/vimshell'
 
 "バイナリビューワ
 NeoBundle 'Shougo/vinarise.vim'
@@ -43,7 +43,7 @@ NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
 "vim-quickrun
-NeoBundle "thinca/vim-quickrun"
+NeoBundle 'thinca/vim-quickrun'
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
@@ -82,6 +82,9 @@ NeoBundle 'vim-scripts/pyte'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'atelierbram/vim-colors_duotones'
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'nielsmadan/harlequin'
+NeoBundle 'sjl/badwolf'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -109,6 +112,8 @@ NeoBundle 'sjl/gundo.vim'
 
 "Syntastic（シンタックスチェッカ）
 NeoBundle 'scrooloose/syntastic'
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_loc_list=1
 
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'
@@ -179,14 +184,14 @@ call neobundle#end()
   set nobackup
 
 "###表示関連設定###
-"ターミナルカラーを256色にする
-set t_Co=256
+  "ターミナルカラーを256色にする
+  set t_Co=256
 
 "特殊文字の可視化
   set list
-  set listchars=tab:>_,eol:¬,trail:-,extends:»,precedes:«
+  set listchars=tab:>-,eol:¬,trail:-,extends:»,precedes:«
 
-"行折り返しの無効化
+  "行折り返しの無効化
   set nowrap
 
   "行番号の表示
@@ -270,10 +275,9 @@ set pastetoggle=<C-k>
 set clipboard=unnamed
 
 "カラースキームの指定
-colorscheme molokai
+colorscheme solarized
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  highlight Normal ctermbg=none
 
 "##############################################################################
 "キーマップ設定
@@ -307,7 +311,4 @@ let mapleader = "\<Space>"
 filetype plugin indent on
 syntax on
 syntax enable
-highlight NonText ctermfg=LightCyan
-highlight SpecialKey ctermfg=Red
-highlight LineNr ctermbg=black ctermfg=brown
-highlight CursorlineNr ctermfg=DarkCyan
+set hlsearch

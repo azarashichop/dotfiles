@@ -132,7 +132,7 @@ let g:lightline = {
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'date' , 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
   \   'lineinfo': "\ue0a1 %3l:%-2v"
@@ -221,7 +221,7 @@ call neobundle#end()
   "カレント行のハイライト表示
   set cursorline
 
-  "コマンド入力時、Tab補間モードの設定にする
+  "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
 
 "背景色をダークにする
