@@ -1,3 +1,5 @@
+"for Kaoriya-vim.
+
 "##############################################################################
 "イニシャライズ
 "##############################################################################
@@ -91,6 +93,14 @@ NeoBundle 'LeafCage/unite-gvimrgb'
 
 "vim-indent-guides（インデントの可視化）
 NeoBundle 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup=0
+  let g:indent_guides_start_level=1
+  let g:indent_guides_space_guides=1
+  let g:indent_guides_guide_size=1
+  let g:indent_guides_auto_colors=0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
+  let g:indent_guides_color_change_percent = 30
 
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
@@ -119,8 +129,6 @@ augroup END
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
-  let g:calendar_google_calendar = 0
-  let g:calendar_google_task = 0
 
 "tagビューワ
 NeoBundle 'majutsushi/tagbar'
@@ -278,7 +286,6 @@ set pastetoggle=<C-s>
 colorscheme landscape
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  "highlight Normal ctermbg=none
 
 "Migemoの設定
 set migemo
@@ -298,7 +305,7 @@ nnoremap <Space>. :split $HOME/dotfiles/_vimrc
 nnoremap <Space>, :split $HOME/dotfiles/_gvimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Space>u :Unite 
+nnoremap <Space>u :Unite
 
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Space>n :NERDTree
