@@ -8,7 +8,6 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
-set ambiwidth=double
 
 "##############################################################################
 "NeoBundle、プラグイン設定
@@ -305,7 +304,7 @@ nnoremap <Space>. :split $HOME/dotfiles/_vimrc
 nnoremap <Space>, :split $HOME/dotfiles/_gvimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Space>u :Unite
+nnoremap <Space>u :Unite 
 
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Space>n :NERDTree

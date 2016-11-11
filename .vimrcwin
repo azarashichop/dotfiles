@@ -8,7 +8,6 @@ set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
-set ambiwidth=double
 
 "##############################################################################
 "NeoBundle、プラグイン設定
@@ -117,6 +116,10 @@ NeoBundle 'scrooloose/syntastic'
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
+"Migemo連携プラグイン
+NeoBundle 'koron/cmigemo'
+NeoBundle 'haya14busa/vim-migemo.git'
+
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'
 "anzu設定
@@ -136,7 +139,7 @@ NeoBundle 'majutsushi/tagbar'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
+  \ 'colorscheme': 'seoul256',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -283,7 +286,7 @@ set pastetoggle=<C-k>
 set clipboard=unnamed
 
 "カラースキームの指定
-colorscheme solarized
+colorscheme Zenburn
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
