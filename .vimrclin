@@ -87,6 +87,7 @@ NeoBundle 'atelierbram/vim-colors_duotones'
 NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'nielsmadan/harlequin'
 NeoBundle 'sjl/badwolf'
+NeoBundle 'atelierbram/Base2Tone-vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
