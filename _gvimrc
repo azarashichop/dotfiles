@@ -34,8 +34,9 @@ set guioptions-=e
 "プリンタ用のフォント設定
 set printfont=Ricty_Writing:h12:cSHIFTJIS
 
-"gui-vim用のカラースキーム設定
-color japanesque_cust
+"gui-vim用のbackground、カラースキーム設定
+set background=dark
+color hybrid
 
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド

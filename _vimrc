@@ -87,6 +87,7 @@ NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'nielsmadan/harlequin'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'atelierbram/Base2Tone-vim'
+NeoBundle 'NLKNguyen/papercolor-theme'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -136,7 +137,7 @@ NeoBundle 'majutsushi/tagbar'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
+  \ 'colorscheme': 'PaperColor',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
