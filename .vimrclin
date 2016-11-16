@@ -156,8 +156,8 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'MyDate'
   \ },
-  \ 'separator': { 'left': ' ', 'right': '' },
-  \ 'subseparator': { 'left': ' ', 'right': '' },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' },
   \ }
 
 function! MyReadonly()
