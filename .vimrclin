@@ -89,6 +89,8 @@ NeoBundle 'nielsmadan/harlequin'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'atelierbram/Base2Tone-vim'
 NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'pasela/edark.vim'
+NeoBundle 'chriskempson/base16-vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'

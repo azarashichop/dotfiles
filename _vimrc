@@ -43,6 +43,9 @@ NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
+"Minimap
+NeoBundle 'koron/minimap-vim'
+
 "vim-quickrun
 NeoBundle 'thinca/vim-quickrun'
 
@@ -88,6 +91,8 @@ NeoBundle 'nielsmadan/harlequin'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'atelierbram/Base2Tone-vim'
 NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'pasela/edark.vim'
+NeoBundle 'chriskempson/base16-vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -155,6 +160,10 @@ let g:lightline = {
   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
   \ }
+
+  let g:unite_force_overwrite_statusline = 0
+  let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimshell_force_overwrite_statusline = 0
 
 function! MyReadonly()
   return &readonly ? "\ue0a2" : ''
