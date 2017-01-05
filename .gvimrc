@@ -3,7 +3,7 @@
 "###############################################################################
 
 "Light-Line用設定
-set ambiwidth=double
+set ambiwidth=single
 
 "ターミナルカラー設定
 set t_Co=256
@@ -12,11 +12,11 @@ set t_Co=256
 set mouse=""
 
 "フォント設定
-set guifont=Ricty_Plain_for_Powerline:h16:cSHIFTJIS
+"set guifont=Ricty_Plain_for_Powerline:h17:cSHIFTJIS
+set guifont=CicaE\ 16
 
 "透過設定
 gui
-set transparency=255
 
 "クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed
