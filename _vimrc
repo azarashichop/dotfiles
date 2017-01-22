@@ -61,6 +61,9 @@ NeoBundle 'tpope/vim-markdown'
 "vim-trailing-whitespace（行末スペースの可視化）
 "NeoBundle 'bronson/vim-trailing-whitespace'
 
+"256カラースキームをターミナルでも使えるようにする
+NeoBundle 'vim-scripts/CSApprox'
+
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
 
@@ -93,6 +96,15 @@ NeoBundle 'atelierbram/Base2Tone-vim'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'pasela/edark.vim'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'romainl/Apprentice'
+NeoBundle 'jacoborus/tender.vim'
+NeoBundle 'reedes/vim-colors-pencil'
+NeoBundle 'freeo/vim-kalisi'
+NeoBundle 'AlessandroYorba/Alduin'
+NeoBundle 'Haron-Prime/Antares'
+NeoBundle 'jeetsukumaran/vim-nefertiti'
+NeoBundle 'KKPMW/moonshine-vim'
+NeoBundle 'morhetz/gruvbox'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
