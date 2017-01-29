@@ -105,6 +105,10 @@ NeoBundle 'Haron-Prime/Antares'
 NeoBundle 'jeetsukumaran/vim-nefertiti'
 NeoBundle 'KKPMW/moonshine-vim'
 NeoBundle 'morhetz/gruvbox'
+NeoBundle 'igungor/schellar'
+NeoBundle '0xcharly/vim-frictionless'
+NeoBundle 'thomd/vim-wasabi-colorscheme'
+NeoBundle 'junegunn/seoul256.vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
