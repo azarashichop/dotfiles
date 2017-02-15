@@ -36,7 +36,7 @@ set printfont=Ricty_Writing:h12:cSHIFTJIS
 
 "gui-vim用のbackground、カラースキーム設定
 set background=dark
-color hybrid
+color gruvbox
 
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド
