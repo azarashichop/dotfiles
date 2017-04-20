@@ -105,6 +105,11 @@ NeoBundle 'igungor/schellar'
 NeoBundle '0xcharly/vim-frictionless'
 NeoBundle 'thomd/vim-wasabi-colorscheme'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'gosukiwi/vim-atom-dark'
+NeoBundle 'whatyouhide/vim-gotham'
+NeoBundle 'muellan/am-colors'
+NeoBundle 'michalbachowski/vim-wombat256mod'
+NeoBundle 'sonjapeterson/1989.vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'

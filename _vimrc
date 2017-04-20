@@ -55,6 +55,9 @@ NeoBundle 'tpope/vim-fugitive'
 "MarkDown用プラグイン
 NeoBundle 'tpope/vim-markdown'
 
+"Cisco用シンタックスハイライト
+NeoBundle 'momota/cisco.vim'
+
 "ctrlp
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 
@@ -106,9 +109,14 @@ NeoBundle 'jeetsukumaran/vim-nefertiti'
 NeoBundle 'KKPMW/moonshine-vim'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'igungor/schellar'
-NeoBundle '0xcharly/vim-frictionless'
+NeoBundle '0xcharly/vim-frictionless', 'develop'
 NeoBundle 'thomd/vim-wasabi-colorscheme'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'gosukiwi/vim-atom-dark'
+NeoBundle 'whatyouhide/vim-gotham'
+NeoBundle 'muellan/am-colors'
+NeoBundle 'michalbachowski/vim-wombat256mod'
+NeoBundle 'sonjapeterson/1989.vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
