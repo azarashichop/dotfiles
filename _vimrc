@@ -36,6 +36,9 @@ NeoBundle 'Shougo/vimproc'
 "VIM内でシェル実行
 NeoBundle 'Shougo/vimshell'
 
+"Vim-Shell拡張
+"NeoBundle 'supermomonga/vimshell-pure.vim'
+
 "バイナリビューワ
 NeoBundle 'Shougo/vinarise.vim'
 
@@ -48,6 +51,12 @@ NeoBundle 'koron/minimap-vim'
 
 "vim-quickrun
 NeoBundle 'thinca/vim-quickrun'
+  let g:quickrun_config = {
+\   "java" : {
+\     "hook/output_encode/enable" : 1,
+\     "hook/output_encode/encoding" : "sjis",
+\   },
+\}
 
 "Fugitive（Git連携）
 NeoBundle 'tpope/vim-fugitive'
