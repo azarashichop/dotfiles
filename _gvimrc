@@ -34,23 +34,30 @@ set guioptions-=e
 "プリンタ用のフォント設定
 set printfont=Ricty_Writing:h12:cSHIFTJIS
 
-"gui-vim用のbackground、カラースキーム設定
-set background=dark
-color gruvbox
-
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド
-function! s:CursorColor()
+"*hi Cursor guiの反転を判断する
+
+augroup ColorSchemeHook
+  autocmd!
+  autocmd ColorScheme * call s:IMCursorColor()
+augroup END
+
+function! s:IMCursorColor()
+if(synIDattr(synIDtrans(hlID("Cursor")), "reverse"))
+  "hi Cursor gui => reverse
+  highlight Cursor guifg=Gray guibg=NONE
+  highlight CursorIM guifg=Darkred guibg=NONE
+else
+  "hi Cursor => normal
   highlight Cursor guifg=NONE guibg=Gray
   highlight CursorIM guifg=NONE guibg=Darkred
+endif
 endfunction
 
-if has('multi_byte_ime')
-  augroup ColorSchemeHook
-    autocmd!
-    autocmd ColorScheme * call s:CursorColor()
-  augroup END
-endif
+"gui-vim用のbackground、カラースキーム設定
+set background=dark
+color molokai
 
 "vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0
@@ -61,12 +68,6 @@ endif
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkSlateBlue
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=LightSlateGray
   let g:indent_guides_color_change_percent = 30
-
-"改行、タブ文字、行番号の色設定
-"highlight NonText guifg=DarkCyan
-"highlight SpecialKey guifg=OliveDrab
-"highlight LineNr guibg=NONE guifg=Gold
-"highlight CursorlineNr guifg=DodgerBlue
 
 "起動時に全画面にする
 autocmd GUIEnter * simalt ~x
