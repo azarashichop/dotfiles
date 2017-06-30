@@ -67,14 +67,11 @@ NeoBundle 'tpope/vim-markdown'
 "Cisco用シンタックスハイライト
 NeoBundle 'momota/cisco.vim'
 
-"ctrlp
-"NeoBundle 'ctrlpvim/ctrlp.vim'
-
-"vim-trailing-whitespace（行末スペースの可視化）
-"NeoBundle 'bronson/vim-trailing-whitespace'
+"メモ用シンタックスハイライト
+NeoBundle 'vim-scripts/HybridText'
 
 "256カラースキームをターミナルでも使えるようにする
-NeoBundle 'vim-scripts/CSApprox'
+"NeoBundle 'vim-scripts/CSApprox'
 
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
@@ -118,7 +115,7 @@ NeoBundle 'jeetsukumaran/vim-nefertiti'
 NeoBundle 'KKPMW/moonshine-vim'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'igungor/schellar'
-NeoBundle '0xcharly/vim-frictionless', 'develop'
+NeoBundle '0xcharly/vim-frictionless'
 NeoBundle 'thomd/vim-wasabi-colorscheme'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'gosukiwi/vim-atom-dark'
@@ -155,6 +152,9 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'scrooloose/syntastic'
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
+
+"Gitgutter（gitレポジトリファイルの差分表示）
+NeoBundle 'airblade/vim-gitgutter'
 
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'
@@ -326,7 +326,7 @@ set diffopt=vertical
 set pastetoggle=<C-s>
 
 "カラースキームの設定
-colorscheme landscape
+colorscheme japanesque_cust
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
@@ -339,7 +339,7 @@ set migemodict=$VIM/dict/migemo-dict
 "##############################################################################
 
 "エスケープ2回でハイライト表示解除
-nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
 "スペース＋「.」で_vimrcを開く（新しいタブで開く）
 nnoremap <Space>. :split $HOME/dotfiles/_vimrc
