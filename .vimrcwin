@@ -110,6 +110,7 @@ NeoBundle 'whatyouhide/vim-gotham'
 NeoBundle 'muellan/am-colors'
 NeoBundle 'michalbachowski/vim-wombat256mod'
 NeoBundle 'sonjapeterson/1989.vim'
+NeoBundle 'shinchu/lightline-gruvbox.vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -140,6 +141,9 @@ NeoBundle 'scrooloose/syntastic'
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
+"Gitgutter（gitレポジトリファイルの差分表示）
+NeoBundle 'airblade/vim-gitgutter'
+
 "Migemo連携プラグイン
 NeoBundle 'koron/cmigemo'
 NeoBundle 'haya14busa/vim-migemo.git'
@@ -163,7 +167,7 @@ NeoBundle 'majutsushi/tagbar'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
+  \ 'colorscheme': 'gruvbox',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -310,7 +314,7 @@ set pastetoggle=<C-k>
 set clipboard=unnamed
 
 "カラースキームの指定
-colorscheme Zenburn
+colorscheme gruvbox
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 

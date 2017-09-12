@@ -123,6 +123,8 @@ NeoBundle 'whatyouhide/vim-gotham'
 NeoBundle 'muellan/am-colors'
 NeoBundle 'michalbachowski/vim-wombat256mod'
 NeoBundle 'sonjapeterson/1989.vim'
+NeoBundle 'shinchu/lightline-gruvbox.vim'
+NeoBundle 'vol2223/vim-colorblind-colorscheme'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -175,7 +177,7 @@ NeoBundle 'majutsushi/tagbar'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
+  \ 'colorscheme': 'gruvbox',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
