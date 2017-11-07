@@ -125,6 +125,8 @@ NeoBundle 'michalbachowski/vim-wombat256mod'
 NeoBundle 'sonjapeterson/1989.vim'
 NeoBundle 'shinchu/lightline-gruvbox.vim'
 NeoBundle 'vol2223/vim-colorblind-colorscheme'
+NeoBundle 'joshdick/onedark.vim'
+NeoBundle 'croaker/mustang-vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -157,6 +159,9 @@ NeoBundle 'scrooloose/syntastic'
 
 "Gitgutter（gitレポジトリファイルの差分表示）
 NeoBundle 'airblade/vim-gitgutter'
+
+"vim-over（置換ユーティリティ）
+NeoBundle 'osyo-manga/vim-over'
 
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'

@@ -52,11 +52,11 @@ NeoBundle 'tpope/vim-fugitive'
 "MarkDown用プラグイン
 NeoBundle 'tpope/vim-markdown'
 
-"ctrlp
-"NeoBundle 'ctrlpvim/ctrlp.vim'
+"Cisco用シンタックスハイライト
+NeoBundle 'momota/cisco.vim'
 
-"vim-trailing-whitespace（行末スペースの可視化）
-"NeoBundle 'bronson/vim-trailing-whitespace'
+"メモ用シンタックスハイライト
+NeoBundle 'vim-scripts/HybridText'
 
 "256カラースキームをターミナルでも使えるようにする
 NeoBundle 'vim-scripts/CSApprox'
@@ -111,6 +111,9 @@ NeoBundle 'muellan/am-colors'
 NeoBundle 'michalbachowski/vim-wombat256mod'
 NeoBundle 'sonjapeterson/1989.vim'
 NeoBundle 'shinchu/lightline-gruvbox.vim'
+NeoBundle 'vol2223/vim-colorblind-colorscheme'
+NeoBundle 'joshdick/onedark.vim'
+NeoBundle 'croaker/mustang-vim'
 
 "unite-gvimrgb(カラーリスト表示）
 NeoBundle 'LeafCage/unite-gvimrgb'
@@ -143,6 +146,9 @@ NeoBundle 'scrooloose/syntastic'
 
 "Gitgutter（gitレポジトリファイルの差分表示）
 NeoBundle 'airblade/vim-gitgutter'
+
+"vim-over（置換ユーティリティ）
+NeoBundle 'osyo-manga/vim-over'
 
 "Migemo連携プラグイン
 NeoBundle 'koron/cmigemo'
