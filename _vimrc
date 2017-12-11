@@ -36,8 +36,6 @@ NeoBundle 'Shougo/vimproc'
 "VIM内でシェル実行
 NeoBundle 'Shougo/vimshell'
 
-"Vim-Shell拡張
-"NeoBundle 'supermomonga/vimshell-pure.vim'
 
 "バイナリビューワ
 NeoBundle 'Shougo/vinarise.vim'
@@ -46,8 +44,6 @@ NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
 
-"Minimap
-NeoBundle 'koron/minimap-vim'
 
 "vim-quickrun
 NeoBundle 'thinca/vim-quickrun'
@@ -71,7 +67,7 @@ NeoBundle 'momota/cisco.vim'
 NeoBundle 'vim-scripts/HybridText'
 
 "256カラースキームをターミナルでも使えるようにする
-"NeoBundle 'vim-scripts/CSApprox'
+NeoBundle 'vim-scripts/CSApprox'
 
 "Colors Watch（カラースキーム情報の抽出）
 NeoBundle 'cocopon/colorswatch.vim'
@@ -173,6 +169,9 @@ augroup vim-anzu
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
 
+"agプラグイン
+NeoBundle 'rking/ag.vim'
+
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
 
@@ -182,7 +181,7 @@ NeoBundle 'majutsushi/tagbar'
 "Lightline（ステータスライン装飾プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -341,6 +340,17 @@ colorscheme japanesque_cust
 set migemo
 set migemodict=$VIM/dict/migemo-dict
 
+"Unite設定
+  "ドットファイルも表示させる。
+  call unite#custom#source('file', 'matchers', "matcher_default")
+
+  "Unite内の検索にagを使用する。
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+
 "##############################################################################
 "キーマップ設定
 "##############################################################################
@@ -370,7 +380,7 @@ nmap # <Plug>(anzu-sharp)
 let mapleader = "\<Space>"
 
 "##############################################################################
-"終端処理（ファイルタイプ、シンタックス、インデントの有効化）
+"終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
 "##############################################################################
 
 filetype plugin indent on
