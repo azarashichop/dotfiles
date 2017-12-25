@@ -182,6 +182,9 @@ NeoBundle 'kana/vim-operator-user'
 
 "ヤンクした部分を一瞬ハイライトする
 NeoBundle 'haya14busa/vim-operator-flashy'
+  map y <Plug>(operator-flashy)
+  map Y <Plug>(operator-flashy)$
+  let g:operator#flashy#flash_time=1000
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
