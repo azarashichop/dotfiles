@@ -36,14 +36,12 @@ NeoBundle 'Shougo/vimproc'
 "VIM内でシェル実行
 NeoBundle 'Shougo/vimshell'
 
-
 "バイナリビューワ
 NeoBundle 'Shougo/vinarise.vim'
 
 "NeoComplete（文字入力補完）
 NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup=1
-
 
 "vim-quickrun
 NeoBundle 'thinca/vim-quickrun'
@@ -159,6 +157,9 @@ NeoBundle 'airblade/vim-gitgutter'
 "vim-over（置換ユーティリティ）
 NeoBundle 'osyo-manga/vim-over'
 
+"clever-f（検索後の移動を楽にする＆ハイライト表示）
+NeoBundle 'rhysd/clever-f.vim'
+
 "vim-anzu（検索位置の表示）
 NeoBundle 'osyo-manga/vim-anzu'
 "anzu設定
@@ -171,6 +172,15 @@ augroup END
 
 "agプラグイン
 NeoBundle 'rking/ag.vim'
+
+"オペレータプラグイン
+NeoBundle 'kana/vim-operator-user'
+
+"ヤンクした部分を一瞬ハイライトする
+NeoBundle 'haya14busa/vim-operator-flashy'
+  map y <Plug>(operator-flashy)
+  map Y <Plug>(operator-flashy)$
+  let g:operator#flashy#flash_time=1000
 
 "カレンダー
 NeoBundle 'itchyny/calendar.vim'
