@@ -12,7 +12,7 @@ set t_Co=256
 set mouse=""
 
 "フォント設定
-set guifont=Ricty_Plain_for_Powerline:h16:cSHIFTJIS
+set guifont=Rictyplain_NF:h16:cSHIFTJIS
 
 "透過設定
 gui

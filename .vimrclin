@@ -137,6 +137,10 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
 
+"Vim-devicons（deviconを表示させる）
+NeoBundle 'ryanoasis/vim-devicons'
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
   let g:NERDTreeShowHidden=1
@@ -213,6 +217,10 @@ let g:lightline = {
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
   \ }
+
+  let g:unite_force_overwrite_statusline = 0
+  let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimshell_force_overwrite_statusline = 0
 
 function! MyReadonly()
   return &readonly ? '' : ''

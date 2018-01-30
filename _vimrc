@@ -136,6 +136,10 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
 
+"Vim-devicons（deviconを表示させる）
+NeoBundle 'ryanoasis/vim-devicons'
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
 "NERDTree（ディレクトリ内のツリー表示）
 NeoBundle 'scrooloose/nerdtree'
   let g:NERDTreeShowHidden=1
@@ -206,8 +210,8 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'MyDate'
   \ },
-  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+  \ 'separator': { 'left': "\ue0c0", 'right': "\ue0c2" },
+  \ 'subseparator': { 'left': "\ue0c1", 'right': "\ue0c3" },
   \ }
 
   let g:unite_force_overwrite_statusline = 0
