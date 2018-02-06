@@ -10,123 +10,180 @@ set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 
 "##############################################################################
-"NeoBundle、プラグイン設定
+"Dein.vim、プラグイン設定
 "##############################################################################
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-"NeoBundleオープン
-call neobundle#begin(expand('~/.vim/bundle/'))
+"Deinロード
+if dein#load_state('~/.vim/dein/.')
+  call dein#begin('~/.vim/dein/.')
 
-"NeoBundleをNeoBundle自身に管理させる
-NeoBundleFetch 'Shougo/neobundle.vim'
+"DeinをDein自体に管理させる
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
-"Unite Vim（統合UI）関連
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'ujihisa/unite-colorscheme'
+  "Unite Vim（統合UI）関連
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/unite-outline')
+  call dein#add('Shougo/vimfiler')
+  call dein#add('ujihisa/unite-colorscheme')
 
-"非同期処理の実現
-NeoBundle 'Shougo/vimproc'
+  "非同期処理の実現
+  call dein#add('Shougo/vimproc')
 
-"VIM内でシェル実行
-NeoBundle 'Shougo/vimshell'
+  "VIM内でシェル実行
+  call dein#add('Shougo/vimshell')
 
-"バイナリビューワ
-NeoBundle 'Shougo/vinarise.vim'
+  "バイナリビューワ
+  call dein#add('Shougo/vinarise.vim')
 
-"NeoComplete（文字入力補完）
-NeoBundle 'Shougo/neocomplete.vim'
+  "NeoComplete（文字入力補完）
+  call dein#add('Shougo/neocomplete.vim')
+
+  "vim-quickrun
+  call dein#add('thinca/vim-quickrun')
+
+  "Fugitive（Git連携）
+  call dein#add('tpope/vim-fugitive')
+
+  "MarkDown用プラグイン
+  call dein#add('tpope/vim-markdown')
+
+  "Cisco用シンタックスハイライト
+  call dein#add('momota/cisco.vim')
+
+  "メモ用シンタックスハイライト
+  call dein#add('vim-scripts/HybridText')
+
+  "256カラースキームをターミナルでも使えるようにする
+  call dein#add('vim-scripts/CSApprox')
+
+  "Colors Watch（カラースキーム情報の抽出）
+  call dein#add('cocopon/colorswatch.vim')
+
+  "タブごとにカラースキーム情報を保持する。
+  call dein#add('ujihisa/tabpagecolorscheme')
+
+  "カラースキームいろいろ
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('chriskempson/vim-tomorrow-theme')
+  call dein#add('itchyny/landscape.vim')
+  call dein#add('nanotech/jellybeans.vim')
+  call dein#add('w0ng/vim-hybrid')
+  call dein#add('vim-scripts/twilight')
+  call dein#add('jonathanfilip/vim-lucius')
+  call dein#add('jpo/vim-railscasts-theme')
+  call dein#add('vim-scripts/Wombat')
+  call dein#add('tomasr/molokai')
+  call dein#add('vim-scripts/rdark')
+  call dein#add('cocopon/lightline-hybrid.vim')
+  call dein#add('wolf-dog/nighted.vim')
+  call dein#add('wolf-dog/lightline-nighted.vim')
+  call dein#add('vim-scripts/pyte')
+  call dein#add('vim-scripts/newspaper.vim')
+  call dein#add('aereal/vim-colors-japanesque')
+  call dein#add('atelierbram/vim-colors_duotones')
+  call dein#add('jnurmine/Zenburn')
+  call dein#add('nielsmadan/harlequin')
+  call dein#add('sjl/badwolf')
+  call dein#add('atelierbram/Base2Tone-vim')
+  call dein#add('NLKNguyen/papercolor-theme')
+  call dein#add('pasela/edark.vim')
+  call dein#add('chriskempson/base16-vim')
+  call dein#add('romainl/Apprentice')
+  call dein#add('jacoborus/tender.vim')
+  call dein#add('reedes/vim-colors-pencil')
+  call dein#add('freeo/vim-kalisi')
+  call dein#add('AlessandroYorba/Alduin')
+  call dein#add('Haron-Prime/Antares')
+  call dein#add('jeetsukumaran/vim-nefertiti')
+  call dein#add('KKPMW/moonshine-vim')
+  call dein#add('morhetz/gruvbox')
+  call dein#add('igungor/schellar')
+  call dein#add('0xcharly/vim-frictionless')
+  call dein#add('thomd/vim-wasabi-colorscheme')
+  call dein#add('junegunn/seoul256.vim')
+  call dein#add('gosukiwi/vim-atom-dark')
+  call dein#add('whatyouhide/vim-gotham')
+  call dein#add('muellan/am-colors')
+  call dein#add('michalbachowski/vim-wombat256mod')
+  call dein#add('sonjapeterson/1989.vim')
+  call dein#add('shinchu/lightline-gruvbox.vim')
+  call dein#add('vol2223/vim-colorblind-colorscheme')
+  call dein#add('joshdick/onedark.vim')
+  call dein#add('croaker/mustang-vim')
+
+  "unite-gvimrgb(カラーリスト表示）
+  call dein#add('LeafCage/unite-gvimrgb')
+
+  "vim-indent-guides（インデントの可視化）
+  call dein#add('nathanaelkane/vim-indent-guides')
+
+  "Vim-devicons（deviconを表示させる）
+  call dein#add('ryanoasis/vim-devicons')
+
+  "NERDTree（ディレクトリ内のツリー表示）
+  call dein#add('scrooloose/nerdtree')
+
+  "Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
+  call dein#add('sjl/gundo.vim')
+
+  "Syntastic（シンタックスチェッカ）
+  call dein#add('scrooloose/syntastic')
+
+  "Gitgutter（gitレポジトリファイルの差分表示）
+  call dein#add('airblade/vim-gitgutter')
+
+  "vim-over（置換ユーティリティ）
+  call dein#add('osyo-manga/vim-over')
+
+  "clever-f（検索後の移動を楽にする＆ハイライト表示）
+  call dein#add('rhysd/clever-f.vim')
+
+  "vim-anzu（検索位置の表示）
+  call dein#add('osyo-manga/vim-anzu')
+
+  "agプラグイン
+  call dein#add('rking/ag.vim')
+
+  "オペレータプラグイン
+  call dein#add('kana/vim-operator-user')
+
+  "vim-operator-flashy（ヤンクした部分を一瞬ハイライトする）
+  call dein#add('haya14busa/vim-operator-flashy')
+
+  "カレンダー
+  call dein#add('itchyny/calendar.vim')
+
+  "tagビューワ
+  call dein#add('majutsushi/tagbar')
+
+  "Lightline（ステータスライン装飾プラグイン）
+  call dein#add('itchyny/lightline.vim')
+
+  "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
+  call dein#add('istepura/vim-toolbar-icons-silk')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
+
+"##############################################################################
+"プラグイン設定
+"##############################################################################
+
+"NeoComplete
   let g:neocomplete#enable_at_startup=1
 
-"vim-quickrun
-NeoBundle 'thinca/vim-quickrun'
-  let g:quickrun_config = {
-\   "java" : {
-\     "hook/output_encode/enable" : 1,
-\     "hook/output_encode/encoding" : "sjis",
-\   },
-\}
-
-"Fugitive（Git連携）
-NeoBundle 'tpope/vim-fugitive'
-
-"MarkDown用プラグイン
-NeoBundle 'tpope/vim-markdown'
-
-"Cisco用シンタックスハイライト
-NeoBundle 'momota/cisco.vim'
-
-"メモ用シンタックスハイライト
-NeoBundle 'vim-scripts/HybridText'
-
-"256カラースキームをターミナルでも使えるようにする
-NeoBundle 'vim-scripts/CSApprox'
-
-"Colors Watch（カラースキーム情報の抽出）
-NeoBundle 'cocopon/colorswatch.vim'
-
-"タブごとにカラースキーム情報を保持する。
-NeoBundle 'ujihisa/tabpagecolorscheme'
-
-"カラースキームいろいろ
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'vim-scripts/Wombat'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'vim-scripts/rdark'
-NeoBundle 'cocopon/lightline-hybrid.vim'
-NeoBundle 'wolf-dog/nighted.vim'
-NeoBundle 'wolf-dog/lightline-nighted.vim'
-NeoBundle 'vim-scripts/pyte'
-NeoBundle 'vim-scripts/newspaper.vim'
-NeoBundle 'aereal/vim-colors-japanesque'
-NeoBundle 'atelierbram/vim-colors_duotones'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'nielsmadan/harlequin'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'atelierbram/Base2Tone-vim'
-NeoBundle 'NLKNguyen/papercolor-theme'
-NeoBundle 'pasela/edark.vim'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'romainl/Apprentice'
-NeoBundle 'jacoborus/tender.vim'
-NeoBundle 'reedes/vim-colors-pencil'
-NeoBundle 'freeo/vim-kalisi'
-NeoBundle 'AlessandroYorba/Alduin'
-NeoBundle 'Haron-Prime/Antares'
-NeoBundle 'jeetsukumaran/vim-nefertiti'
-NeoBundle 'KKPMW/moonshine-vim'
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'igungor/schellar'
-NeoBundle '0xcharly/vim-frictionless'
-NeoBundle 'thomd/vim-wasabi-colorscheme'
-NeoBundle 'junegunn/seoul256.vim'
-NeoBundle 'gosukiwi/vim-atom-dark'
-NeoBundle 'whatyouhide/vim-gotham'
-NeoBundle 'muellan/am-colors'
-NeoBundle 'michalbachowski/vim-wombat256mod'
-NeoBundle 'sonjapeterson/1989.vim'
-NeoBundle 'shinchu/lightline-gruvbox.vim'
-NeoBundle 'vol2223/vim-colorblind-colorscheme'
-NeoBundle 'joshdick/onedark.vim'
-NeoBundle 'croaker/mustang-vim'
-
-"unite-gvimrgb(カラーリスト表示）
-NeoBundle 'LeafCage/unite-gvimrgb'
-
-"vim-indent-guides（インデントの可視化）
-NeoBundle 'nathanaelkane/vim-indent-guides'
+"vim-indent-guides
   let g:indent_guides_enable_on_vim_startup=0
   let g:indent_guides_start_level=1
   let g:indent_guides_space_guides=1
@@ -136,36 +193,20 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
 
-"Vim-devicons（deviconを表示させる）
-NeoBundle 'ryanoasis/vim-devicons'
+"Vim-devicons
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "NERDTree（ディレクトリ内のツリー表示）
-NeoBundle 'scrooloose/nerdtree'
   let g:NERDTreeShowHidden=1
   let g:NERDTreeDirArrows=0
-" autocmd vimenter * if !argc() | NERDTree | endif
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"  autocmd vimenter * if !argc() | NERDTree | endif
+"  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
-NeoBundle 'sjl/gundo.vim'
-
-"Syntastic（シンタックスチェッカ）
-NeoBundle 'scrooloose/syntastic'
+"Syntastic
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
-"Gitgutter（gitレポジトリファイルの差分表示）
-NeoBundle 'airblade/vim-gitgutter'
-
-"vim-over（置換ユーティリティ）
-NeoBundle 'osyo-manga/vim-over'
-
-"clever-f（検索後の移動を楽にする＆ハイライト表示）
-NeoBundle 'rhysd/clever-f.vim'
-
 "vim-anzu（検索位置の表示）
-NeoBundle 'osyo-manga/vim-anzu'
 "anzu設定
 " 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
 " 検索ヒット数の表示を消去する
@@ -174,26 +215,12 @@ augroup vim-anzu
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
 
-"agプラグイン
-NeoBundle 'rking/ag.vim'
-
-"オペレータプラグイン
-NeoBundle 'kana/vim-operator-user'
-
-"ヤンクした部分を一瞬ハイライトする
-NeoBundle 'haya14busa/vim-operator-flashy'
+"vim-operator-flashy
   map y <Plug>(operator-flashy)
   map Y <Plug>(operator-flashy)$
   let g:operator#flashy#flash_time=1000
 
-"カレンダー
-NeoBundle 'itchyny/calendar.vim'
-
-"tagビューワ
-NeoBundle 'majutsushi/tagbar'
-
-"Lightline（ステータスライン装飾プラグイン）
-NeoBundle 'itchyny/lightline.vim'
+"Lightline
 let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
@@ -210,8 +237,8 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'MyDate'
   \ },
-  \ 'separator': { 'left': "\ue0c0", 'right': "\ue0c2" },
-  \ 'subseparator': { 'left': "\ue0c1", 'right': "\ue0c3" },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
   \ }
 
   let g:unite_force_overwrite_statusline = 0
@@ -233,15 +260,6 @@ endfunction
 function! MyDate()
   return strftime("%m/%d %H:%M ")
 endfunction
-
-"vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
-NeoBundle 'istepura/vim-toolbar-icons-silk'
-
-"新規プラグインのチェック
-NeoBundleCheck
-
-"NeoBudleクローズ
-call neobundle#end()
 
 "##############################################################################
 "一般設定
@@ -346,7 +364,7 @@ set diffopt=vertical
 set pastetoggle=<C-s>
 
 "カラースキームの設定
-colorscheme japanesque_cust
+colorscheme gruvbox
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
@@ -364,6 +382,47 @@ set migemodict=$VIM/dict/migemo-dict
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
   endif
+
+
+let g:lightline = {
+  \ 'colorscheme': 'jellybeans',
+  \ 'mode_map': {'c': 'NORMAL'},
+  \ 'active': {
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
+  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': "\ue0a1 %3l:%-2v"
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'MyReadonly',
+  \   'fugitive': 'MyFugitive',
+  \   'anzu': 'anzu#search_status',
+  \   'date': 'MyDate'
+  \ },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+  \ }
+
+  let g:unite_force_overwrite_statusline = 0
+  let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimshell_force_overwrite_statusline = 0
+
+function! MyReadonly()
+  return &readonly ? "\ue0a2" : ''
+endfunction
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\ue0a0"._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyDate()
+  return strftime("%m/%d %H:%M ")
+endfunction
 
 "##############################################################################
 "キーマップ設定
