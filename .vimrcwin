@@ -11,7 +11,7 @@ set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 set ambiwidth=double
 
 "##############################################################################
-"Dein設定
+"Dein.Vim、プラグイン設定
 "##############################################################################
 
 if has('vim_starting')
@@ -43,6 +43,7 @@ if dein#load_state('~/.vim/dein/.')
 
   "NeoComplete（文字入力補完）
   call dein#add('Shougo/neocomplete.vim')
+  let g:neocomplete#enable_at_startup=1
 
   "vim-quickrun
   call dein#add('thinca/vim-quickrun')
@@ -116,6 +117,8 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('vol2223/vim-colorblind-colorscheme')
   call dein#add('joshdick/onedark.vim')
   call dein#add('croaker/mustang-vim')
+  call dein#add('cocopon/iceberg.vim')
+  call dein#add('raphamorim/lucario')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -125,6 +128,9 @@ if dein#load_state('~/.vim/dein/.')
 
   "Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
+
+  "vim-nerdtree-syntax-highlight（NERDTreeをカラー表示）
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
   "NERDTree（ディレクトリ内のツリー表示）
   call dein#add('scrooloose/nerdtree')
@@ -152,6 +158,9 @@ if dein#load_state('~/.vim/dein/.')
 
   "agプラグイン
   call dein#add('rking/ag.vim')
+
+  "easy-motion（カーソル移動支援）
+  call dein#add('easymotion/vim-easymotion')
 
   "vim-operator-user（オペレータプラグイン）
   call dein#add('kana/vim-operator-user')
@@ -203,7 +212,12 @@ endif
   let g:indent_guides_color_change_percent = 30
 
 "Vim-devicons
+  let g:webdevicons_enable = 0
   let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+  let g:WebDevIconsUnicodeDecorateFileNodes = 0
+
+"vim-nerdtree-syntax-highlight
+  let g:NERDTreeLimitedSyntax=1
 
 "NERDTree
   let g:NERDTreeShowHidden=1
@@ -228,9 +242,20 @@ augroup END
   map Y <Plug>(operator-flashy)$
   let g:operator#flashy#flash_time=1000
 
+"Unite設定
+  "ドットファイルも表示させる。
+  call unite#custom#source('file', 'matchers', "matcher_default")
+
+  "Unite内の検索にagを使用する。
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
+  \ 'colorscheme': 'iceberg',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -379,20 +404,12 @@ colorscheme moonshine
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
-"Unite設定
-  "ドットファイルも表示させる。
-  call unite#custom#source('file', 'matchers', "matcher_default")
-
-  "Unite内の検索にagを使用する。
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-  endif
-
 "##############################################################################
 "キーマップ設定
 "##############################################################################
+
+"Leader設定
+let mapleader = "\<Space>"
 
 "エスケープ2回でハイライト表示解除
 nnoremap <Esc><Esc> :nohlsearch<CR>
@@ -406,14 +423,14 @@ nnoremap <Space>u :Unite
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Space>n :NERDTree
 
+"スペース＋「de」でdein呼び出し(call dein#)
+nnoremap <Leader>de :call dein#
+
 "vim-anzu関連
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
-
-"Leader設定
-let mapleader = "\<Space>"
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
