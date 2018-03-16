@@ -7,7 +7,7 @@ filetype off
 set nocompatible
 scriptencoding utf-8
 set encoding=utf-8
-set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
+set fileencodings=iso-2022-jp,utf-8,cp932,sjis,euc-jp "latin1
 
 "##############################################################################
 "Dein.vim、プラグイン設定
@@ -24,6 +24,9 @@ if dein#load_state('~/.vim/dein/.')
 "DeinをDein自体に管理させる
   call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
+  "Vim-devicons（deviconを表示させる）
+  call dein#add('ryanoasis/vim-devicons')
+
   "Unite Vim（統合UI）関連
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neomru.vim')
@@ -31,7 +34,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('Shougo/vimfiler')
   call dein#add('ujihisa/unite-colorscheme')
 
-  "非同期処理の実現
+  "VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
 
   "VIM内でシェル実行
@@ -115,6 +118,9 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('vol2223/vim-colorblind-colorscheme')
   call dein#add('joshdick/onedark.vim')
   call dein#add('croaker/mustang-vim')
+  call dein#add('cocopon/iceberg.vim')
+  call dein#add('rhysd/vim-color-spring-night')
+  call dein#add('raphamorim/lucario')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -122,8 +128,8 @@ if dein#load_state('~/.vim/dein/.')
   "vim-indent-guides（インデントの可視化）
   call dein#add('nathanaelkane/vim-indent-guides')
 
-  "Vim-devicons（deviconを表示させる）
-  call dein#add('ryanoasis/vim-devicons')
+  "vim-nerdtree-syntax-highlight（NERDTreeをカラー表示）
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
   "NERDTree（ディレクトリ内のツリー表示）
   call dein#add('scrooloose/nerdtree')
@@ -149,6 +155,9 @@ if dein#load_state('~/.vim/dein/.')
   "agプラグイン
   call dein#add('rking/ag.vim')
 
+  "easy-motion（カーソル移動支援）
+  call dein#add('easymotion/vim-easymotion')
+
   "オペレータプラグイン
   call dein#add('kana/vim-operator-user')
 
@@ -167,6 +176,7 @@ if dein#load_state('~/.vim/dein/.')
   "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
   call dein#add('istepura/vim-toolbar-icons-silk')
 
+  "Dein終端処理
   call dein#end()
   call dein#save_state()
 endif
@@ -193,14 +203,54 @@ endif
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
 
-"Vim-devicons
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
 "NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrows=0
-"  autocmd vimenter * if !argc() | NERDTree | endif
-"  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  let g:NERDTreeDirArrowExpandable = "\uf138"
+  let g:NERDTreeDirArrowCollapsible = "\uf13a"
+
+"Vim-devicons
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:WebDevIconsUnicodeDecorateFileNodes = 1
+  let g:webdevicons_enable_unite = 1
+  let g:webdevicons_enable_vimfiler = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+  "ディレクトリグリフ指定
+  let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf114"
+  let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
+  "ファイルタイプ別グリフ指定
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = "\ue736"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xml'] = "\uf40d"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = "\uf40e"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zip'] = "\uf410"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['7z'] = "\uf410"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['log'] = "\ue241"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pdf'] = "\uf1c1"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['docx'] = "\uf1c2"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['doc'] = "\uf1c2"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['dotm'] = "\uf1c2"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xlsx'] = "\uf1c3"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xls'] = "\uf1c3"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pptx'] = "\uf1c4"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['potx'] = "\uf1c4"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ppt'] = "\uf1c4"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpg'] = "\uf1c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jepg'] = "\uf1c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['url'] = "\uf26b"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cap'] = "\uf06e"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exe'] = "\uf2d0"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['wav'] = "\uf025"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pem'] = "\ue60a"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = "\ue60a"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = "\ue60a"
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.vimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.gvimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = "\ue7c5"
+
+"vim-nerdtree-syntax-highlight
+  let g:NERDTreeLimitedSyntax = 1
 
 "Syntastic
   let g:syntastic_enable_signs=1
@@ -220,22 +270,36 @@ augroup END
   map Y <Plug>(operator-flashy)$
   let g:operator#flashy#flash_time=1000
 
+"Unite設定
+  "ドットファイルも表示させる。
+  call unite#custom#source('file', 'matchers', "matcher_default")
+
+  "Unite内の検索にagを使用する。
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
+  \ 'colorscheme': 'PaperColor',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
+  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'modified', 'filename', 'anzu'] ],
   \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
   \ },
   \ 'component': {
-  \   'lineinfo': "\ue0a1 %3l:%-2v"
+  \   'lineinfo': "\ue0a1%3l:%-2v"
   \ },
   \ 'component_function': {
-  \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive',
+  \   'fileformat': 'FileformatIcon',
+  \   'filetype': 'FiletypeIcon',
+  \   'modified': 'ModifiedChecker',
+  \   'readonly': 'PermitFlag',
+  \   'fugitive': 'FugitiveView',
   \   'anzu': 'anzu#search_status',
-  \   'date': 'MyDate'
+  \   'date': 'Calender'
   \ },
   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
@@ -245,20 +309,44 @@ let g:lightline = {
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimshell_force_overwrite_statusline = 0
 
-function! MyReadonly()
-  return &readonly ? "\ue0a2" : ''
+function! FiletypeIcon()
+  return winwidth(0) > 70 ? WebDevIconsGetFileTypeSymbol(): ''
 endfunction
 
-function! MyFugitive()
+function! FileformatIcon()
+  return winwidth(0) > 70 ? WebDevIconsGetFileFormatSymbol(): ''
+endfunction
+
+function! ModifiedChecker()
+  if &modified
+    return "\uf044"
+  else
+    return "\uf046"
+  endif
+endfunction
+
+function! PermitFlag()
+  if &filetype == "help"
+    return "\uf059"
+  elseif &readonly
+    return "\uf023"
+  else
+    return "\uf09c"
+  endif
+endfunction
+
+function! FugitiveView()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? "\ue0a0"._ : ''
+    return strlen(_) ? "\uf126"._ : ''
   endif
   return ''
 endfunction
 
-function! MyDate()
-  return strftime("%m/%d %H:%M ")
+function! Calender()
+  let _day = strftime("%m/%d")
+  let _time = strftime("%H:%M")
+  return "\uf073 "._day." \uf017 "._time
 endfunction
 
 "##############################################################################
@@ -372,85 +460,36 @@ colorscheme gruvbox
 set migemo
 set migemodict=$VIM/dict/migemo-dict
 
-"Unite設定
-  "ドットファイルも表示させる。
-  call unite#custom#source('file', 'matchers', "matcher_default")
-
-  "Unite内の検索にagを使用する。
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-  endif
-
-
-let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-  \ 'mode_map': {'c': 'NORMAL'},
-  \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
-  \ },
-  \ 'component': {
-  \   'lineinfo': "\ue0a1 %3l:%-2v"
-  \ },
-  \ 'component_function': {
-  \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive',
-  \   'anzu': 'anzu#search_status',
-  \   'date': 'MyDate'
-  \ },
-  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-  \ }
-
-  let g:unite_force_overwrite_statusline = 0
-  let g:vimfiler_force_overwrite_statusline = 0
-  let g:vimshell_force_overwrite_statusline = 0
-
-function! MyReadonly()
-  return &readonly ? "\ue0a2" : ''
-endfunction
-
-function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? "\ue0a0"._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyDate()
-  return strftime("%m/%d %H:%M ")
-endfunction
-
 "##############################################################################
 "キーマップ設定
 "##############################################################################
 
+"Leader設定
+let mapleader = "\<Space>"
+
 "エスケープ2回でハイライト表示解除
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
-"スペース＋「.」で_vimrcを開く（新しいタブで開く）
-nnoremap <Space>. :split $HOME/dotfiles/_vimrc
+"スペース＋「.」で_vimrcを開く
+nnoremap <Leader>. :edit $HOME/dotfiles/_vimrc
 
-"スペース＋「,」で_gvimrcを開く（新しいタブで開く）
-nnoremap <Space>, :split $HOME/dotfiles/_gvimrc
+"スペース＋「,」で_gvimrcを開く
+nnoremap <Leader>, :edit $HOME/dotfiles/_gvimrc
 
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Space>u :Unite 
+nnoremap <Leader>u :Unite 
 
 "スペース＋「n」でNERDTree呼び出し
-nnoremap <Space>n :NERDTree
+nnoremap <Leader>n :NERDTree
+
+"スペース＋「de」でdein呼び出し(call dein#)
+nnoremap <Leader>de :call dein#
 
 "vim-anzu関連
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
-
-"Leader設定
-let mapleader = "\<Space>"
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）

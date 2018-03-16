@@ -5,14 +5,14 @@
 "Light-Line用設定
 set ambiwidth=double
 
-"ターミナルカラー設定
-set t_Co=256
-
 "マウスを無効にする
 set mouse=""
 
 "フォント設定
 set guifont=Rictyplain_NF:h16:cSHIFTJIS
+
+"レンダリング設定
+set renderoptions=type:directx,renmode:5
 
 "透過設定
 gui
@@ -57,7 +57,7 @@ endfunction
 
 "gui-vim用のbackground、カラースキーム設定
 set background=dark
-color gruvbox
+color lucario
 
 "vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0

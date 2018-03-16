@@ -8,6 +8,8 @@ fi
 # Set aliases
 alias gvim=C:/bin/vim80/gvim.exe
 alias ls="ls --show-control-chars --color=auto"
+alias ag=/mingw64/bin/ag.exe
+alias jq=/mingw64/bin/jq.exe
 
 # User specific environment and startup programs
 LANG=en_US.CP932
