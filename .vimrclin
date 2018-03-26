@@ -212,6 +212,7 @@ endif
   let g:indent_guides_color_change_percent = 30
 
 "Vim-devicons
+  let g:webdevicons_enable = 1
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "vim-nerdtree-syntax-highlight
