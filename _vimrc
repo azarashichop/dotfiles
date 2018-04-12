@@ -121,6 +121,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('rhysd/vim-color-spring-night')
   call dein#add('raphamorim/lucario')
+  call dein#add('jdkanani/vim-material-theme')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
