@@ -25,6 +25,9 @@ if dein#load_state('~/.vim/dein/.')
 " DeinをDein自体に管理させる
   call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
+  "Vim-devicons（deviconを表示させる）
+  call dein#add('ryanoasis/vim-devicons')
+
   " Unite Vim（統合UI）関連
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neomru.vim')
@@ -119,15 +122,14 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('croaker/mustang-vim')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('raphamorim/lucario')
+  call dein#add('jdkanani/vim-material-theme')
+  call dein#add('igungor/schellar')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
 
   "vim-indent-guides（インデントの可視化）
   call dein#add('nathanaelkane/vim-indent-guides')
-
-  "Vim-devicons（deviconを表示させる）
-  call dein#add('ryanoasis/vim-devicons')
 
   "vim-nerdtree-syntax-highlight（NERDTreeをカラー表示）
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')

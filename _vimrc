@@ -27,12 +27,15 @@ if dein#load_state('~/.vim/dein/.')
   "Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
 
-  "Unite Vim（統合UI）関連
+  "Unite Vim（統合UI）と関連プラグイン
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/unite-outline')
   call dein#add('Shougo/vimfiler')
   call dein#add('ujihisa/unite-colorscheme')
+
+  "Denite
+  call dein#add('Shougo/denite.nvim')
 
   "VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
@@ -44,7 +47,28 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('Shougo/vinarise.vim')
 
   "NeoComplete（文字入力補完）
-  call dein#add('Shougo/neocomplete.vim')
+  "call dein#add('Shougo/neocomplete.vim')
+
+  "nvim-yarp（deoplete用追加プラグイン）
+  call dein#add('roxma/nvim-yarp')
+
+  "vim-hug-neovim-rpc（deoplete用追加プラグイン）
+  call dein#add('roxma/vim-hug-neovim-rpc')
+
+  "deoplete（文字入力補完）
+  call dein#add('Shougo/deoplete.nvim')
+
+  "neco-vim(deoplete用Vimスクリプト補完プラグイン）
+  call dein#add('Shougo/neco-vim')
+
+  "neco-vim(deoplete用Syntaxファイル補完プラグイン）
+  call dein#add('Shougo/neco-syntax')
+
+  "neco-vim(deoplete用lookコマンド連携）
+  call dein#add('ujihisa/neco-look')
+
+  "neoyank(ヤンクヒストリの表示)
+  call dein#add('Shougo/neoyank.vim')
 
   "vim-quickrun
   call dein#add('thinca/vim-quickrun')
@@ -53,7 +77,8 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('tpope/vim-fugitive')
 
   "MarkDown用プラグイン
-  call dein#add('tpope/vim-markdown')
+  "call dein#add('tpope/vim-markdown')
+  call dein#add('rcmdnk/vim-markdown')
 
   "Cisco用シンタックスハイライト
   call dein#add('momota/cisco.vim')
@@ -122,6 +147,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('rhysd/vim-color-spring-night')
   call dein#add('raphamorim/lucario')
   call dein#add('jdkanani/vim-material-theme')
+  call dein#add('igungor/schellar')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -139,7 +165,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('sjl/gundo.vim')
 
   "Syntastic（シンタックスチェッカ）
-  call dein#add('scrooloose/syntastic')
+  call dein#add('vim-syntastic/syntastic')
 
   "Gitgutter（gitレポジトリファイルの差分表示）
   call dein#add('airblade/vim-gitgutter')
@@ -193,6 +219,9 @@ endif
 
 "NeoComplete
   let g:neocomplete#enable_at_startup=1
+
+"NeoComplete
+  let g:deoplete#enable_at_startup=1
 
 "vim-indent-guides
   let g:indent_guides_enable_on_vim_startup=0
@@ -273,7 +302,7 @@ augroup END
 
 "Unite設定
   "ドットファイルも表示させる。
-  call unite#custom#source('file', 'matchers', "matcher_default")
+  "call unite#custom#source('file', 'matchers', "matcher_default")
 
   "Unite内の検索にagを使用する。
   if executable('ag')
@@ -284,7 +313,7 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
+  \ 'colorscheme': 'onedark',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'modified', 'filename', 'anzu'] ],
@@ -402,8 +431,8 @@ endfunction
   "コマンド入力時、Tabキー補完を有効にする
   set wildmenu
 
-"背景色をダークにする
-set background=dark
+  "背景色をダークにする
+  set background=dark
 
 "###検索オプション###
   "インクリメンタルサーチを使う
@@ -477,8 +506,11 @@ nnoremap <Leader>. :edit $HOME/dotfiles/_vimrc
 "スペース＋「,」で_gvimrcを開く
 nnoremap <Leader>, :edit $HOME/dotfiles/_gvimrc
 
+"スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
+nnoremap <Leader>U :Unite 
+
 "スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Leader>u :Unite 
+nnoremap <Leader>u :Denite 
 
 "スペース＋「n」でNERDTree呼び出し
 nnoremap <Leader>n :NERDTree

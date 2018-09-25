@@ -1,5 +1,7 @@
 # 個人的メモ
 
+  ##  導入手順
+
   1. MSYS2パッケージのダウンロード  
       [MSYS2ダウンロード先](https://msys2.github.io/)
       * i686    --- 32ビット版  
@@ -129,6 +131,8 @@
     cd dotfiles
     dotfileslink.bat
     ```
+
+  ##  いつか、自動化スクリプトを作成する。
 
 }}}}}  
 EOF  

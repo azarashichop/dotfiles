@@ -6,7 +6,7 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 # Set aliases
-alias gvim=C:/bin/vim80/gvim.exe
+alias gvim=C:/bin/vim81/gvim.exe
 alias ls="ls --show-control-chars --color=auto"
 alias ag=/mingw64/bin/ag.exe
 alias jq=/mingw64/bin/jq.exe
