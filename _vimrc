@@ -40,7 +40,7 @@ if dein#load_state('~/.vim/dein/.')
   "VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
 
-  "VIM内でシェル実行
+  "VimShell （VIM内でシェル実行）
   call dein#add('Shougo/vimshell')
 
   "バイナリビューワ
@@ -85,6 +85,9 @@ if dein#load_state('~/.vim/dein/.')
 
   "メモ用シンタックスハイライト
   call dein#add('vim-scripts/HybridText')
+
+  "PowerShell用シンタックスハイライト
+  call dein#add('PProvost/vim-ps1')
 
   "256カラースキームをターミナルでも使えるようにする
   call dein#add('vim-scripts/CSApprox')
@@ -148,6 +151,9 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('raphamorim/lucario')
   call dein#add('jdkanani/vim-material-theme')
   call dein#add('igungor/schellar')
+  call dein#add('stepchowfun/base16-circus-scheme')
+  call dein#add('trusktr/seti.vim')
+  call dein#add('vim-scripts/summerfruit256.vim')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -185,7 +191,7 @@ if dein#load_state('~/.vim/dein/.')
   "easy-motion（カーソル移動支援）
   call dein#add('easymotion/vim-easymotion')
 
-  "オペレータプラグイン
+  "vim-operator-user（オペレータプラグイン）
   call dein#add('kana/vim-operator-user')
 
   "vim-operator-flashy（ヤンクした部分を一瞬ハイライトする）
@@ -208,7 +214,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#save_state()
 endif
 
-" もし、未インストールものものがあったらインストール
+"もし、未インストールのプラグインがあった場合、インストール
 if dein#check_install()
   call dein#install()
 endif
@@ -220,8 +226,8 @@ endif
 "NeoComplete
   let g:neocomplete#enable_at_startup=1
 
-"NeoComplete
-  let g:deoplete#enable_at_startup=1
+"deoplete
+  let g:deoplete#enable_at_startup=0
 
 "vim-indent-guides
   let g:indent_guides_enable_on_vim_startup=0
@@ -273,11 +279,11 @@ endif
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pem'] = "\ue60a"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = "\ue60a"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = "\ue60a"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['.vimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['.gvimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['_gvimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['_vimrc'] = "\ue7c5"
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.vimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.gvimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = "\ue7c5"
 
 "vim-nerdtree-syntax-highlight
   let g:NERDTreeLimitedSyntax = 1
@@ -286,10 +292,10 @@ endif
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
-"vim-anzu（検索位置の表示）
+"vim-anzu
 "anzu設定
-" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
-" 検索ヒット数の表示を消去する
+"一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+"検索ヒット数の表示を消去する
 augroup vim-anzu
     autocmd!
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
@@ -313,7 +319,7 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
+  \ 'colorscheme': 'PaperColor',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'modified', 'filename', 'anzu'] ],
@@ -397,7 +403,7 @@ endfunction
   "ターミナルカラーを256色にする
   set t_Co=256
 
-  "特殊文字の可視化（Tabの可視化）
+  "特殊文字の可視化
   set list
   set listchars=tab:>-,trail:-,extends:>,precedes:<
 
@@ -509,7 +515,7 @@ nnoremap <Leader>, :edit $HOME/dotfiles/_gvimrc
 "スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Leader>U :Unite 
 
-"スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
+"スペース＋「u」でDenite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Leader>u :Denite 
 
 "スペース＋「n」でNERDTree呼び出し

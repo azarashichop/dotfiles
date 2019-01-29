@@ -31,6 +31,12 @@ set guioptions-=m
 "タブ表示をvimと同じにする
 set guioptions-=e
 
+"スクロールバーを非表示にする
+set guioptions-=r
+set guioptions-=R
+set guioptions-=b
+
+
 "プリンタ用のフォント設定
 set printfont=Ricty_Writing:h12:cSHIFTJIS
 
@@ -57,7 +63,7 @@ endfunction
 
 "gui-vim用のbackground、カラースキーム設定
 set background=dark
-color onedark
+color kalisi
 
 "vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0

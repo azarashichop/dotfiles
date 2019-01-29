@@ -11,18 +11,18 @@ set fileencodings=utf-8,cp932,sjis,euc-jp,latin1
 set ambiwidth=double
 
 "##############################################################################
-"Dein.Vim、プラグイン設定
+"Dein.vim、プラグイン設定
 "##############################################################################
 
 if has('vim_starting')
   set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-" Deinロード
+"Deinロード
 if dein#load_state('~/.vim/dein/.')
   call dein#begin('~/.vim/dein/.')
 
-" DeinをDein自体に管理させる
+"DeinをDein自体に管理させる
   call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
   " Unite Vim（統合UI）関連
@@ -35,7 +35,7 @@ if dein#load_state('~/.vim/dein/.')
   "VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
 
-  "VimProc（VIM内でシェル実行）
+  "VimShell （VIM内でシェル実行）
   call dein#add('Shougo/vimshell')
 
   "バイナリビューワ
@@ -45,6 +45,27 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('Shougo/neocomplete.vim')
   let g:neocomplete#enable_at_startup=1
 
+  "nvim-yarp（deoplete用追加プラグイン）
+  call dein#add('roxma/nvim-yarp')
+
+  "vim-hug-neovim-rpc（deoplete用追加プラグイン）
+  call dein#add('roxma/vim-hug-neovim-rpc')
+
+  "deoplete（文字入力補完）
+  call dein#add('Shougo/deoplete.nvim')
+
+  "neco-vim(deoplete用Vimスクリプト補完プラグイン）
+  call dein#add('Shougo/neco-vim')
+
+  "neco-vim(deoplete用Syntaxファイル補完プラグイン）
+  call dein#add('Shougo/neco-syntax')
+
+  "neco-vim(deoplete用lookコマンド連携）
+  call dein#add('ujihisa/neco-look')
+
+  "neoyank(ヤンクヒストリの表示)
+  call dein#add('Shougo/neoyank.vim')
+
   "vim-quickrun
   call dein#add('thinca/vim-quickrun')
 
@@ -52,7 +73,8 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('tpope/vim-fugitive')
 
   "MarkDown用プラグイン
-  call dein#add('tpope/vim-markdown')
+  "call dein#add('tpope/vim-markdown')
+  call dein#add('rcmdnk/vim-markdown')
 
   "Cisco用シンタックスハイライト
   call dein#add('momota/cisco.vim')
@@ -118,7 +140,13 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('joshdick/onedark.vim')
   call dein#add('croaker/mustang-vim')
   call dein#add('cocopon/iceberg.vim')
+  call dein#add('rhysd/vim-color-spring-night')
   call dein#add('raphamorim/lucario')
+  call dein#add('jdkanani/vim-material-theme')
+  call dein#add('igungor/schellar')
+  call dein#add('stepchowfun/base16-circus-scheme')
+  call dein#add('trusktr/seti.vim')
+  call dein#add('vim-scripts/summerfruit256.vim')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -181,7 +209,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#save_state()
 endif
 
-" もし、未インストールものものがあったらインストール
+" もし、未インストールのプラグインがあった場合、インストール
 if dein#check_install()
   call dein#install()
 endif
@@ -205,7 +233,7 @@ endif
   let g:indent_guides_enable_on_vim_startup=0
   let g:indent_guides_start_level=1
   let g:indent_guides_space_guides=1
-  let g:indent_guides_guide_size=0
+  let g:indent_guides_guide_size=1
   let g:indent_guides_auto_colors=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
@@ -255,7 +283,7 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'iceberg',
+  \ 'colorscheme': 'hybrid',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'filename', 'modified', 'anzu'] ],
@@ -399,7 +427,7 @@ set pastetoggle=<C-k>
 "クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed
 
-"カラースキームの指定
+"カラースキームの設定
 colorscheme moonshine
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
@@ -412,16 +440,19 @@ colorscheme moonshine
 let mapleader = "\<Space>"
 
 "エスケープ2回でハイライト表示解除
-nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
 "スペース＋「.」で.vimrcwinを開く（新しいタブで開く）
-nnoremap <Space>. :tabnew $HOME/dotfiles/.vimrcwin
+nnoremap <Leader>. :tabnew $HOME/dotfiles/.vimrcwin
 
-"スペース＋「u」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Space>u :Unite 
+"スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
+nnoremap <Leader>U :Unite 
+
+"スペース＋「u」でDenite.vimの呼び出し（Uniteとスペースまで）
+nnoremap <Leader>u :Denite 
 
 "スペース＋「n」でNERDTree呼び出し
-nnoremap <Space>n :NERDTree
+nnoremap <Leader>n :NERDTree
 
 "スペース＋「de」でdein呼び出し(call dein#)
 nnoremap <Leader>de :call dein#

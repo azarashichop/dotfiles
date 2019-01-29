@@ -18,11 +18,11 @@ if has('vim_starting')
   set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-" Deinロード
+"Deinロード
 if dein#load_state('~/.vim/dein/.')
   call dein#begin('~/.vim/dein/.')
 
-" DeinをDein自体に管理させる
+"DeinをDein自体に管理させる
   call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
   "Vim-devicons（deviconを表示させる）
@@ -38,7 +38,7 @@ if dein#load_state('~/.vim/dein/.')
   "VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
 
-  "VimProc（VIM内でシェル実行）
+  "VimShell（VIM内でシェル実行）
   call dein#add('Shougo/vimshell')
 
   "バイナリビューワ
@@ -121,9 +121,13 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('joshdick/onedark.vim')
   call dein#add('croaker/mustang-vim')
   call dein#add('cocopon/iceberg.vim')
+  call dein#add('rhysd/vim-color-spring-night')
   call dein#add('raphamorim/lucario')
   call dein#add('jdkanani/vim-material-theme')
   call dein#add('igungor/schellar')
+  call dein#add('stepchowfun/base16-circus-scheme')
+  call dein#add('trusktr/seti.vim')
+  call dein#add('vim-scripts/summerfruit256.vim')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
