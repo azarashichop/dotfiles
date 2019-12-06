@@ -5,8 +5,8 @@
 "##############################################################################
 filetype off
 set nocompatible
-scriptencoding utf-8
 set encoding=utf-8
+scriptencoding utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,sjis,euc-jp "latin1
 
 "##############################################################################
@@ -87,7 +87,10 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('vim-scripts/HybridText')
 
   "PowerShell用シンタックスハイライト
-  call dein#add('PProvost/vim-ps1')
+  "call dein#add('PProvost/vim-ps1')
+
+  "PowerShell用シンタックスハイライト
+  call dein#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
 
   "256カラースキームをターミナルでも使えるようにする
   call dein#add('vim-scripts/CSApprox')
@@ -154,6 +157,8 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('stepchowfun/base16-circus-scheme')
   call dein#add('trusktr/seti.vim')
   call dein#add('vim-scripts/summerfruit256.vim')
+  call dein#add('yasukotelin/shirotelin')
+  call dein#add('Rigellute/rigel')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
