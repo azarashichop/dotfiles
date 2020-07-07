@@ -9,7 +9,7 @@ set ambiwidth=double
 set mouse=""
 
 "フォント設定
-set guifont=Rictyplain_NF:h20:cSHIFTJIS
+set guifont=Rictyplain_NF:h16:cSHIFTJIS
 
 "レンダリング設定
 set renderoptions=type:directx,renmode:5
@@ -63,7 +63,7 @@ endfunction
 
 "gui-vim用のbackground、カラースキーム設定
 set background=dark
-color atom-dark
+color gruvbox
 
 "vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0

@@ -8,6 +8,7 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,sjis,euc-jp "latin1
+set ambiwidth=double
 
 "##############################################################################
 "Dein.vim、プラグイン設定
@@ -79,6 +80,9 @@ if dein#load_state('~/.vim/dein/.')
   "MarkDown用プラグイン
   "call dein#add('tpope/vim-markdown')
   call dein#add('rcmdnk/vim-markdown')
+
+  "MarkDownプレビュープラグイン
+  call dein#add('suan/vim-instant-markdown')
 
   "Cisco用シンタックスハイライト
   call dein#add('momota/cisco.vim')
@@ -214,6 +218,9 @@ if dein#load_state('~/.vim/dein/.')
   "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
   call dein#add('istepura/vim-toolbar-icons-silk')
 
+  "showtime.vim（プレゼン資料作成）
+  call dein#add('thinca/vim-showtime')
+
   "Dein終端処理
   call dein#end()
   call dein#save_state()
@@ -324,7 +331,7 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
+  \ 'colorscheme': 'molokai',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'modified', 'filename', 'anzu'] ],
@@ -493,7 +500,7 @@ set diffopt=vertical
 set pastetoggle=<C-s>
 
 "カラースキームの設定
-colorscheme gruvbox
+colorscheme shirotelin
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
