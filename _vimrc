@@ -215,7 +215,7 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('maximbaz/lightline-ale')
 
   "lightline-buffer
-  call dein#add('mengelbrecht/lightline-bufferline')
+  call dein#add('taohexxx/lightline-buffer')
 
   "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
   call dein#add('istepura/vim-toolbar-icons-silk')
@@ -232,6 +232,9 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+"削除済プラグインのクリーンアップ
+let g:dein#auto_recache = 1
 
 "##############################################################################
 "プラグイン設定
@@ -352,7 +355,7 @@ let g:lightline = {
   \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
   \               ['lineinfo', 'date'],
   \               ['percent'],
-  \               ['fileformat', 'fileencoding', 'filetype', 'charvalehex']
+  \               ['fileformat', 'fileencoding', 'filetype', 'charvaluehex']
   \             ]
   \ },
   \ 'tabline': {
@@ -367,11 +370,12 @@ let g:lightline = {
   \   'lineinfo': "\ue0a1%3l:%-2v"
   \ },
   \ 'component_function': {
+  \   'bufferinfo': 'lightline#buffer#bufferinfo',
   \   'fileformat': 'FileformatIcon',
   \   'filetype': 'FiletypeIcon',
   \   'modified': 'ModifiedChecker',
   \   'readonly': 'PermitFlag',
-  \   'fugitive': 'FugitiveView',
+  \   'fugitive': 'GitBranchName',
   \   'anzu': 'anzu#search_status',
   \   'date': 'Calender'
   \ },
@@ -433,12 +437,11 @@ function! PermitFlag()
   endif
 endfunction
 
-function! FugitiveView()
-  if exists("*fugitive#head")
-    let l:git_branch = fugitive#head()
-    return l:git_branch ? "\uf126".l:git_branch : ''
+function! GitBranchName()
+  if FugitiveHead() != ''
+    return "\uf126".FugitiveHead()
   endif
-  return ''
+    return ''
 endfunction
 
 function! Calender()
@@ -477,6 +480,7 @@ let g:vim_markdown_json_frontmatter=0
   set list
 "  set listchars=tab:↦-,trail:-,extends:>,precedes:<
   set listchars=tab:↦-,trail:-,extends:↣,precedes:↢
+
   "行折り返しの無効化
   set nowrap
 
@@ -585,7 +589,7 @@ nnoremap <Leader>, :edit $HOME/dotfiles/_gvimrc
 "スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Leader>U :Unite 
 
-"スペース＋「u」でDenite.vimの呼び出し（Uniteとスペースまで）
+"スペース＋「u」でDenite.vimの呼び出し（Deniteとスペースまで）
 nnoremap <Leader>u :Denite 
 
 "スペース＋「n」でNERDTree呼び出し
