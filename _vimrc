@@ -47,9 +47,6 @@ if dein#load_state('~/.vim/dein/.')
   "バイナリビューワ
   call dein#add('Shougo/vinarise.vim')
 
-  "NeoComplete（文字入力補完）
-  "call dein#add('Shougo/neocomplete.vim')
-
   "nvim-yarp（deoplete用追加プラグイン）
   call dein#add('roxma/nvim-yarp')
 
@@ -77,6 +74,9 @@ if dein#load_state('~/.vim/dein/.')
   "Fugitive（Git連携）
   call dein#add('tpope/vim-fugitive')
 
+  "vim-polyglot（多言語パック）
+  call dein#add('sheerun/vim-polyglot')
+
   "MarkDown用プラグイン
   "call dein#add('tpope/vim-markdown')
   call dein#add('rcmdnk/vim-markdown')
@@ -91,13 +91,10 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('vim-scripts/HybridText')
 
   "PowerShell用シンタックスハイライト
-  "call dein#add('PProvost/vim-ps1')
-
-  "PowerShell用シンタックスハイライト
   call dein#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
 
-  "256カラースキームをターミナルでも使えるようにする
-  call dein#add('vim-scripts/CSApprox')
+  "csv.vim（CSV用プラグイン）
+  call dein#add('chrisbra/csv.vim')
 
   "Colors Watch（カラースキーム情報の抽出）
   call dein#add('cocopon/colorswatch.vim')
@@ -157,7 +154,6 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('rhysd/vim-color-spring-night')
   call dein#add('raphamorim/lucario')
   call dein#add('jdkanani/vim-material-theme')
-  call dein#add('igungor/schellar')
   call dein#add('stepchowfun/base16-circus-scheme')
   call dein#add('trusktr/seti.vim')
   call dein#add('vim-scripts/summerfruit256.vim')
@@ -179,8 +175,8 @@ if dein#load_state('~/.vim/dein/.')
   "Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
   call dein#add('sjl/gundo.vim')
 
-  "Syntastic（シンタックスチェッカ）
-  call dein#add('vim-syntastic/syntastic')
+  "ale（シンタックスチェッカー）
+  call dein#add('dense-analysis/ale')
 
   "Gitgutter（gitレポジトリファイルの差分表示）
   call dein#add('airblade/vim-gitgutter')
@@ -212,8 +208,14 @@ if dein#load_state('~/.vim/dein/.')
   "tagビューワ
   call dein#add('majutsushi/tagbar')
 
-  "Lightline（ステータスライン装飾プラグイン）
+  "lightline（ステータスライン装飾プラグイン）
   call dein#add('itchyny/lightline.vim')
+
+  "lightline-ale（Lightline-Ale連携)
+  call dein#add('maximbaz/lightline-ale')
+
+  "lightline-buffer
+  call dein#add('mengelbrecht/lightline-bufferline')
 
   "vim-toolbar-icons-silk（gvimのツールバーアイコンをモダンに）
   call dein#add('istepura/vim-toolbar-icons-silk')
@@ -250,6 +252,9 @@ endif
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
+
+"Gundo（Python3を使用する)
+  let g:gundo_prefer_python3=1
 
 "NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
@@ -304,6 +309,10 @@ endif
   let g:syntastic_enable_signs=1
   let g:syntastic_auto_loc_list=1
 
+"Ale
+"javcのメッセージを英語にする
+  let g:ale_java_javac_options='-J-Duser.language=en'
+
 "vim-anzu
 "anzu設定
 "一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
@@ -331,11 +340,28 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'molokai',
+  \ 'colorscheme': 'jellybeans',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
-  \   'left':[ ['mode', 'paste'], ['fugitive'], ['readonly', 'modified', 'filename', 'anzu'] ],
-  \   'right':[ ['lineinfo', 'date', 'syntastic'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+  \   'left': [
+  \             ['mode', 'paste'],
+  \             ['fugitive'],
+  \             ['readonly', 'modified', 'filename', 'anzu']
+  \           ],
+  \   'right':  [
+  \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
+  \               ['lineinfo', 'date'],
+  \               ['percent'],
+  \               ['fileformat', 'fileencoding', 'filetype', 'charvalehex']
+  \             ]
+  \ },
+  \ 'tabline': {
+  \   'left': [
+  \             ['bufferinfo'],
+  \             ['separator_tab'],
+  \             ['bufferbefore', 'buffercurrent', 'bufferafter']
+  \           ],
+  \   'right':[['close']],
   \ },
   \ 'component': {
   \   'lineinfo': "\ue0a1%3l:%-2v"
@@ -349,9 +375,33 @@ let g:lightline = {
   \   'anzu': 'anzu#search_status',
   \   'date': 'Calender'
   \ },
+  \ 'component_expand': {
+  \   'buffercurrent': 'lightline#buffer#buffercurrent',
+  \   'bufferbefore': 'lightline#buffer#bufferbefore',
+  \   'bufferafter': 'lightline#buffer#bufferafter',
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_fine': 'lightline#ale#ok'
+  \ },
+  \ 'component_type': {
+  \   'buffercurrent': 'tabsel',
+  \   'bufferbefore': 'raw',
+  \   'bufferafter': 'raw',
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_fine': 'left'
+  \ },
   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
   \ }
+
+"Lightline-ale用グリフ指定
+  let g:lightline#ale#indicator_checking = " \uf110 "
+  let g:lightline#ale#indicator_warnings = "\uf071 "
+  let g:lightline#ale#indicator_errors = "\uf057 "
+  let g:lightline#ale#indicator_ok = "\uf058 "
 
   let g:unite_force_overwrite_statusline = 0
   let g:vimfiler_force_overwrite_statusline = 0
@@ -385,8 +435,8 @@ endfunction
 
 function! FugitiveView()
   if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? "\uf126"._ : ''
+    let l:git_branch = fugitive#head()
+    return l:git_branch ? "\uf126".l:git_branch : ''
   endif
   return ''
 endfunction
@@ -425,8 +475,8 @@ let g:vim_markdown_json_frontmatter=0
 
   "特殊文字の可視化
   set list
-  set listchars=tab:>-,trail:-,extends:>,precedes:<
-
+"  set listchars=tab:↦-,trail:-,extends:>,precedes:<
+  set listchars=tab:↦-,trail:-,extends:↣,precedes:↢
   "行折り返しの無効化
   set nowrap
 
@@ -508,7 +558,7 @@ set diffopt=vertical
 set pastetoggle=<C-s>
 
 "カラースキームの設定
-colorscheme shirotelin
+colorscheme moonshine
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
 
