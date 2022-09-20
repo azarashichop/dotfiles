@@ -7,7 +7,7 @@ filetype off
 set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
-set fileencodings=iso-2022-jp,utf-8,cp932,sjis,euc-jp "latin1
+set fileencodings=iso-2022-jp,utf-8,cp932,utf-16le,utf-16,sjis,euc-jp,latin1
 set ambiwidth=double
 
 "##############################################################################
@@ -15,15 +15,15 @@ set ambiwidth=double
 "##############################################################################
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+  set runtimepath+=~\.vim\dein\repos\github.com\Shougo\dein.vim
 endif
 
 "Deinロード
-if dein#load_state('~/.vim/dein/.')
-  call dein#begin('~/.vim/dein/.')
+if dein#load_state('~\.vim\dein\.')
+  call dein#begin('~\.vim\dein\.')
 
 "DeinをDein自体に管理させる
-  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~\.vim\dein\repos\github.com\Shougo\dein.vim')
 
   "Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
@@ -59,7 +59,7 @@ if dein#load_state('~/.vim/dein/.')
   "neco-vim(deoplete用Vimスクリプト補完プラグイン）
   call dein#add('Shougo/neco-vim')
 
-  "neco-vim(deoplete用Syntaxファイル補完プラグイン）
+  "neco-syntax(deoplete用Syntaxファイル補完プラグイン）
   call dein#add('Shougo/neco-syntax')
 
   "neco-vim(deoplete用lookコマンド連携）
@@ -78,7 +78,6 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('sheerun/vim-polyglot')
 
   "MarkDown用プラグイン
-  "call dein#add('tpope/vim-markdown')
   call dein#add('rcmdnk/vim-markdown')
 
   "MarkDownプレビュープラグイン
@@ -93,11 +92,8 @@ if dein#load_state('~/.vim/dein/.')
   "PowerShell用シンタックスハイライト
   call dein#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
 
-  "csv.vim（CSV用プラグイン）
-  call dein#add('chrisbra/csv.vim')
-
   "Colors Watch（カラースキーム情報の抽出）
-  call dein#add('cocopon/colorswatch.vim')
+  call dein#add('cocopon/colorswatch.vim', {'rev': 'main'})
 
   "タブごとにカラースキーム情報を保持する。
   call dein#add('ujihisa/tabpagecolorscheme')
@@ -148,17 +144,18 @@ if dein#load_state('~/.vim/dein/.')
   call dein#add('sonjapeterson/1989.vim')
   call dein#add('shinchu/lightline-gruvbox.vim')
   call dein#add('vol2223/vim-colorblind-colorscheme')
-  call dein#add('joshdick/onedark.vim')
+  call dein#add('joshdick/onedark.vim', {'rev': 'main'})
   call dein#add('croaker/mustang-vim')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('rhysd/vim-color-spring-night')
-  call dein#add('raphamorim/lucario')
+  call dein#add('raphamorim/lucario', {'rev': 'main'})
   call dein#add('jdkanani/vim-material-theme')
   call dein#add('stepchowfun/base16-circus-scheme')
   call dein#add('trusktr/seti.vim')
   call dein#add('vim-scripts/summerfruit256.vim')
   call dein#add('yasukotelin/shirotelin')
   call dein#add('Rigellute/rigel')
+  call dein#add('ayu-theme/ayu-vim')
 
   "unite-gvimrgb(カラーリスト表示）
   call dein#add('LeafCage/unite-gvimrgb')
@@ -166,13 +163,16 @@ if dein#load_state('~/.vim/dein/.')
   "vim-indent-guides（インデントの可視化）
   call dein#add('nathanaelkane/vim-indent-guides')
 
+  "rainbow（対応ブランケットのカラーリング）
+  call dein#add('luochen1990/rainbow')
+
   "vim-nerdtree-syntax-highlight（NERDTreeをカラー表示）
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
   "NERDTree（ディレクトリ内のツリー表示）
   call dein#add('scrooloose/nerdtree')
 
-  "Gundo（アンドゥ・リドゥ履歴のツリー表示）￢
+  "Gundo（アンドゥ・リドゥ履歴のツリー表示）
   call dein#add('sjl/gundo.vim')
 
   "ale（シンタックスチェッカー）
@@ -250,7 +250,7 @@ let g:dein#auto_recache = 1
   let g:indent_guides_enable_on_vim_startup=0
   let g:indent_guides_start_level=1
   let g:indent_guides_space_guides=1
-  let g:indent_guides_guide_size=1
+  autocmd BufRead,BufNewFile *.py let g:indent_guides_guide_size=4
   let g:indent_guides_auto_colors=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
@@ -261,8 +261,9 @@ let g:dein#auto_recache = 1
 
 "NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrowExpandable = "\uf138"
-  let g:NERDTreeDirArrowCollapsible = "\uf13a"
+  let g:NERDTreeDirArrowExpandable = ""
+  let g:NERDTreeDirArrowCollapsible = ""
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Vim-devicons
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -271,8 +272,8 @@ let g:dein#auto_recache = 1
   let g:webdevicons_enable_vimfiler = 1
   let g:DevIconsEnableFoldersOpenClose = 1
   "ディレクトリグリフ指定
-  let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf114"
-  let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
+  let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ""
+  let g:DevIconsDefaultFolderOpenSymbol = ""
   "ファイルタイプ別グリフ指定
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
   "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = "\ue736"
@@ -299,25 +300,18 @@ let g:dein#auto_recache = 1
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pem'] = "\ue60a"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = "\ue60a"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = "\ue60a"
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['.vimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['.gvimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['_gvimrc'] = "\ue7c5"
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['_vimrc'] = "\ue7c5"
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = "\ue7c5"
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = "\ue7c5"
 
 "vim-nerdtree-syntax-highlight
   let g:NERDTreeLimitedSyntax = 1
 
-"Syntastic
-  let g:syntastic_enable_signs=1
-  let g:syntastic_auto_loc_list=1
-
 "Ale
-"javcのメッセージを英語にする
-  let g:ale_java_javac_options='-J-Duser.language=en'
+  "javacコンパイル時のエンコードをUTF-8に、表示言語を英語にする
+  let g:ale_java_javac_options='-encoding UTF-8 -J-Duser.language=en'
 
 "vim-anzu
-"anzu設定
 "一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
 "検索ヒット数の表示を消去する
 augroup vim-anzu
@@ -343,7 +337,7 @@ augroup END
 
 "Lightline
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
+  \ 'colorscheme': 'ayu_light',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left': [
@@ -364,10 +358,13 @@ let g:lightline = {
   \             ['separator_tab'],
   \             ['bufferbefore', 'buffercurrent', 'bufferafter']
   \           ],
-  \   'right':[['close']],
+  \   'right':[['traveler']]
   \ },
-  \ 'component': {
-  \   'lineinfo': "\ue0a1%3l:%-2v"
+  \ 'component': { 
+  \   'lineinfo': "%3l:%-2v",
+  \   'charvaluehex': '0x%B',
+  \   'separator_tab': '',
+  \   'traveler': ""
   \ },
   \ 'component_function': {
   \   'bufferinfo': 'lightline#buffer#bufferinfo',
@@ -397,15 +394,15 @@ let g:lightline = {
   \   'linter_errors': 'error',
   \   'linter_fine': 'left'
   \ },
-  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ 'separator': { 'left': "", 'right': "" },
+  \ 'subseparator': { 'left': "", 'right': "" }
   \ }
 
 "Lightline-ale用グリフ指定
-  let g:lightline#ale#indicator_checking = " \uf110 "
-  let g:lightline#ale#indicator_warnings = "\uf071 "
-  let g:lightline#ale#indicator_errors = "\uf057 "
-  let g:lightline#ale#indicator_ok = "\uf058 "
+  let g:lightline#ale#indicator_checking = ""
+  let g:lightline#ale#indicator_warnings = ""
+  let g:lightline#ale#indicator_errors = ""
+  let g:lightline#ale#indicator_ok = ""
 
   let g:unite_force_overwrite_statusline = 0
   let g:vimfiler_force_overwrite_statusline = 0
@@ -429,17 +426,17 @@ endfunction
 
 function! PermitFlag()
   if &filetype == "help"
-    return "\uf059"
+    return ""
   elseif &readonly
-    return "\uf023"
+    return ""
   else
-    return "\uf09c"
+    return ""
   endif
 endfunction
 
 function! GitBranchName()
   if FugitiveHead() != ''
-    return "\uf126".FugitiveHead()
+    return "".FugitiveHead()
   endif
     return ''
 endfunction
@@ -447,8 +444,28 @@ endfunction
 function! Calender()
   let _day = strftime("%m/%d")
   let _time = strftime("%H:%M")
-  return "\uf073 "._day." \uf017 "._time
+  return " "._day."  "._time
 endfunction
+
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
+
+"lightline-buffer UI
+let g:lightline_buffer_logo = "\ue006"
+"let g:lightline_buffer_logo = "\uf1a8" traveler
+"let g:lightline_buffer_logo = "\ue62b "
+let g:lightline_buffer_readonly_icon = "\ufafa"
+let g:lightline_buffer_modified_icon = "\ufac1"
+let g:lightline_buffer_git_icon = "\ue0a0 "
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '\u25c0'
+let g:lightline_buffer_expand_right_icon = ' \u25b6'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+
+let g:lightline_buffer_enable_devicons = 1
+let g:lightline_buffer_show_bufnr = 1
 
 "vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -457,6 +474,9 @@ let g:vim_markdown_math=0
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_toml_frontmatter=1
 let g:vim_markdown_json_frontmatter=0
+
+"rainbow
+let g:rainbow_active=1
 
 "##############################################################################
 "一般設定
@@ -473,6 +493,9 @@ let g:vim_markdown_json_frontmatter=0
   set noundofile
 
 "###表示関連設定###
+  "ターミナルでのTrueColor有効化
+  set termguicolors
+
   "ターミナルカラーを256色にする
   set t_Co=256
 
@@ -552,23 +575,31 @@ set backspace=indent,eol,start
 "編集中に他のファイルを表示可能にする
 set hidden
 
+"常にTablineを表示する
+set showtabline=2
+
 "他のプロセスがファイルを変更した際に自動で再読み込みを行う
 set autoread
 
-"diff実行時に縦分割で結果を表示する
-set diffopt=vertical
+"diff実行時に縦分割で結果を表示する／内部Diffコマンドを利用する
+set diffopt=vertical,internal
 
 "ペーストモードトグルの有効化
 set pastetoggle=<C-s>
 
 "カラースキームの設定
-colorscheme moonshine
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=256
+"colorscheme moonshine "Terminal用
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let ayucolor='mirage'
+colorscheme molokai
 
 "Migemoの設定
 set migemo
 set migemodict=$VIM/dict/migemo-dict
+
+"ターミナルをPowerShell(7)にする
+set shell=pwsh.exe
 
 "##############################################################################
 "キーマップ設定

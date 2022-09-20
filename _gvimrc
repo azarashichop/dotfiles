@@ -38,7 +38,7 @@ set guioptions-=b
 
 
 "プリンタ用のフォント設定
-set printfont=Ricty_Writing:h12:cSHIFTJIS
+set printfont=Ricty_Writing:h10:cSHIFTJIS
 
 "IMEの有効／無効でカーソル色を変える
 "半角：グレー、全角：ダークレッド
@@ -63,7 +63,7 @@ endfunction
 
 "gui-vim用のbackground、カラースキーム設定
 set background=dark
-color kalisi
+color ayu
 
 "vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0
