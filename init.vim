@@ -1,4 +1,4 @@
-"for Vim.
+" neovim Configuration.
 
 "##############################################################################
 " イニシャライズ
@@ -8,22 +8,19 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,utf-16le,utf-16,sjis,euc-jp,latin1
-set ambiwidth=double
 
 "##############################################################################
 " Dein.vim、プラグイン設定
 "##############################################################################
+set runtimepath+=C:\Users\003028\myenv\.cache\dein\repos\github.com\Shougo\dein.vim
 
-if has('vim_starting')
-  set runtimepath+=~\.vim\dein\repos\github.com\Shougo\dein.vim
-endif
+let g:dein#install_process_timeout=1200
 
 " Deinロード
-if dein#load_state('~\.vim\dein\.')
-  call dein#begin('~\.vim\dein\.')
+call dein#begin('C:\Users\003028\myenv\.cache\dein')
 
 " DeinをDein自体に管理させる
-  call dein#add('~\.vim\dein\repos\github.com\Shougo\dein.vim')
+call dein#add('C:\Users\003028\myenv\.cache\dein\repos\github.com\Shougo\dein.vim')
 
   " Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
@@ -41,7 +38,7 @@ if dein#load_state('~\.vim\dein\.')
   " VimProc（非同期処理の実現）
   call dein#add('Shougo/vimproc')
 
-  " Deol.nvim
+  " deol.nvim（VIM内でシェル実行）
   call dein#add('Shougo/deol.nvim')
 
   " バイナリビューワ
@@ -57,7 +54,10 @@ if dein#load_state('~\.vim\dein\.')
   call dein#add('matsui54/denops-signature_help')
 
   " LSPプラグイン
-  call dein#add('prabirshrestha/vim-lsp')
+  call dein#add('neovim/nvim-lspconfig')
+
+  " ddc-lsp
+  call dein#add('Shougo/ddc-source-nvim-lsp')
 
   " ddc（補完プラグイン）
   call dein#add('Shougo/ddc.vim')
@@ -68,9 +68,6 @@ if dein#load_state('~\.vim\dein\.')
 
   " ポップアップ表示
   call dein#add('Shougo/pum.vim')
-
-  " ddcソース（lsp）
-  call dein#add('shun/ddc-source-vim-lsp')
 
   " ddcソース（カーソル周辺の既出単語表示）
   call dein#add('Shougo/ddc-around')
@@ -87,7 +84,7 @@ if dein#load_state('~\.vim\dein\.')
   " ddcフィルタ（補完候補の重複除去）
   call dein#add('Shougo/ddc-converter_remove_overlap')
 
-  " neco-vim(Vimスクリプト補完プラグイン）
+  "neco-vim(Vimスクリプト補完プラグイン）
   call dein#add('Shougo/neco-vim')
 
   " neoyank(ヤンクヒストリの表示)
@@ -108,7 +105,7 @@ if dein#load_state('~\.vim\dein\.')
   " MarkDownプレビュープラグイン
   call dein#add('suan/vim-instant-markdown')
 
-  " Cisco用シンタックスハイライト
+  " Cisco IOS用シンタックスハイライト
   call dein#add('momota/cisco.vim')
 
   " メモ用シンタックスハイライト
@@ -118,7 +115,7 @@ if dein#load_state('~\.vim\dein\.')
   call dein#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
 
   " カラースキームいろいろ
-  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('overcache/NeoSolarized')
   call dein#add('tomasr/molokai')
   call dein#add('cocopon/lightline-hybrid.vim')
   call dein#add('wolf-dog/nighted.vim')
@@ -130,7 +127,6 @@ if dein#load_state('~\.vim\dein\.')
   call dein#add('KKPMW/moonshine-vim')
   call dein#add('morhetz/gruvbox')
   call dein#add('gosukiwi/vim-atom-dark')
-  call dein#add('whatyouhide/vim-gotham', {'rev': 'main'})
   call dein#add('muellan/am-colors')
   call dein#add('shinchu/lightline-gruvbox.vim')
   call dein#add('croaker/mustang-vim')
@@ -196,16 +192,14 @@ if dein#load_state('~\.vim\dein\.')
   " lightline-buffer
   call dein#add('taohexxx/lightline-buffer')
 
-  " showtime.vim（プレゼン資料作成）
+  "showtime.vim（プレゼン資料作成）
   call dein#add('thinca/vim-showtime')
 
-  " shaberu.vim（しゃべる！）
-  call dein#add('supermomonga/shaberu.vim')
+  " Win-IME-con（IME動作支援）
+  call dein#add('pepo-le/win-ime-con.nvim')
 
   " Dein終端処理
-  call dein#end()
-  call dein#save_state()
-endif
+call dein#end()
 
 " もし、未インストールのプラグインがあった場合、インストール
 if dein#check_install()
@@ -220,15 +214,8 @@ let g:dein#auto_recache = 1
 "##############################################################################
 
 " Python-LSP
-if executable('pylsp')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+lua require'lspconfig'.pylsp.setup{}
 
-let g:lsp_diagnostics_enabled = 0
 "##############################################################################
 " ddc設定
 "##############################################################################
@@ -237,7 +224,7 @@ call ddc#custom#patch_filetype(['deol'], 'sources', ['shell-history'])
 call ddc#custom#patch_global('ui', 'native')
 "call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sources', [
-\ 'vim-lsp',
+\ 'nvim-lsp',
 \ 'necovim',
 \ 'around',
 \ 'file'
@@ -249,7 +236,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \   'converters': ['converter_remove_overlap'],
 \   'ignoreCase': v:true,
 \ },
-\ 'vim-lsp': {
+\ 'nvim-lsp': {
 \   'mark': '[LSP]',
 \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
 \   'minAutoCompleteLength': 1,
@@ -264,19 +251,18 @@ call ddc#custom#patch_global('sourceOptions', {
 \ })
 
 " キーマップ
-" inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
-" inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
-" inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-" inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+"inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
+"inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
+"inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+"inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
-" ポップアップ、Signatureヘルプ
-let g:lsp_signature_help_enabled = 0
+" ポップアップ
 call popup_preview#enable()
 call signature_help#enable()
-let g:signature_help_config = {
-      \ 'contentsStyle': 'full',
-      \ 'viewStyle': 'floating'
-      \ }
+"let g:signature_help_config = {
+"      \ 'contentsStyle': 'full',
+"      \ 'viewStyle': 'floating'
+"      \ }
 
 call ddc#enable()
 
@@ -288,16 +274,16 @@ call ddc#enable()
   let g:indent_guides_enable_on_vim_startup=0
   let g:indent_guides_start_level=1
   let g:indent_guides_space_guides=1
-  autocmd BufRead,BufNewFile *.py let g:indent_guides_guide_size=4
+  let g:indent_guides_guide_size=1
   let g:indent_guides_auto_colors=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
   let g:indent_guides_color_change_percent = 30
 
-"NERDTree（ディレクトリ内のツリー表示）
+" NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrowExpandable = ""
-  let g:NERDTreeDirArrowCollapsible = ""
+  let g:NERDTreeDirArrowExpandable = "\uf138"
+  let g:NERDTreeDirArrowCollapsible = "\uf13a"
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Vim-devicons
@@ -336,8 +322,6 @@ call ddc#enable()
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = ""
-  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = ""
 
 " vim-nerdtree-syntax-highlight
   let g:NERDTreeLimitedSyntax = 1
@@ -347,7 +331,7 @@ call ddc#enable()
   " javacコンパイル時のエンコードをUTF-8に、表示言語を英語にする
   let g:ale_java_javac_options='-encoding UTF-8 -J-Duser.language=en'
   " LSPを使用しない
-  let g:ale_disable_lsp=1
+  "let g:ale_disable_lsp=1
   " 使用するLinterの選択
   let g:ale_linters = {
   \   'python': ['pylint','pylsp']
@@ -365,8 +349,6 @@ augroup END
   map y <Plug>(operator-flashy)
   map Y <Plug>(operator-flashy)$
   let g:operator#flashy#flash_time=1000
-
-" Unite設定
 
   " Unite内の検索にagを使用する。
   if executable('ag')
@@ -398,13 +380,13 @@ let g:lightline = {
   \             ['separator_tab'],
   \             ['bufferbefore', 'buffercurrent', 'bufferafter']
   \           ],
-  \   'right':[['traveler']]
+  \   'right':[['travler']]
   \ },
-  \ 'component': { 
-  \   'lineinfo': "%3l:%-2v",
+  \ 'component': {
+  \   'lineinfo': " %3l:%-2v",
   \   'charvaluehex': '0x%B',
   \   'separator_tab': '',
-  \   'traveler': ""
+  \   'travler': ""
   \ },
   \ 'component_function': {
   \   'bufferinfo': 'lightline#buffer#bufferinfo',
@@ -434,15 +416,15 @@ let g:lightline = {
   \   'linter_errors': 'error',
   \   'linter_fine': 'left'
   \ },
-  \ 'separator': { 'left': "", 'right': "" },
-  \ 'subseparator': { 'left': "", 'right': "" }
+  \ 'separator': { 'left': " ", 'right': " " },
+  \ 'subseparator': { 'left': " ", 'right': " " }
   \ }
 
-"Lightline-ale用グリフ指定
-  let g:lightline#ale#indicator_checking = ""
-  let g:lightline#ale#indicator_warnings = ""
-  let g:lightline#ale#indicator_errors = ""
-  let g:lightline#ale#indicator_ok = ""
+" Lightline-ale用グリフ指定
+  let g:lightline#ale#indicator_checking = "  "
+  let g:lightline#ale#indicator_warnings = "  "
+  let g:lightline#ale#indicator_errors = "  "
+  let g:lightline#ale#indicator_ok = "  "
 
   let g:unite_force_overwrite_statusline = 0
   let g:vimfiler_force_overwrite_statusline = 0
@@ -476,7 +458,7 @@ endfunction
 
 function! GitBranchName()
   if FugitiveHead() != ''
-    return "".FugitiveHead()
+    return " ".FugitiveHead()
   endif
     return ''
 endfunction
@@ -491,10 +473,10 @@ nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
 
 " lightline-buffer UI
-let g:lightline_buffer_logo = ""
+let g:lightline_buffer_logo = " "
 let g:lightline_buffer_readonly_icon = "﫺"
 let g:lightline_buffer_modified_icon = "贈"
-let g:lightline_buffer_git_icon = " "
+let g:lightline_buffer_git_icon = ""
 let g:lightline_buffer_ellipsis_icon = '..'
 let g:lightline_buffer_expand_left_icon = '◀'
 let g:lightline_buffer_expand_right_icon = '▶'
@@ -520,7 +502,7 @@ let g:rainbow_active=1
 " 一般設定
 "##############################################################################
 
-" ###作業ファイル生成の無効化
+"###作業ファイル生成の無効化
   " SWAPファイル無効化
   set noswapfile
 
@@ -539,7 +521,7 @@ let g:rainbow_active=1
 
   " 特殊文字の可視化
   set list
-"  set listchars=tab:↦-,trail:-,extends:>,precedes:<
+  " set listchars=tab:↦-,trail:-,extends:>,precedes:<
   set listchars=tab:↦-,trail:-,extends:↣,precedes:↢
 
   " 行折り返しの無効化
@@ -576,9 +558,6 @@ let g:rainbow_active=1
   set winblend=30
   set pumblend=30
 
-  " 背景色をダークにする
-  set background=dark
-
 " ###検索オプション###
   " インクリメンタルサーチを使う
   set incsearch
@@ -611,74 +590,103 @@ let g:rainbow_active=1
 
 " ###その他の設定
 
-  " バックスペースの動作をWindowsと同じにする
-  set backspace=indent,eol,start
+" バックスペースの動作をWindowsと同じにする
+set backspace=indent,eol,start
 
-  " 編集中に他のファイルを表示可能にする
-  set hidden
+" 編集中に他のファイルを表示可能にする
+set hidden
 
-  " 常にTablineを表示する
-  set showtabline=2
+" 常にTablineを表示する
+set showtabline=2
 
-  " 他のプロセスがファイルを変更した際に自動で再読み込みを行う
-  set autoread
+" 他のプロセスがファイルを変更した際に自動で再読み込みを行う
+set autoread
 
-  " diff実行時に縦分割で結果を表示する／内部Diffコマンドを利用する
-  set diffopt=vertical,internal
+" diff実行時に縦分割で結果を表示する
+set diffopt=vertical
 
-  " ペーストモードトグルの有効化
-  set pastetoggle=<C-s>
+" ペーストモードトグルの有効化
+set pastetoggle=<C-s>
 
-  " カラースキームの設定
+" カラースキームの設定
+" colorscheme moonshine "Terminal用
+set background=dark
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
   let ayucolor='mirage'
-  colorscheme ayu
+colorscheme ayu
+
+" Pythonのパス指定
+let g:python3_host_prog='C:\bin\Python310\python.exe'
 
 "##############################################################################
 " キーマップ設定
 "##############################################################################
 
-  " Leader設定
-  let mapleader = "\<Space>"
+" Leader設定
+let mapleader = "\<Space>"
 
-  " エスケープ2回でハイライト表示解除
-  nnoremap <silent><Esc><Esc> :nohlsearch<CR>
+" エスケープ2回でハイライト表示解除
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
-  " スペース＋「.」で_vimrcを開く
-  nnoremap <Leader>. :edit $HOME/dotfiles/_vimrc
+" スペース＋「.」でinit.vimを開く
+nnoremap <Leader>. :edit ~\..\AppData\Local\nvim\init.vim
 
-  " スペース＋「,」で_gvimrcを開く
-  nnoremap <Leader>, :edit $HOME/dotfiles/_gvimrc
+" スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
+nnoremap <Leader>U :Unite 
 
-  " スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
-  nnoremap <Leader>U :Unite 
+" スペース＋「u」でDenite.vimの呼び出し（Deniteとスペースまで）
+nnoremap <Leader>u :Denite 
 
-  " スペース＋「u」でDenite.vimの呼び出し（Deniteとスペースまで）
-  nnoremap <Leader>u :Denite 
+" スペース＋「n」でNERDTree呼び出し
+nnoremap <Leader>n :NERDTree
 
-  " スペース＋「n」でNERDTree呼び出し
-  nnoremap <Leader>n :NERDTree
+" スペース＋「de」でdein呼び出し(call dein#)
+nnoremap <Leader>de :call dein#
 
-  " スペース＋「de」でdein呼び出し(call dein#)
-  nnoremap <Leader>de :call dein#
+" vim-anzu関連
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
 
-  " vim-anzu関連
-  nmap n <Plug>(anzu-n)
-  nmap N <Plug>(anzu-N)
-  nmap * <Plug>(anzu-star)
-  nmap # <Plug>(anzu-sharp)
+" ALE エラー間を移動する
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-  " ALE エラー間を移動する
-  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-  nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-  " undotreeの表示切替
-  nnoremap <F5> :UndotreeToggle<CR>
+" undotreeの表示切替
+nnoremap <F5> :UndotreeToggle<CR>
 
 "##############################################################################
-"終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
+"その他設定
 "##############################################################################
+
+" マウスを無効にする
+set mouse=""
+
+" フォント設定
+set guifont=Ricty\ Nerd\ Font\ Unhinted:h16
+
+" クリップボードとヤンクバッファを共用する。
+set clipboard=unnamed
+
+" エラートーンを無効化する
+set visualbell t_vb=
+
+" vim-indent-guidesの設定
+  let g:indent_guides_enable_on_vim_startup=0
+  let g:indent_guides_start_level=1
+  let g:indent_guides_space_guides=1
+  let g:indent_guides_guide_size=2
+  let g:indent_guides_auto_colors=0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkSlateBlue
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=LightSlateGray
+  let g:indent_guides_color_change_percent = 30
+
+"##############################################################################
+" 終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
+"##############################################################################
+
 filetype plugin indent on
 syntax on
 syntax enable

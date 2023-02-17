@@ -1,48 +1,47 @@
 "###############################################################################
-"gui-vim用設定
+" gui-vim用設定
 "###############################################################################
 
-"Light-Line用設定
+" Light-Line用設定
 set ambiwidth=double
 
-"マウスを無効にする
+" マウスを無効にする
 set mouse=""
 
-"フォント設定
+" フォント設定
 set guifont=Ricty_Nerd_Font_Unhinted:h16:cSHIFTJIS
 
-"レンダリング設定
+" レンダリング設定
 set renderoptions=type:directx,renmode:5
 
-"透過設定
+" 透過設定
 gui
-set transparency=255
 
-"クリップボードとヤンクバッファを共用する。
+" クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed
 
-"エラートーンを無効化する
+" エラートーンを無効化する
 set visualbell t_vb=
 
-"ツールバーを非表示にする
+" ツールバーを非表示にする
 set guioptions-=T
 set guioptions-=m
 
-"タブ表示をvimと同じにする
+" タブ表示をvimと同じにする
 set guioptions-=e
 
-"スクロールバーを非表示にする
+" スクロールバーを非表示にする
 set guioptions-=r
 set guioptions-=R
 set guioptions-=b
 
 
-"プリンタ用のフォント設定
+" プリンタ用のフォント設定
 set printfont=Ricty_Writing:h10:cSHIFTJIS
 
-"IMEの有効／無効でカーソル色を変える
-"半角：グレー、全角：ダークレッド
-"*hi Cursor guiの反転を判断する
+" IMEの有効／無効でカーソル色を変える
+" 半角：グレー、全角：ダークレッド
+" *hi Cursor guiの反転を判断する
 
 augroup ColorSchemeHook
   autocmd!
@@ -61,11 +60,12 @@ else
 endif
 endfunction
 
-"gui-vim用のbackground、カラースキーム設定
+" gui-vim用のbackground、カラースキーム設定
 set background=dark
+let ayucolor='mirage'
 color ayu
 
-"vim-indent-guidesの設定
+" vim-indent-guidesの設定
   let g:indent_guides_enable_on_vim_startup=0
   let g:indent_guides_start_level=1
   let g:indent_guides_space_guides=1
@@ -75,5 +75,5 @@ color ayu
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=LightSlateGray
   let g:indent_guides_color_change_percent = 30
 
-"起動時に全画面にする
+" 起動時に全画面にする
 autocmd GUIEnter * simalt ~x
