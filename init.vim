@@ -12,15 +12,17 @@ set fileencodings=iso-2022-jp,utf-8,cp932,utf-16le,utf-16,sjis,euc-jp,latin1
 "##############################################################################
 " Dein.vim、プラグイン設定
 "##############################################################################
-set runtimepath+=C:\Users\003028\myenv\.cache\dein\repos\github.com\Shougo\dein.vim
 
-let g:dein#install_process_timeout=1200
+if has('vim_starting')
+  set runtimepath+=~\.cache\dein\repos\github.com\Shougo\dein.vim
+endif
 
 " Deinロード
-call dein#begin('C:\Users\003028\myenv\.cache\dein')
+if dein#load_state('~\.cache\dein\.')
+  call dein#begin('~\.cache\dein\.')
 
 " DeinをDein自体に管理させる
-call dein#add('C:\Users\003028\myenv\.cache\dein\repos\github.com\Shougo\dein.vim')
+  call dein#add('~\.cache\dein\repos\github.com\Shougo\dein.vim')
 
   " Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
@@ -199,7 +201,9 @@ call dein#add('C:\Users\003028\myenv\.cache\dein\repos\github.com\Shougo\dein.vi
   call dein#add('pepo-le/win-ime-con.nvim')
 
   " Dein終端処理
-call dein#end()
+  call dein#end()
+  call dein#save_state()
+endif
 
 " もし、未インストールのプラグインがあった場合、インストール
 if dein#check_install()
@@ -630,7 +634,7 @@ let mapleader = "\<Space>"
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
 " スペース＋「.」でinit.vimを開く
-nnoremap <Leader>. :edit ~\..\AppData\Local\nvim\init.vim
+nnoremap <Leader>. :edit $LOCALAPPDATA\nvim\init.vim
 
 " スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
 nnoremap <Leader>U :Unite 

@@ -15,15 +15,15 @@ set ambiwidth=double
 "##############################################################################
 
 if has('vim_starting')
-  set runtimepath+=~\.vim\dein\repos\github.com\Shougo\dein.vim
+  set runtimepath+=~\.cache\dein\repos\github.com\Shougo\dein.vim
 endif
 
 " Deinロード
-if dein#load_state('~\.vim\dein\.')
-  call dein#begin('~\.vim\dein\.')
+if dein#load_state('~\.cache\dein\.')
+  call dein#begin('~\.cache\dein\.')
 
 " DeinをDein自体に管理させる
-  call dein#add('~\.vim\dein\repos\github.com\Shougo\dein.vim')
+  call dein#add('~\.cache\dein\repos\github.com\Shougo\dein.vim')
 
   " Vim-devicons（deviconを表示させる）
   call dein#add('ryanoasis/vim-devicons')
@@ -571,10 +571,6 @@ let g:rainbow_active=1
 
   " コマンド入力時、Tabキー補完を有効にする
   set wildmenu
-
-  " ウィンドウの透過表示
-  set winblend=30
-  set pumblend=30
 
   " 背景色をダークにする
   set background=dark
