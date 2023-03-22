@@ -155,6 +155,9 @@ if dein#load_state('~\.cache\dein\.')
   " ale（シンタックスチェッカー）
   call dein#add('dense-analysis/ale')
 
+  " nvim-treesitter（構文解析ツール）
+  call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
+
   " Gitgutter（gitレポジトリファイルの差分表示）
   call dein#add('airblade/vim-gitgutter')
 
@@ -340,6 +343,18 @@ call ddc#enable()
   let g:ale_linters = {
   \   'python': ['pylint','pylsp']
   \}
+
+" treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "vue", "ruby" },  -- list of language that will be disabled
+  },
+}
+EOF
+
 
 " vim-anzu
 " 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
@@ -669,7 +684,7 @@ nnoremap <F5> :UndotreeToggle<CR>
 set mouse=""
 
 " フォント設定
-set guifont=Ricty\ Nerd\ Font\ Unhinted:h16
+set guifont=RictyUnhinted\ Nerd\ Font:h16
 
 " クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed

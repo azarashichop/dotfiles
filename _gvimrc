@@ -9,7 +9,7 @@ set ambiwidth=double
 set mouse=""
 
 " フォント設定
-set guifont=Ricty_Nerd_Font_Unhinted:h16:cSHIFTJIS
+set guifont=RictyUnhinted_Nerd_Font:h16:cSHIFTJIS
 
 " レンダリング設定
 set renderoptions=type:directx,renmode:5
