@@ -139,8 +139,8 @@ if dein#load_state('~\.cache\dein\.')
   call dein#add('trusktr/seti.vim')
   call dein#add('Luxed/ayu-vim')
 
-  " vim-indent-guides（インデントの可視化）
-  call dein#add('nathanaelkane/vim-indent-guides')
+  " indentLine（インデント可視化）
+  call dein#add('Yggdroot/indentLine')
 
   " rainbow（対応ブランケットのカラーリング）
   call dein#add('luochen1990/rainbow')
@@ -228,6 +228,26 @@ if executable('pylsp')
         \ })
 endif
 
+" JavaScript-LSP
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
+endif
+
+" TypeScript-LSP
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+        \ })
+endif
+
 let g:lsp_diagnostics_enabled = 0
 
 "##############################################################################
@@ -285,15 +305,8 @@ call ddc#enable()
 " プラグイン設定
 "##############################################################################
 
-" vim-indent-guides
-  let g:indent_guides_enable_on_vim_startup=0
-  let g:indent_guides_start_level=1
-  let g:indent_guides_space_guides=1
-  autocmd BufRead,BufNewFile *.py let g:indent_guides_guide_size=4
-  let g:indent_guides_auto_colors=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
-  let g:indent_guides_color_change_percent = 30
+" indentLine
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1

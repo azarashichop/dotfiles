@@ -37,7 +37,7 @@ set guioptions-=b
 
 
 " プリンタ用のフォント設定
-set printfont=Ricty_Writing:h10:cSHIFTJIS
+set printfont=RictyUnhinted_Nerd_Font:h10:cSHIFTJIS
 
 " IMEの有効／無効でカーソル色を変える
 " 半角：グレー、全角：ダークレッド

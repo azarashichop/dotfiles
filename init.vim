@@ -137,8 +137,8 @@ if dein#load_state('~\.cache\dein\.')
   call dein#add('trusktr/seti.vim')
   call dein#add('Luxed/ayu-vim')
 
-  " vim-indent-guides（インデントの可視化）
-  call dein#add('nathanaelkane/vim-indent-guides')
+  " indentLine（インデント可視化）
+  call dein#add('Yggdroot/indentLine')
 
   " rainbow（対応ブランケットのカラーリング）
   call dein#add('luochen1990/rainbow')
@@ -151,6 +151,9 @@ if dein#load_state('~\.cache\dein\.')
 
   " undotree
   call dein#add('mbbill/undotree')
+
+  " aerial（アウトライン表示）
+  call dein#add('stevearc/aerial.nvim')
 
   " ale（シンタックスチェッカー）
   call dein#add('dense-analysis/ale')
@@ -223,6 +226,9 @@ let g:dein#auto_recache = 1
 " Python-LSP
 lua require'lspconfig'.pylsp.setup{}
 
+" JavaScript-LSP
+lua require'lspconfig'.tsserver.setup{}
+
 "##############################################################################
 " ddc設定
 "##############################################################################
@@ -274,18 +280,24 @@ call signature_help#enable()
 call ddc#enable()
 
 "##############################################################################
+" aerial.nvim設定
+"##############################################################################
+
+lua <<EOF
+require'aerial'.setup {
+  on_attach = function(bufnr)
+    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
+    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
+  end
+}
+EOF
+
+"##############################################################################
 " プラグイン設定
 "##############################################################################
 
-" vim-indent-guides
-  let g:indent_guides_enable_on_vim_startup=0
-  let g:indent_guides_start_level=1
-  let g:indent_guides_space_guides=1
-  let g:indent_guides_guide_size=1
-  let g:indent_guides_auto_colors=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgray
-  let g:indent_guides_color_change_percent = 30
+" indentLine
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
@@ -347,10 +359,13 @@ call ddc#enable()
 " treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { 'lua' },
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "vue", "ruby" },  -- list of language that will be disabled
+    disable = { 'vue', 'ruby' },  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true,
   },
 }
 EOF
@@ -675,6 +690,9 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " undotreeの表示切替
 nnoremap <F5> :UndotreeToggle<CR>
+
+" Aerialの切り替え
+nmap <Leader>a <cmd>AerialToggle!<CR>
 
 "##############################################################################
 "その他設定
