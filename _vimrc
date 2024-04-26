@@ -90,6 +90,9 @@ if dein#load_state('~\.cache\dein\.')
   " neco-vim(Vimスクリプト補完プラグイン）
   call dein#add('Shougo/neco-vim')
 
+  " dbext（SQL向けプラグイン）
+  call dein#add('vim-scripts/dbext.vim')
+
   " neoyank(ヤンクヒストリの表示)
   call dein#add('Shougo/neoyank.vim')
 
@@ -138,9 +141,13 @@ if dein#load_state('~\.cache\dein\.')
   call dein#add('raphamorim/lucario', {'rev': 'main'})
   call dein#add('trusktr/seti.vim')
   call dein#add('Luxed/ayu-vim')
+  call dein#add('romainl/Apprentice')
 
   " indentLine（インデント可視化）
-  call dein#add('Yggdroot/indentLine')
+  "call dein#add('Yggdroot/indentLine')
+
+  " indentLine（インデント可視化）
+  call dein#add('preservim/vim-indent-guides')
 
   " rainbow（対応ブランケットのカラーリング）
   call dein#add('luochen1990/rainbow')
@@ -157,8 +164,11 @@ if dein#load_state('~\.cache\dein\.')
   " ale（シンタックスチェッカー）
   call dein#add('dense-analysis/ale')
 
+  " Vista（アウトライン表示）
+  call dein#add('liuchengxu/vista.vim')
+
   " Gitgutter（gitレポジトリファイルの差分表示）
-  call dein#add('airblade/vim-gitgutter')
+  call dein#add('airblade/vim-gitgutter', {'rev': 'main'})
 
   " vim-over（置換ユーティリティ）
   call dein#add('osyo-manga/vim-over')
@@ -166,7 +176,7 @@ if dein#load_state('~\.cache\dein\.')
   " clever-f（検索後の移動を楽にする＆ハイライト表示）
   call dein#add('rhysd/clever-f.vim')
 
-  " vim-anzu（検索位置の表示）
+  " vim-anzu（検索単語ヒット数の表示）
   call dein#add('osyo-manga/vim-anzu')
 
   " agプラグイン
@@ -248,6 +258,18 @@ if executable('typescript-language-server')
         \ })
 endif
 
+" Bash-LSP
+if executable('bash-language-server')
+  augroup LspBash
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'bash-language-server',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+          \ 'allowlist': ['sh'],
+          \ })
+  augroup END
+endif
+
 let g:lsp_diagnostics_enabled = 0
 
 "##############################################################################
@@ -306,7 +328,7 @@ call ddc#enable()
 "##############################################################################
 
 " indentLine
-  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+  "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
@@ -327,7 +349,8 @@ call ddc#enable()
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
   "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = "\ue736"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xml'] = ""
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zip'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['7z'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['log'] = ""
@@ -340,8 +363,9 @@ call ddc#enable()
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pptx'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['potx'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ppt'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['csv'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpg'] = ""
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jepg'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpeg'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['url'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cap'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exe'] = ""
@@ -349,6 +373,7 @@ call ddc#enable()
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pem'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['lnk'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = ""
@@ -397,7 +422,7 @@ let g:lightline = {
   \   'left': [
   \             ['mode', 'paste'],
   \             ['fugitive'],
-  \             ['readonly', 'modified', 'filename', 'anzu']
+  \             ['readonly', 'modified', 'filename', 'anzu', 'vista']
   \           ],
   \   'right':  [
   \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
@@ -428,7 +453,8 @@ let g:lightline = {
   \   'readonly': 'PermitFlag',
   \   'fugitive': 'GitBranchName',
   \   'anzu': 'anzu#search_status',
-  \   'date': 'Calender'
+  \   'date': 'Calender',
+  \   'vista': 'NearestMethodOrFunction',
   \ },
   \ 'component_expand': {
   \   'buffercurrent': 'lightline#buffer#buffercurrent',
@@ -451,6 +477,18 @@ let g:lightline = {
   \ 'separator': { 'left': "", 'right': "" },
   \ 'subseparator': { 'left': "", 'right': "" }
   \ }
+
+
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
 
 "Lightline-ale用グリフ指定
   let g:lightline#ale#indicator_checking = ""
@@ -501,13 +539,19 @@ function! Calender()
   return " "._day."  "._time
 endfunction
 
+function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
 nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
 
 " lightline-buffer UI
 let g:lightline_buffer_logo = ""
-let g:lightline_buffer_readonly_icon = "﫺"
-let g:lightline_buffer_modified_icon = "贈"
+"let g:lightline_buffer_readonly_icon = "﫺"
+let g:lightline_buffer_readonly_icon = "󱚯"
+"let g:lightline_buffer_modified_icon = "贈"
+let g:lightline_buffer_modified_icon = ""
 let g:lightline_buffer_git_icon = " "
 let g:lightline_buffer_ellipsis_icon = '..'
 let g:lightline_buffer_expand_left_icon = '◀'
@@ -586,8 +630,8 @@ let g:rainbow_active=1
   " コマンド入力時、Tabキー補完を有効にする
   set wildmenu
 
-  " 背景色をダークにする
-  set background=dark
+  " 背景色
+  set background=light
 
 " ###検索オプション###
   " インクリメンタルサーチを使う
@@ -694,3 +738,5 @@ syntax on
 syntax enable
 set hlsearch
 autocmd FileType text setlocal textwidth=0
+call setcellwidths([[0xE0B0, 0xE0BF, 1]])
+set tags=.tags;$HOME

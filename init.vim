@@ -8,6 +8,7 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,utf-16le,utf-16,sjis,euc-jp,latin1
+set ambiwidth=double
 
 "##############################################################################
 " Dein.vim、プラグイン設定
@@ -162,7 +163,7 @@ if dein#load_state('~\.cache\dein\.')
   call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
 
   " Gitgutter（gitレポジトリファイルの差分表示）
-  call dein#add('airblade/vim-gitgutter')
+  call dein#add('airblade/vim-gitgutter', {'rev': 'main'})
 
   " vim-over（置換ユーティリティ）
   call dein#add('osyo-manga/vim-over')
@@ -357,18 +358,16 @@ EOF
   \}
 
 " treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 'lua' },
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { 'vue', 'ruby' },  -- list of language that will be disabled
-  },
-  indent = {
-    enable = true,
-  },
-}
-EOF
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"  ensure_installed = { 'lua' },
+"  highlight = {
+"    enable = true,              -- false will disable the whole extension
+"    disable = { 'vue', 'ruby' },  -- list of language that will be disabled
+"  },
+"  indent = { enable = true, },
+"}
+"EOF
 
 
 " vim-anzu
@@ -450,8 +449,8 @@ let g:lightline = {
   \   'linter_errors': 'error',
   \   'linter_fine': 'left'
   \ },
-  \ 'separator': { 'left': " ", 'right': " " },
-  \ 'subseparator': { 'left': " ", 'right': " " }
+  \ 'separator': { 'left': "", 'right': "" },
+  \ 'subseparator': { 'left': "", 'right': "" }
   \ }
 
 " Lightline-ale用グリフ指定
@@ -512,8 +511,8 @@ let g:lightline_buffer_readonly_icon = "﫺"
 let g:lightline_buffer_modified_icon = "贈"
 let g:lightline_buffer_git_icon = ""
 let g:lightline_buffer_ellipsis_icon = '..'
-let g:lightline_buffer_expand_left_icon = '◀'
-let g:lightline_buffer_expand_right_icon = '▶'
+let g:lightline_buffer_expand_left_icon = '▶'
+let g:lightline_buffer_expand_right_icon = ''
 let g:lightline_buffer_active_buffer_left_icon = ''
 let g:lightline_buffer_active_buffer_right_icon = ''
 let g:lightline_buffer_separator_icon = '  '
@@ -702,7 +701,7 @@ nmap <Leader>a <cmd>AerialToggle!<CR>
 set mouse=""
 
 " フォント設定
-set guifont=RictyUnhinted\ Nerd\ Font:h16
+set guifont=Cyroit\ BS\ Unhinted:h16
 
 " クリップボードとヤンクバッファを共用する。
 set clipboard=unnamed
@@ -729,3 +728,8 @@ syntax on
 syntax enable
 set hlsearch
 autocmd FileType text setlocal textwidth=0
+if has('gui_running')
+  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
+else
+  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
+endif
