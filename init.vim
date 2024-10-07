@@ -11,214 +11,164 @@ set fileencodings=iso-2022-jp,utf-8,cp932,utf-16le,utf-16,sjis,euc-jp,latin1
 set ambiwidth=double
 
 "##############################################################################
-" Dein.vim、プラグイン設定
+" Vim-Jetpack
 "##############################################################################
 
-if has('vim_starting')
-  set runtimepath+=~\.cache\dein\repos\github.com\Shougo\dein.vim
-endif
+  packadd vim-jetpack
+  call jetpack#begin()
 
-" Deinロード
-if dein#load_state('~\.cache\dein\.')
-  call dein#begin('~\.cache\dein\.')
-
-" DeinをDein自体に管理させる
-  call dein#add('~\.cache\dein\repos\github.com\Shougo\dein.vim')
+  " Vim-jetpack
+  call jetpack#add('tani/vim-jetpack', {'opt': 1}) "bootstrap
 
   " Vim-devicons（deviconを表示させる）
-  call dein#add('ryanoasis/vim-devicons')
+  call jetpack#add('ryanoasis/vim-devicons')
 
   " Unite Vim（統合UI）と関連プラグイン
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/unite-outline')
-  call dein#add('Shougo/vimfiler')
-  call dein#add('ujihisa/unite-colorscheme')
+  call jetpack#add('Shougo/unite.vim')
+  call jetpack#add('Shougo/neomru.vim')
+  call jetpack#add('Shougo/unite-outline')
+  call jetpack#add('Shougo/vimfiler')
+  call jetpack#add('ujihisa/unite-colorscheme')
 
   " Denite
-  call dein#add('Shougo/denite.nvim')
+  call jetpack#add('Shougo/denite.nvim')
 
   " VimProc（非同期処理の実現）
-  call dein#add('Shougo/vimproc')
+  call jetpack#add('Shougo/vimproc')
 
   " deol.nvim（VIM内でシェル実行）
-  call dein#add('Shougo/deol.nvim')
+  call jetpack#add('Shougo/deol.nvim')
 
   " バイナリビューワ
-  call dein#add('Shougo/vinarise.vim')
-
-  " Denoプラグイン
-  call dein#add('vim-denops/denops.vim')
-
-  " denopsポップアッププレビュー
-  call dein#add('matsui54/denops-popup-preview.vim')
-
-  " denops Signatureヘルプ表示
-  call dein#add('matsui54/denops-signature_help')
+  call jetpack#add('Shougo/vinarise.vim')
 
   " LSPプラグイン
-  call dein#add('neovim/nvim-lspconfig')
+  call jetpack#add('neovim/nvim-lspconfig')
 
-  " ddc-lsp
-  call dein#add('Shougo/ddc-source-nvim-lsp')
-
-  " ddc（補完プラグイン）
-  call dein#add('Shougo/ddc.vim')
-
-  " ddc用UI
-  call dein#add('Shougo/ddc-ui-pum')
-  call dein#add('Shougo/ddc-ui-native')
+  " CoC（補完プラグイン）
+  call jetpack#add('neoclide/coc.nvim', {'rev': 'release'})
 
   " ポップアップ表示
-  call dein#add('Shougo/pum.vim')
-
-  " ddcソース（カーソル周辺の既出単語表示）
-  call dein#add('Shougo/ddc-around')
-
-  " ddcソース（ファイル名補完）
-  call dein#add('LumaKernel/ddc-file')
-
-  " ddcフィルタ（入力中の単語を補完の対象にする）
-  call dein#add('Shougo/ddc-matcher_head')
-
-  " ddcフィルタ（補完候補のソート）
-  call dein#add('Shougo/ddc-sorter_rank')
-
-  " ddcフィルタ（補完候補の重複除去）
-  call dein#add('Shougo/ddc-converter_remove_overlap')
+  call jetpack#add('Shougo/pum.vim')
 
   "neco-vim(Vimスクリプト補完プラグイン）
-  call dein#add('Shougo/neco-vim')
+  call jetpack#add('Shougo/neco-vim')
 
   " neoyank(ヤンクヒストリの表示)
-  call dein#add('Shougo/neoyank.vim')
+  call jetpack#add('Shougo/neoyank.vim')
 
   " vim-quickrun
-  call dein#add('thinca/vim-quickrun')
+  call jetpack#add('thinca/vim-quickrun')
 
   " Fugitive（Git連携）
-  call dein#add('tpope/vim-fugitive')
+  call jetpack#add('tpope/vim-fugitive')
 
   " vim-polyglot（多言語パック）
-  call dein#add('sheerun/vim-polyglot')
+  call jetpack#add('sheerun/vim-polyglot')
 
   " MarkDown用プラグイン
-  call dein#add('rcmdnk/vim-markdown')
+  call jetpack#add('rcmdnk/vim-markdown')
 
   " MarkDownプレビュープラグイン
-  call dein#add('suan/vim-instant-markdown')
+  call jetpack#add('suan/vim-instant-markdown')
 
   " Cisco IOS用シンタックスハイライト
-  call dein#add('momota/cisco.vim')
+  call jetpack#add('momota/cisco.vim')
 
   " メモ用シンタックスハイライト
-  call dein#add('vim-scripts/HybridText')
+  call jetpack#add('vim-scripts/HybridText')
 
   " PowerShell用シンタックスハイライト
-  call dein#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
+  call jetpack#add('vim-scripts/Windows-PowerShell-Syntax-Plugin')
 
   " カラースキームいろいろ
-  call dein#add('overcache/NeoSolarized')
-  call dein#add('tomasr/molokai')
-  call dein#add('cocopon/lightline-hybrid.vim')
-  call dein#add('wolf-dog/nighted.vim')
-  call dein#add('wolf-dog/lightline-nighted.vim')
-  call dein#add('aereal/vim-colors-japanesque')
-  call dein#add('jnurmine/Zenburn')
-  call dein#add('NLKNguyen/papercolor-theme')
-  call dein#add('freeo/vim-kalisi')
-  call dein#add('KKPMW/moonshine-vim')
-  call dein#add('morhetz/gruvbox')
-  call dein#add('gosukiwi/vim-atom-dark')
-  call dein#add('muellan/am-colors')
-  call dein#add('shinchu/lightline-gruvbox.vim')
-  call dein#add('croaker/mustang-vim')
-  call dein#add('rhysd/vim-color-spring-night')
-  call dein#add('raphamorim/lucario', {'rev': 'main'})
-  call dein#add('trusktr/seti.vim')
-  call dein#add('Luxed/ayu-vim')
+  call jetpack#add('overcache/NeoSolarized')
+  call jetpack#add('tomasr/molokai')
+  call jetpack#add('cocopon/lightline-hybrid.vim')
+  call jetpack#add('wolf-dog/nighted.vim')
+  call jetpack#add('wolf-dog/lightline-nighted.vim')
+  call jetpack#add('aereal/vim-colors-japanesque')
+  call jetpack#add('jnurmine/Zenburn')
+  call jetpack#add('NLKNguyen/papercolor-theme')
+  call jetpack#add('freeo/vim-kalisi')
+  call jetpack#add('KKPMW/moonshine-vim')
+  call jetpack#add('morhetz/gruvbox')
+  call jetpack#add('gosukiwi/vim-atom-dark')
+  call jetpack#add('muellan/am-colors')
+  call jetpack#add('shinchu/lightline-gruvbox.vim')
+  call jetpack#add('croaker/mustang-vim')
+  call jetpack#add('rhysd/vim-color-spring-night')
+  call jetpack#add('raphamorim/lucario', {'rev': 'main'})
+  call jetpack#add('trusktr/seti.vim')
+  call jetpack#add('Luxed/ayu-vim')
 
   " indentLine（インデント可視化）
-  call dein#add('Yggdroot/indentLine')
+  call jetpack#add('Yggdroot/indentLine')
 
   " rainbow（対応ブランケットのカラーリング）
-  call dein#add('luochen1990/rainbow')
+  call jetpack#add('luochen1990/rainbow')
 
   " vim-nerdtree-syntax-highlight（NERDTreeをカラー表示）
-  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+  call jetpack#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
   " NERDTree（ディレクトリ内のツリー表示）
-  call dein#add('scrooloose/nerdtree')
+  call jetpack#add('scrooloose/nerdtree')
 
   " undotree
-  call dein#add('mbbill/undotree')
+  call jetpack#add('mbbill/undotree')
 
   " aerial（アウトライン表示）
-  call dein#add('stevearc/aerial.nvim')
+  call jetpack#add('stevearc/aerial.nvim')
 
   " ale（シンタックスチェッカー）
-  call dein#add('dense-analysis/ale')
+  call jetpack#add('dense-analysis/ale')
 
   " nvim-treesitter（構文解析ツール）
-  call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
+  call jetpack#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
 
   " Gitgutter（gitレポジトリファイルの差分表示）
-  call dein#add('airblade/vim-gitgutter', {'rev': 'main'})
+  call jetpack#add('airblade/vim-gitgutter', {'rev': 'main'})
 
   " vim-over（置換ユーティリティ）
-  call dein#add('osyo-manga/vim-over')
+  call jetpack#add('osyo-manga/vim-over')
 
   " clever-f（検索後の移動を楽にする＆ハイライト表示）
-  call dein#add('rhysd/clever-f.vim')
+  call jetpack#add('rhysd/clever-f.vim')
 
   " vim-anzu（検索位置の表示）
-  call dein#add('osyo-manga/vim-anzu')
+  call jetpack#add('osyo-manga/vim-anzu')
 
   " agプラグイン
-  call dein#add('rking/ag.vim')
+  call jetpack#add('rking/ag.vim')
 
   " easy-motion（カーソル移動支援）
-  call dein#add('easymotion/vim-easymotion')
+  call jetpack#add('easymotion/vim-easymotion')
 
   " vim-operator-user（オペレータプラグイン）
-  call dein#add('kana/vim-operator-user')
+  call jetpack#add('kana/vim-operator-user')
 
   " vim-operator-flashy（ヤンクした部分を一瞬ハイライトする）
-  call dein#add('haya14busa/vim-operator-flashy')
+  call jetpack#add('haya14busa/vim-operator-flashy')
 
   " カレンダー
-  call dein#add('itchyny/calendar.vim')
+  call jetpack#add('itchyny/calendar.vim')
 
   " tagビューワ
-  call dein#add('majutsushi/tagbar')
+  call jetpack#add('majutsushi/tagbar')
 
   " lightline（ステータスライン装飾プラグイン）
-  call dein#add('itchyny/lightline.vim')
+  call jetpack#add('itchyny/lightline.vim')
 
   " lightline-ale（Lightline-Ale連携)
-  call dein#add('maximbaz/lightline-ale')
+  call jetpack#add('maximbaz/lightline-ale')
 
   " lightline-buffer
-  call dein#add('taohexxx/lightline-buffer')
+  call jetpack#add('taohexxx/lightline-buffer')
 
   "showtime.vim（プレゼン資料作成）
-  call dein#add('thinca/vim-showtime')
+  call jetpack#add('thinca/vim-showtime')
 
-  " Win-IME-con（IME動作支援）
-  call dein#add('pepo-le/win-ime-con.nvim')
-
-  " Dein終端処理
-  call dein#end()
-  call dein#save_state()
-endif
-
-" もし、未インストールのプラグインがあった場合、インストール
-if dein#check_install()
-  call dein#install()
-endif
-
-" 削除済プラグインのクリーンアップ
-let g:dein#auto_recache = 1
+  call jetpack#end()
 
 "##############################################################################
 " LSP設定
@@ -231,54 +181,8 @@ lua require'lspconfig'.pylsp.setup{}
 lua require'lspconfig'.tsserver.setup{}
 
 "##############################################################################
-" ddc設定
+" CoC設定
 "##############################################################################
-
-call ddc#custom#patch_filetype(['deol'], 'sources', ['shell-history'])
-call ddc#custom#patch_global('ui', 'native')
-"call ddc#custom#patch_global('completionMenu', 'pum.vim')
-call ddc#custom#patch_global('sources', [
-\ 'nvim-lsp',
-\ 'necovim',
-\ 'around',
-\ 'file'
-\ ])
-call ddc#custom#patch_global('sourceOptions', {
-\ '_': {
-\   'matchers': ['matcher_head'],
-\   'sorters': ['sorter_rank'],
-\   'converters': ['converter_remove_overlap'],
-\   'ignoreCase': v:true,
-\ },
-\ 'nvim-lsp': {
-\   'mark': '[LSP]',
-\   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-\   'minAutoCompleteLength': 1,
-\ },
-\ 'around': {'mark': '[A]'},
-\ 'file': {
-\   'mark': 'file',
-\   'isVolatile': v:true,
-\   'forceCompletionPattern': '\s\/s*'},
-\ 'necovim': {'mark': '[vim]'},
-\ 'shell-history': {'mark': '[shell]'},
-\ })
-
-" キーマップ
-"inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
-"inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
-"inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-"inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-
-" ポップアップ
-call popup_preview#enable()
-call signature_help#enable()
-"let g:signature_help_config = {
-"      \ 'contentsStyle': 'full',
-"      \ 'viewStyle': 'floating'
-"      \ }
-
-call ddc#enable()
 
 "##############################################################################
 " aerial.nvim設定
@@ -302,8 +206,8 @@ EOF
 
 " NERDTree（ディレクトリ内のツリー表示）
   let g:NERDTreeShowHidden=1
-  let g:NERDTreeDirArrowExpandable = "\uf138"
-  let g:NERDTreeDirArrowCollapsible = "\uf13a"
+  let g:NERDTreeDirArrowExpandable = ""
+  let g:NERDTreeDirArrowCollapsible = ""
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Vim-devicons
@@ -319,7 +223,8 @@ EOF
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
   "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = "\ue736"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xml'] = ""
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zip'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['7z'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['log'] = ""
@@ -332,8 +237,9 @@ EOF
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pptx'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['potx'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ppt'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['csv'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpg'] = ""
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jepg'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jpeg'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['url'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cap'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exe'] = ""
@@ -341,7 +247,10 @@ EOF
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['pem'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['crt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['cer'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['lnk'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_vimrc'] = ""
+  let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['_gvimrc'] = ""
 
 " vim-nerdtree-syntax-highlight
   let g:NERDTreeLimitedSyntax = 1
@@ -410,7 +319,7 @@ let g:lightline = {
   \ 'tabline': {
   \   'left': [
   \             ['bufferinfo'],
-  \             ['separator_tab'],
+  \             ['separator'],
   \             ['bufferbefore', 'buffercurrent', 'bufferafter']
   \           ],
   \   'right':[['travler']]
@@ -452,6 +361,17 @@ let g:lightline = {
   \ 'separator': { 'left': "", 'right': "" },
   \ 'subseparator': { 'left': "", 'right': "" }
   \ }
+
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
 
 " Lightline-ale用グリフ指定
   let g:lightline#ale#indicator_checking = "  "
@@ -506,13 +426,15 @@ nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
 
 " lightline-buffer UI
-let g:lightline_buffer_logo = " "
-let g:lightline_buffer_readonly_icon = "﫺"
-let g:lightline_buffer_modified_icon = "贈"
-let g:lightline_buffer_git_icon = ""
+let g:lightline_buffer_logo = ""
+"let g:lightline_buffer_readonly_icon = "﫺"
+let g:lightline_buffer_readonly_icon = "󱚯"
+"let g:lightline_buffer_modified_icon = "贈"
+let g:lightline_buffer_modified_icon = ""
+let g:lightline_buffer_git_icon = " "
 let g:lightline_buffer_ellipsis_icon = '..'
-let g:lightline_buffer_expand_left_icon = '▶'
-let g:lightline_buffer_expand_right_icon = ''
+let g:lightline_buffer_expand_left_icon = '◀'
+let g:lightline_buffer_expand_right_icon = '▶'
 let g:lightline_buffer_active_buffer_left_icon = ''
 let g:lightline_buffer_active_buffer_right_icon = ''
 let g:lightline_buffer_separator_icon = '  '
@@ -733,3 +655,5 @@ if has('gui_running')
 else
   call setcellwidths([[0xE0B0, 0xE0B3, 1]])
 endif
+
+call setcellwidths([[0xF138, 0xF13A, 2]])
