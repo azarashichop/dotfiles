@@ -107,6 +107,7 @@ set ambiwidth=double
   call jetpack#add('Luxed/ayu-vim')
   call jetpack#add('romainl/Apprentice')
   call jetpack#add('kaicataldo/material.vim')
+  "call jetpack#add('catppuccin/nvim')
 
   " indentLine（インデント可視化）
   call jetpack#add('preservim/vim-indent-guides')
@@ -323,7 +324,7 @@ augroup END
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'ayu_mirage',
+  \ 'colorscheme': 'ayu_light',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left': [

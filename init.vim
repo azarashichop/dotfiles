@@ -178,7 +178,8 @@ set ambiwidth=double
 lua require'lspconfig'.pylsp.setup{}
 
 " JavaScript-LSP
-lua require'lspconfig'.tsserver.setup{}
+"lua require'lspconfig'.tsserver.setup{}
+lua require'lspconfig'.ts_ls.setup{}
 
 "##############################################################################
 " CoC設定
