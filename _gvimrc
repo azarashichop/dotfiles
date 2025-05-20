@@ -65,6 +65,9 @@ set background=dark
 let ayucolor='mirage'
 color ayu
 
+" Sclowの色指定
+highlight link SclowSbar WildMenu
+
 " 起動時に全画面にする
 autocmd GUIEnter * simalt ~x
 call setcellwidths([[0xE0B0, 0xE0B3, 1]])

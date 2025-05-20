@@ -107,6 +107,7 @@ set ambiwidth=double
   call jetpack#add('Luxed/ayu-vim')
   call jetpack#add('romainl/Apprentice')
   call jetpack#add('kaicataldo/material.vim')
+  call jetpack#add('ghifarit53/tokyonight-vim')
   "call jetpack#add('catppuccin/nvim')
 
   " indentLine（インデント可視化）
@@ -133,14 +134,23 @@ set ambiwidth=double
   " Gitgutter（gitレポジトリファイルの差分表示）
   call jetpack#add('airblade/vim-gitgutter', {'rev': 'main'})
 
+  " vim-sclow（簡易スクロールバー表示）
+  call jetpack#add('obcat/vim-sclow')
+
   " vim-over（置換ユーティリティ）
   call jetpack#add('osyo-manga/vim-over')
+
+  " vim_current_word（カーソル位置の単語をハイライト）
+  call jetpack#add('dominikduda/vim_current_word')
+
+  " vim-smoothie（スクロールを滑らかにする）
+  call jetpack#add('psliwka/vim-smoothie')
 
   " clever-f（検索後の移動を楽にする＆ハイライト表示）
   call jetpack#add('rhysd/clever-f.vim')
 
-  " vim-anzu（検索単語ヒット数の表示）
-  call jetpack#add('osyo-manga/vim-anzu')
+  " vim-hitspop（検索単語ヒット数の表示）
+  call jetpack#add('obcat/vim-hitspop')
 
   " agプラグイン
   call jetpack#add('rking/ag.vim')
@@ -225,13 +235,6 @@ endif
 let g:lsp_diagnostics_enabled = 0
 
 "##############################################################################
-" CoC設定
-"##############################################################################
-
-
-
-
-"##############################################################################
 " プラグイン設定
 "##############################################################################
 
@@ -255,9 +258,7 @@ let g:lsp_diagnostics_enabled = 0
   let g:DevIconsDefaultFolderOpenSymbol = ""
   " ファイルタイプ別グリフ指定
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = "\ue736"
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xml'] = ""
-  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zip'] = ""
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['7z'] = ""
@@ -300,14 +301,6 @@ let g:lsp_diagnostics_enabled = 0
   \   'python': ['pylint','pylsp']
   \}
 
-" vim-anzu
-" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
-" 検索ヒット数の表示を消去する
-augroup vim-anzu
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-augroup END
-
 " vim-operator-flashy
   map y <Plug>(operator-flashy)
   map Y <Plug>(operator-flashy)$
@@ -330,7 +323,7 @@ let g:lightline = {
   \   'left': [
   \             ['mode', 'paste'],
   \             ['fugitive'],
-  \             ['readonly', 'modified', 'filename', 'anzu', 'vista']
+  \             ['readonly', 'modified', 'filename', 'vista']
   \           ],
   \   'right':  [
   \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
@@ -359,7 +352,6 @@ let g:lightline = {
   \   'modified': 'ModifiedChecker',
   \   'readonly': 'PermitFlag',
   \   'fugitive': 'GitBranchName',
-  \   'anzu': 'anzu#search_status',
   \   'date': 'Calender',
   \   'vista': 'NearestMethodOrFunction',
   \ },
@@ -385,7 +377,7 @@ let g:lightline = {
   \ 'subseparator': { 'left': "", 'right': "" }
   \ }
 
-
+" セパレータサンプル
 "  \ 'separator': { 'left': "", 'right': "" },
 "  \ 'subseparator': { 'left': "", 'right': "" }
 "  \ 'separator': { 'left': "", 'right': "" },
@@ -479,6 +471,11 @@ let g:vim_markdown_json_frontmatter=0
 " rainbow
 let g:rainbow_active=1
 
+" vim_current_word
+let g:vim_current_word#highlight_current_word=0
+let g:vim_current_word#highlight_delay=300
+
+
 "##############################################################################
 " 一般設定
 "##############################################################################
@@ -534,6 +531,9 @@ let g:rainbow_active=1
 
   " コマンド入力時、Tabキー補完を有効にする
   set wildmenu
+
+  " Sclowの色指定
+  highlight link SclowSbar Visual
 
   " 背景色
   set background=light
@@ -624,12 +624,6 @@ let g:rainbow_active=1
 
   " スペース＋「je」でJetpackSyne実行
   nnoremap <Leader>je :JetpackSync
-
-  " vim-anzu関連
-  nmap n <Plug>(anzu-n)
-  nmap N <Plug>(anzu-N)
-  nmap * <Plug>(anzu-star)
-  nmap # <Plug>(anzu-sharp)
 
   " ALE エラー間を移動する
   nmap <silent> <C-k> <Plug>(ale_previous_wrap)
