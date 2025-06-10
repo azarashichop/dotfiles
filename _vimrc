@@ -536,7 +536,7 @@ let g:vim_current_word#highlight_delay=300
   highlight link SclowSbar Visual
 
   " 背景色
-  set background=light
+  set background=dark
 
 " ###検索オプション###
   " インクリメンタルサーチを使う
@@ -591,7 +591,7 @@ let g:vim_current_word#highlight_delay=300
   " カラースキームの設定
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  let ayucolor='mirage'
+  let ayucolor='light'
   colorscheme ayu
 
 "##############################################################################
