@@ -23,16 +23,6 @@ set ambiwidth=double
   " Vim-devicons（deviconを表示させる）
   call jetpack#add('ryanoasis/vim-devicons')
 
-  " Unite Vim（統合UI）と関連プラグイン
-  call jetpack#add('Shougo/unite.vim')
-  call jetpack#add('Shougo/neomru.vim')
-  call jetpack#add('Shougo/unite-outline')
-  call jetpack#add('Shougo/vimfiler')
-  call jetpack#add('ujihisa/unite-colorscheme')
-
-  " Denite
-  call jetpack#add('Shougo/denite.nvim')
-
   " VimProc（非同期処理の実現）
   call jetpack#add('Shougo/vimproc')
 
@@ -47,6 +37,11 @@ set ambiwidth=double
 
   " CoC（補完プラグイン）
   call jetpack#add('neoclide/coc.nvim', {'rev': 'release'})
+
+  " CoC-fzf（CoC／ファジーファインダー）
+  call jetpack#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'})
+  call jetpack#add('junegunn/fzf.vim')
+  call jetpack#add('antoinemadec/coc-fzf')
 
   " ポップアップ表示
   call jetpack#add('Shougo/pum.vim')
@@ -108,7 +103,8 @@ set ambiwidth=double
   call jetpack#add('romainl/Apprentice')
   call jetpack#add('kaicataldo/material.vim')
   call jetpack#add('ghifarit53/tokyonight-vim')
-  "call jetpack#add('catppuccin/nvim')
+  call jetpack#add('yasukotelin/shirotelin')
+  call jetpack#add('sainnhe/everforest')
 
   " indentLine（インデント可視化）
   call jetpack#add('preservim/vim-indent-guides')
@@ -185,6 +181,9 @@ set ambiwidth=double
   " shaberu.vim（しゃべる！）
   call jetpack#add('supermomonga/shaberu.vim')
 
+  " github copilot
+  call jetpack#add('github/copilot.vim')
+
   call jetpack#end()
 
 "##############################################################################
@@ -229,6 +228,18 @@ if executable('bash-language-server')
           \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server', 'start']},
           \ 'allowlist': ['sh', 'bash'],
           \ })
+  augroup END
+endif
+
+" C/C++/Objective-C
+if executable('clangd')
+  augroup LspClangd
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
   augroup END
 endif
 
@@ -317,7 +328,7 @@ let g:lsp_diagnostics_enabled = 0
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'ayu_light',
+  \ 'colorscheme': 'ayu_mirage',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left': [
@@ -591,7 +602,7 @@ let g:vim_current_word#highlight_delay=300
   " カラースキームの設定
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
-  let ayucolor='light'
+  let ayucolor='mirage'
   colorscheme ayu
 
 "##############################################################################
