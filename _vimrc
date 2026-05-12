@@ -68,7 +68,7 @@ set ambiwidth=double
   call jetpack#add('rcmdnk/vim-markdown')
 
   " MarkDownプレビュープラグイン
-  call jetpack#add('suan/vim-instant-markdown')
+  call jetpack#add('instant-markdown/vim-instant-markdown')
 
   " Cisco用シンタックスハイライト
   call jetpack#add('momota/cisco.vim')
@@ -105,6 +105,9 @@ set ambiwidth=double
   call jetpack#add('ghifarit53/tokyonight-vim')
   call jetpack#add('yasukotelin/shirotelin')
   call jetpack#add('sainnhe/everforest')
+  "call jetpack#add('catppuccin/nvim', {'name': 'catppuccin'})
+  call jetpack#add('catppuccin/vim', {'name': 'catppuccin'})
+  call jetpack#add('EdenEast/nightfox.nvim')
 
   " indentLine（インデント可視化）
   call jetpack#add('preservim/vim-indent-guides')
@@ -328,7 +331,7 @@ let g:lsp_diagnostics_enabled = 0
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'ayu_mirage',
+      \ 'colorscheme': 'ayu_mirage',
   \ 'mode_map': {'c': 'NORMAL'},
   \ 'active': {
   \   'left': [
@@ -511,7 +514,7 @@ let g:vim_current_word#highlight_delay=300
   " 特殊文字の可視化
   set list
 "  set listchars=tab:↦-,trail:-,extends:>,precedes:<
-  set listchars=tab:↦-,trail:-,extends:↣,precedes:↢
+  set listchars=tab:↦-,trail:-,extends:↣,precedes:↢,eol:↲
 
   " 行折り返しの無効化
   set nowrap
@@ -601,7 +604,7 @@ let g:vim_current_word#highlight_delay=300
 
   " カラースキームの設定
   let g:solarized_termtrans=1
-  let g:solarized_termcolors=256
+  "let g:solarized_termcolors=256
   let ayucolor='mirage'
   colorscheme ayu
 
@@ -642,6 +645,19 @@ let g:vim_current_word#highlight_delay=300
 
   " undotreeの表示切替
   nnoremap <F5> :UndotreeToggle<CR>
+
+"##############################################################################
+"IME処理
+"##############################################################################
+
+let s:lastiminsert = 0
+" IMEの状態を保持しておく、置換モードではIMEの状態を保持しない
+" 置換モードではIMEの状態を保持しない。置換モードではIMEオフなので、置換モード後の挿入モードが常にIMEオフになることを避ける
+autocmd InsertLeave * if v:insertmode !=# 'r' | let s:lastiminsert = &iminsert | set iminsert=0 | endif
+" IMEの状態を復帰する。改行時には続けてIMEオンのままにしたいため。
+" 挿入モード（IMEオン）→ノーマルモード→挿入モード（IMEオン） となるが。これはむしろできなくていい
+" 置換モードではIMEの状態を復帰しない
+autocmd InsertEnter * if v:insertmode ==# 'i' | let &iminsert = s:lastiminsert | endif
 
 "##############################################################################
 "終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）

@@ -1,8 +1,3 @@
-" neovim Configuration.
-
-"##############################################################################
-" イニシャライズ
-"##############################################################################
 filetype off
 set nocompatible
 set encoding=utf-8
@@ -23,21 +18,14 @@ set ambiwidth=double
   " Vim-devicons（deviconを表示させる）
   call jetpack#add('ryanoasis/vim-devicons')
 
-  " Unite Vim（統合UI）と関連プラグイン
-  call jetpack#add('Shougo/unite.vim')
-  call jetpack#add('Shougo/neomru.vim')
-  call jetpack#add('Shougo/unite-outline')
-  call jetpack#add('Shougo/vimfiler')
-  call jetpack#add('ujihisa/unite-colorscheme')
-
-  " Denite
-  call jetpack#add('Shougo/denite.nvim')
-
   " VimProc（非同期処理の実現）
   call jetpack#add('Shougo/vimproc')
 
   " deol.nvim（VIM内でシェル実行）
   call jetpack#add('Shougo/deol.nvim')
+
+  " im-select.nvim（IME制御）
+  call jetpack#add('keaising/im-select.nvim')
 
   " バイナリビューワ
   call jetpack#add('Shougo/vinarise.vim')
@@ -48,11 +36,19 @@ set ambiwidth=double
   " CoC（補完プラグイン）
   call jetpack#add('neoclide/coc.nvim', {'rev': 'release'})
 
+  " CoC-fzf（CoC/ファジーファインダー）
+  call jetpack#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'})
+  call jetpack#add('junegunn/fzf.vim')
+  call jetpack#add('antoinemadec/coc-fzf')
+
   " ポップアップ表示
   call jetpack#add('Shougo/pum.vim')
 
   "neco-vim(Vimスクリプト補完プラグイン）
   call jetpack#add('Shougo/neco-vim')
+
+  " dbext（SQL向けプラグイン）
+  call jetpack#add('vim-scripts/dbext.vim')
 
   " neoyank(ヤンクヒストリの表示)
   call jetpack#add('Shougo/neoyank.vim')
@@ -84,9 +80,9 @@ set ambiwidth=double
   " カラースキームいろいろ
   call jetpack#add('overcache/NeoSolarized')
   call jetpack#add('tomasr/molokai')
-  call jetpack#add('cocopon/lightline-hybrid.vim')
+  "call jetpack#add('cocopon/lightline-hybrid.vim')
   call jetpack#add('wolf-dog/nighted.vim')
-  call jetpack#add('wolf-dog/lightline-nighted.vim')
+  "call jetpack#add('wolf-dog/lightline-nighted.vim')
   call jetpack#add('aereal/vim-colors-japanesque')
   call jetpack#add('jnurmine/Zenburn')
   call jetpack#add('NLKNguyen/papercolor-theme')
@@ -96,14 +92,21 @@ set ambiwidth=double
   call jetpack#add('gosukiwi/vim-atom-dark')
   call jetpack#add('muellan/am-colors')
   call jetpack#add('shinchu/lightline-gruvbox.vim')
-  call jetpack#add('croaker/mustang-vim')
+  "call jetpack#add('croaker/mustang-vim')
   call jetpack#add('rhysd/vim-color-spring-night')
   call jetpack#add('raphamorim/lucario', {'rev': 'main'})
   call jetpack#add('trusktr/seti.vim')
   call jetpack#add('Luxed/ayu-vim')
+  call jetpack#add('romainl/Apprentice')
+  call jetpack#add('kaicataldo/material.vim')
+  call jetpack#add('ghifarit53/tokyonight-vim')
+  call jetpack#add('yasukotelin/shirotelin')
+  call jetpack#add('sainnhe/everforest')
+  call jetpack#add('catppuccin/nvim', {'name': 'catppuccin'})
+  call jetpack#add('EdenEast/nightfox.nvim')
 
   " indentLine（インデント可視化）
-  call jetpack#add('Yggdroot/indentLine')
+  call jetpack#add('preservim/vim-indent-guides')
 
   " rainbow（対応ブランケットのカラーリング）
   call jetpack#add('luochen1990/rainbow')
@@ -129,14 +132,20 @@ set ambiwidth=double
   " Gitgutter（gitレポジトリファイルの差分表示）
   call jetpack#add('airblade/vim-gitgutter', {'rev': 'main'})
 
+  "nvim-scrollview（簡易スクロールバー）
+  call jetpack#add('dstein64/nvim-scrollview')
+
   " vim-over（置換ユーティリティ）
   call jetpack#add('osyo-manga/vim-over')
+
+  " vim_current_word（カーソル位置の単語をハイライト）
+  call jetpack#add('dominikduda/vim_current_word')
 
   " clever-f（検索後の移動を楽にする＆ハイライト表示）
   call jetpack#add('rhysd/clever-f.vim')
 
-  " vim-anzu（検索位置の表示）
-  call jetpack#add('osyo-manga/vim-anzu')
+  " nvim-hlslens（検索ヒット数の表示）
+  call jetpack#add('kevinhwang91/nvim-hlslens')
 
   " agプラグイン
   call jetpack#add('rking/ag.vim')
@@ -157,16 +166,28 @@ set ambiwidth=double
   call jetpack#add('majutsushi/tagbar')
 
   " lightline（ステータスライン装飾プラグイン）
-  call jetpack#add('itchyny/lightline.vim')
+  "call jetpack#add('itchyny/lightline.vim')
 
   " lightline-ale（Lightline-Ale連携)
-  call jetpack#add('maximbaz/lightline-ale')
+  "call jetpack#add('maximbaz/lightline-ale')
 
   " lightline-buffer
-  call jetpack#add('taohexxx/lightline-buffer')
+  "call jetpack#add('taohexxx/lightline-buffer')
+
+  " lualine（ステータスライン表示）
+  call jetpack#add('nvim-lualine/lualine.nvim')
 
   "showtime.vim（プレゼン資料作成）
   call jetpack#add('thinca/vim-showtime')
+
+  " shaberu.vim（しゃべる！）
+  call jetpack#add('supermomonga/shaberu.vim')
+
+  " github copilot
+  call jetpack#add('github/copilot.vim')
+
+  " nvim-jdtls（Java LSP）
+  call jetpack#add('mfussenegger/nvim-jdtls')
 
   call jetpack#end()
 
@@ -175,11 +196,11 @@ set ambiwidth=double
 "##############################################################################
 
 " Python-LSP
-lua require'lspconfig'.pylsp.setup{}
+"vim.lsp.config.pylsp.setup{}
 
 " JavaScript-LSP
 "lua require'lspconfig'.tsserver.setup{}
-lua require'lspconfig'.ts_ls.setup{}
+"vim.lsp.config.ts_ls.setup{}
 
 "##############################################################################
 " CoC設定
@@ -214,7 +235,6 @@ EOF
 " Vim-devicons
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   let g:WebDevIconsUnicodeDecorateFileNodes = 1
-  let g:webdevicons_enable_unite = 1
   let g:webdevicons_enable_vimfiler = 1
   let g:DevIconsEnableFoldersOpenClose = 1
   " ディレクトリグリフ指定
@@ -279,89 +299,155 @@ EOF
 "}
 "EOF
 
-
 " vim-anzu
 " 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
 " 検索ヒット数の表示を消去する
-augroup vim-anzu
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-augroup END
+"augroup vim-anzu
+"    autocmd!
+"    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+"augroup END
+
+" nvim-hlslens
+lua require('hlslens').setup()
+
+nnoremap <silent> n
+  \ <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+  \ <Cmd>lua require('hlslens').start()<CR>
+
+nnoremap <silent> N
+  \ <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+  \ <Cmd>lua require('hlslens').start()<CR>
+
+nnoremap <silent> *
+  \ *<Cmd>lua require('hlslens').start()<CR>
+
+nnoremap <silent> #
+  \ #<Cmd>lua require('hlslens').start()<CR>
 
 " vim-operator-flashy
   map y <Plug>(operator-flashy)
   map Y <Plug>(operator-flashy)$
   let g:operator#flashy#flash_time=1000
 
-  " Unite内の検索にagを使用する。
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-  endif
+" lualine
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+END
 
 " Lightline
-let g:lightline = {
-  \ 'colorscheme': 'ayu_mirage',
-  \ 'mode_map': {'c': 'NORMAL'},
-  \ 'active': {
-  \   'left': [
-  \             ['mode', 'paste'],
-  \             ['fugitive'],
-  \             ['readonly', 'modified', 'filename', 'anzu']
-  \           ],
-  \   'right':  [
-  \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
-  \               ['lineinfo', 'date'],
-  \               ['percent'],
-  \               ['fileformat', 'fileencoding', 'filetype', 'charvaluehex']
-  \             ]
-  \ },
-  \ 'tabline': {
-  \   'left': [
-  \             ['bufferinfo'],
-  \             ['separator'],
-  \             ['bufferbefore', 'buffercurrent', 'bufferafter']
-  \           ],
-  \   'right':[['travler']]
-  \ },
-  \ 'component': {
-  \   'lineinfo': " %3l:%-2v",
-  \   'charvaluehex': '0x%B',
-  \   'separator_tab': '',
-  \   'travler': ""
-  \ },
-  \ 'component_function': {
-  \   'bufferinfo': 'lightline#buffer#bufferinfo',
-  \   'fileformat': 'FileformatIcon',
-  \   'filetype': 'FiletypeIcon',
-  \   'modified': 'ModifiedChecker',
-  \   'readonly': 'PermitFlag',
-  \   'fugitive': 'GitBranchName',
-  \   'anzu': 'anzu#search_status',
-  \   'date': 'Calender'
-  \ },
-  \ 'component_expand': {
-  \   'buffercurrent': 'lightline#buffer#buffercurrent',
-  \   'bufferbefore': 'lightline#buffer#bufferbefore',
-  \   'bufferafter': 'lightline#buffer#bufferafter',
-  \   'linter_checking': 'lightline#ale#checking',
-  \   'linter_warnings': 'lightline#ale#warnings',
-  \   'linter_errors': 'lightline#ale#errors',
-  \   'linter_fine': 'lightline#ale#ok'
-  \ },
-  \ 'component_type': {
-  \   'buffercurrent': 'tabsel',
-  \   'bufferbefore': 'raw',
-  \   'bufferafter': 'raw',
-  \   'linter_checking': 'left',
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_fine': 'left'
-  \ },
-  \ 'separator': { 'left': "", 'right': "" },
-  \ 'subseparator': { 'left': "", 'right': "" }
-  \ }
+"let g:lightline = {
+"  \ 'colorscheme': 'ayu_mirage',
+"  \ 'mode_map': {'c': 'NORMAL'},
+"  \ 'active': {
+"  \   'left': [
+"  \             ['mode', 'paste'],
+"  \             ['fugitive'],
+"  \             ['readonly', 'modified', 'filename']
+"  \           ],
+"  \   'right':  [
+"  \               ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_fine'],
+"  \               ['lineinfo', 'date'],
+"  \               ['percent'],
+"  \               ['fileformat', 'fileencoding', 'filetype', 'charvaluehex']
+"  \             ]
+"  \ },
+"  \ 'tabline': {
+"  \   'left': [
+"  \             ['bufferinfo'],
+"  \             ['separator'],
+"  \             ['bufferbefore', 'buffercurrent', 'bufferafter']
+"  \           ],
+"  \   'right':[['travler']]
+"  \ },
+"  \ 'component': {
+"  \   'lineinfo': " %3l:%-2v",
+"  \   'charvaluehex': '0x%B',
+"  \   'separator_tab': '',
+"  \   'travler': ""
+"  \ },
+"  \ 'component_function': {
+"  \   'bufferinfo': 'lightline#buffer#bufferinfo',
+"  \   'fileformat': 'FileformatIcon',
+"  \   'filetype': 'FiletypeIcon',
+"  \   'modified': 'ModifiedChecker',
+"  \   'readonly': 'PermitFlag',
+"  \   'fugitive': 'GitBranchName',
+"  \   'date': 'Calender'
+"  \ },
+"  \ 'component_expand': {
+"  \   'buffercurrent': 'lightline#buffer#buffercurrent',
+"  \   'bufferbefore': 'lightline#buffer#bufferbefore',
+"  \   'bufferafter': 'lightline#buffer#bufferafter',
+"  \   'linter_checking': 'lightline#ale#checking',
+"  \   'linter_warnings': 'lightline#ale#warnings',
+"  \   'linter_errors': 'lightline#ale#errors',
+"  \   'linter_fine': 'lightline#ale#ok'
+"  \ },
+"  \ 'component_type': {
+"  \   'buffercurrent': 'tabsel',
+"  \   'bufferbefore': 'raw',
+"  \   'bufferafter': 'raw',
+"  \   'linter_checking': 'left',
+"  \   'linter_warnings': 'warning',
+"  \   'linter_errors': 'error',
+"  \   'linter_fine': 'left'
+"  \ },
+"  \ 'separator': { 'left': "", 'right': "" },
+"  \ 'subseparator': { 'left': "", 'right': "" }
+"  \ }
 
 "  \ 'separator': { 'left': "", 'right': "" },
 "  \ 'subseparator': { 'left': "", 'right': "" }
@@ -375,12 +461,11 @@ let g:lightline = {
 "  \ 'subseparator': { 'left': "", 'right': "" }
 
 " Lightline-ale用グリフ指定
-  let g:lightline#ale#indicator_checking = "  "
-  let g:lightline#ale#indicator_warnings = "  "
-  let g:lightline#ale#indicator_errors = "  "
-  let g:lightline#ale#indicator_ok = "  "
+"  let g:lightline#ale#indicator_checking = "  "
+"  let g:lightline#ale#indicator_warnings = "  "
+"  let g:lightline#ale#indicator_errors = "  "
+"  let g:lightline#ale#indicator_ok = "  "
 
-  let g:unite_force_overwrite_statusline = 0
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimshell_force_overwrite_statusline = 0
 
@@ -427,21 +512,19 @@ nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
 
 " lightline-buffer UI
-let g:lightline_buffer_logo = ""
-"let g:lightline_buffer_readonly_icon = "﫺"
-let g:lightline_buffer_readonly_icon = "󱚯"
-"let g:lightline_buffer_modified_icon = "贈"
-let g:lightline_buffer_modified_icon = ""
-let g:lightline_buffer_git_icon = " "
-let g:lightline_buffer_ellipsis_icon = '..'
-let g:lightline_buffer_expand_left_icon = '◀'
-let g:lightline_buffer_expand_right_icon = '▶'
-let g:lightline_buffer_active_buffer_left_icon = ''
-let g:lightline_buffer_active_buffer_right_icon = ''
-let g:lightline_buffer_separator_icon = '  '
-
-let g:lightline_buffer_enable_devicons = 1
-let g:lightline_buffer_show_bufnr = 1
+"let g:lightline_buffer_logo = ""
+"let g:lightline_buffer_readonly_icon = "󱚯"
+"let g:lightline_buffer_modified_icon = ""
+"let g:lightline_buffer_git_icon = " "
+"let g:lightline_buffer_ellipsis_icon = '..'
+"let g:lightline_buffer_expand_left_icon = '◀'
+"let g:lightline_buffer_expand_right_icon = '▶'
+"let g:lightline_buffer_active_buffer_left_icon = ''
+"let g:lightline_buffer_active_buffer_right_icon = ''
+"let g:lightline_buffer_separator_icon = '  '
+"
+"let g:lightline_buffer_enable_devicons = 1
+"let g:lightline_buffer_show_bufnr = 1
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -490,7 +573,7 @@ let g:rainbow_active=1
   set cmdheight=2
 
   " コマンドラインを常に表示させる
-  set laststatus=2
+  set laststatus=3
 
   " タイトルの表示
   set title
@@ -561,9 +644,6 @@ set autoread
 " diff実行時に縦分割で結果を表示する
 set diffopt=vertical
 
-" ペーストモードトグルの有効化
-set pastetoggle=<C-s>
-
 " カラースキームの設定
 " colorscheme moonshine "Terminal用
 set background=dark
@@ -586,25 +666,13 @@ let mapleader = "\<Space>"
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 
 " スペース＋「.」でinit.vimを開く
-nnoremap <Leader>. :edit $LOCALAPPDATA\nvim\init.vim
-
-" スペース＋「U」でUnite.vimの呼び出し（Uniteとスペースまで）
-nnoremap <Leader>U :Unite 
-
-" スペース＋「u」でDenite.vimの呼び出し（Deniteとスペースまで）
-nnoremap <Leader>u :Denite 
+nnoremap <Leader>. :edit $XDG_CONFIG_HOME\nvim\init.vim
 
 " スペース＋「n」でNERDTree呼び出し
 nnoremap <Leader>n :NERDTree
 
-" スペース＋「de」でdein呼び出し(call dein#)
-nnoremap <Leader>de :call dein#
-
-" vim-anzu関連
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
+" スペース＋「je」でJetpackSyne実行
+nnoremap <Leader>je :JetpackSync
 
 " ALE エラー間を移動する
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -621,7 +689,7 @@ nmap <Leader>a <cmd>AerialToggle!<CR>
 "##############################################################################
 
 " マウスを無効にする
-set mouse=""
+set mouse=
 
 " フォント設定
 set guifont=Cyroit\ BS\ Unhinted:h16
@@ -643,6 +711,19 @@ set visualbell t_vb=
   let g:indent_guides_color_change_percent = 30
 
 "##############################################################################
+"IME処理
+"##############################################################################
+
+let s:lastiminsert = 0
+" IMEの状態を保持しておく、置換モードではIMEの状態を保持しない
+" 置換モードではIMEの状態を保持しない。置換モードではIMEオフなので、置換モード後の挿入モードが常にIMEオフになることを避ける
+autocmd InsertLeave * if v:insertmode !=# 'r' | let s:lastiminsert = &iminsert | set iminsert=0 | endif
+" IMEの状態を復帰する。改行時には続けてIMEオンのままにしたいため。
+" 挿入モード（IMEオン）→ノーマルモード→挿入モード（IMEオン） となるが。これはむしろできなくていい
+" 置換モードではIMEの状態を復帰しない
+autocmd InsertEnter * if v:insertmode ==# 'i' | let &iminsert = s:lastiminsert | endif
+
+"##############################################################################
 " 終端処理（ファイルタイプ、シンタックス、インデントの有効化、ハイライト）
 "##############################################################################
 
@@ -651,10 +732,16 @@ syntax on
 syntax enable
 set hlsearch
 autocmd FileType text setlocal textwidth=0
-if has('gui_running')
-  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
-else
-  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
-endif
+"if has('gui_running')
+"  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
+"else
+"  call setcellwidths([[0xE0B0, 0xE0B3, 1]])
+"endif
 
-call setcellwidths([[0xF138, 0xF13A, 2]])
+"call setcellwidths([[0xE0B0, 0xE0B3, 1]])
+"call setcellwidths([[0xF138, 0xF13A, 2]])
+call setcellwidths([
+  \ [0xE080, 0xE0B3, 1],
+  \ [0x2502, 0x2572, 1],
+  \ [0xF138, 0xF13A, 2],
+  \])
